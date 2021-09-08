@@ -1,0 +1,85 @@
+# 
+# ~/.aliases
+# 
+
+#
+# Custom Aliases
+#
+unalias -a
+
+# APT
+alias update='sudo apt update'
+alias upgrade='sudo apt upgrade'
+alias search='apt search'
+alias install='sudo apt install'
+alias uninstall='sudo apt --purge remove'
+alias clean='sudo apt --purge autoremove'
+
+# Shell - Common
+alias cd..='cd ..'
+alias cls='clear'
+alias cls.='clear && colorscript -e crunchbang-mini'
+alias mkdir='mkdir -pv'
+alias ls='ls -AGlhv --color=auto --group-directories-first'
+alias dir='ls -AGlhv --color=auto --group-directories-first'
+alias zombies='ps -A -ostat,pid,ppid | grep -e "[zZ]"'
+alias rcolors='colorscript -r'
+
+## Shell - Exa
+alias ll='exa -al --tree --level=1'
+alias la='exa -ahl --group-directories-first --sort=name'
+alias l.='exa -a --group-directories-first --sort=name | egrep "^\."'
+
+## Shell - Grep.
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+# Git
+alias gitkey='export GPG_TTY=$(tty)'
+alias gitview='git log --oneline --decorate --graph --all'
+alias addup='git add -u'
+alias addall='git add .'
+alias branch='git branch'
+alias checkout='git checkout'
+alias clone='git clone'
+alias commit='git commit -m'
+alias fetch='git fetch'
+alias pull='git pull origin'
+alias push='git push origin'
+alias gs='git status'  # 'status' is protected name so using 'stat' instead
+alias tag='git tag'
+alias newtag='git tag -a'
+
+# Terraform
+trplan='terraform plan -out'
+trapply='terraform apply'
+trlist='terraform state list'
+trshow='terraform state show'
+
+# Resources
+## Top process(es) eating memory
+alias psmem='ps auxf | sort -nr -k 4'
+alias psmem10='ps auxf | sort -nr -k 4 | head -10'
+## Top process(es) eating cpu
+alias pscpu='ps auxf | sort -nr -k 3'
+alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
+
+# Network
+alias ping='sudo ping -a -c 10 -W 1'
+
+## Adding Flags / This one saved by butt so many times ...
+alias wget='wget -c'
+alias cp='cp -i'
+alias df='df -h'
+
+### Youtube Download
+alias yta-aac="youtube-dl --extract-audio --audio-format aac "
+alias yta-best="youtube-dl --extract-audio --audio-format best "
+alias yta-flac="youtube-dl --extract-audio --audio-format flac "
+alias yta-m4a="youtube-dl --extract-audio --audio-format m4a "
+alias yta-mp3="youtube-dl --extract-audio --audio-format mp3 "
+alias yta-opus="youtube-dl --extract-audio --audio-format opus "
+alias yta-vorbis="youtube-dl --extract-audio --audio-format vorbis "
+alias yta-wav="youtube-dl --extract-audio --audio-format wav "
+alias ytv-best="youtube-dl -f bestvideo+bestaudio "
