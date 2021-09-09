@@ -39,7 +39,7 @@ fi
 
 if [ "$color_prompt" = yes ]; then
     # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    PS1='\[\e[1;36m\]\@ \[\e[33m\]\d\[\e[00m\] : \[\e[1;32m\]\u @\h\[\e[00m\] \n \[\e[34m\]\w\[\e[00m\] \$\[\e[m\] '
+    PS1='\[\e[1;36m\]\@\[\e[00m\] : \[\e[1;32m\]\u @\h\[\e[00m\] \n \[\e[34m\]\w\[\e[00m\] \$\[\e[m\] '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -65,6 +65,11 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+# if PowerLine is present, load it.
+if [ -f ~/.bash-powerline.sh ] ; then
+    . ~/.bash-powerline.sh
+fi
+
 # Alias definitions.
 if [ -f ~/.aliases ]; then
     . ~/.aliases
@@ -80,9 +85,9 @@ if ! shopt -oq posix; then
 fi
 
 # Loading the SSH key(s) using KeyChain.
-/usr/bin/keychain -q --nogui $HOME/.ssh/id_ed25519
-/usr/bin/keychain -q --nogui $HOME/.ssh/id_rsa
-source $HOME/.keychain/DESKTOP-ORI7896-sh
+/usr/bin/keychain -q --nogui ~/.ssh/id_ed25519
+/usr/bin/keychain -q --nogui ~/.ssh/id_rsa
+source ~/.keychain/DESKTOP-ORI7896-sh
 
 ### ARCHIVE EXTRACTION
 # usage: ex <file>
