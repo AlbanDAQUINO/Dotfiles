@@ -20,15 +20,15 @@ alias cd..='cd ..'
 alias cls='clear'
 alias cls.='clear && colorscript -e crunchbang-mini'
 alias mkdir='mkdir -pv'
-alias ls='ls -AGlhv --color=auto --group-directories-first'
+alias ls='ls -AGlhv --color=auto'
 alias dir='ls -AGlhv --color=auto --group-directories-first'
 alias zombies='ps -A -ostat,pid,ppid | grep -e "[zZ]"'
-alias rcolors='colorscript -r'
+type /usr/bin/colorscript >/dev/null 2>&1 && alias rcolors='colorscript -r'
 
 ## Shell - Exa
-alias ll='exa -al --tree --level=1'
-alias la='exa -ahl --group-directories-first --sort=name'
-alias l.='exa -a --group-directories-first --sort=name | egrep "^\."'
+type /usr/bin/exa >/dev/null 2>&1 && alias ll='exa -al --tree --level=1'
+type /usr/bin/exa >/dev/null 2>&1 && alias la='exa -ahl --group-directories-first --sort=name'
+type /usr/bin/exa >/dev/null 2>&1 && alias l.='exa -a --group-directories-first --sort=name | egrep "^\."'
 
 ## Shell - Grep.
 alias grep='grep --color=auto'
@@ -47,15 +47,15 @@ alias commit='git commit -m'
 alias fetch='git fetch'
 alias pull='git pull origin'
 alias push='git push origin'
-alias gs='git status'  # 'status' is protected name so using 'stat' instead
+alias gs='git status' # STATUS is protected.
 alias tag='git tag'
 alias newtag='git tag -a'
 
 # Terraform
-trplan='terraform plan -out'
-trapply='terraform apply'
-trlist='terraform state list'
-trshow='terraform state show'
+type /usr/bin/terraform >/dev/null 2>&1 && alias trplan='terraform plan -out'
+type /usr/bin/terraform >/dev/null 2>&1 && alias trapply='terraform apply'
+type /usr/bin/terraform >/dev/null 2>&1 && alias trlist='terraform state list'
+type /usr/bin/terraform >/dev/null 2>&1 && alias trshow='terraform state show'
 
 # Resources
 ## Top process(es) eating memory
@@ -74,12 +74,12 @@ alias cp='cp -i'
 alias df='df -h'
 
 ### Youtube Download
-alias yta-aac="youtube-dl --extract-audio --audio-format aac "
-alias yta-best="youtube-dl --extract-audio --audio-format best "
-alias yta-flac="youtube-dl --extract-audio --audio-format flac "
-alias yta-m4a="youtube-dl --extract-audio --audio-format m4a "
-alias yta-mp3="youtube-dl --extract-audio --audio-format mp3 "
-alias yta-opus="youtube-dl --extract-audio --audio-format opus "
-alias yta-vorbis="youtube-dl --extract-audio --audio-format vorbis "
-alias yta-wav="youtube-dl --extract-audio --audio-format wav "
-alias ytv-best="youtube-dl -f bestvideo+bestaudio "
+type /usr/bin/youtube-dl >/dev/null 2>&1 && alias yta-aac='youtube-dl --extract-audio --audio-format aac'
+type /usr/bin/youtube-dl >/dev/null 2>&1 && alias yta-best='youtube-dl --extract-audio --audio-format best'
+type /usr/bin/youtube-dl >/dev/null 2>&1 && alias yta-flac='youtube-dl --extract-audio --audio-format flac'
+type /usr/bin/youtube-dl >/dev/null 2>&1 && alias yta-m4a='youtube-dl --extract-audio --audio-format m4a'
+type /usr/bin/youtube-dl >/dev/null 2>&1 && alias yta-mp3='youtube-dl --extract-audio --audio-format mp3'
+type /usr/bin/youtube-dl >/dev/null 2>&1 && alias yta-opus='youtube-dl --extract-audio --audio-format opus'
+type /usr/bin/youtube-dl >/dev/null 2>&1 && alias yta-vorbis='youtube-dl --extract-audio --audio-format vorbis'
+type /usr/bin/youtube-dl >/dev/null 2>&1 && alias yta-wav='youtube-dl --extract-audio --audio-format wav'
+type /usr/bin/youtube-dl >/dev/null 2>&1 && alias ytv-best='youtube-dl -f bestvideo+bestaudio'
