@@ -39,6 +39,15 @@ alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
+## Shell - Yadm
+if [[ -f /usr/bin/yadm ]]; then
+  alias ydstatus='yadm status'
+  alias ydadd='yadm add'
+  alias ydfetch='yadm fetch'
+  alias ydcommit='yadm commit -m'
+  alias ydpush='yadm push'
+fi
+
 # Git
 alias gitkey='export GPG_TTY=$(tty)'
 alias gitview='git log --oneline --decorate --graph --all'
