@@ -25,8 +25,8 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 #
-figlet -t -f digital $USER $SHELL @$HOST $HOME
-colorscript -e debian
+#figlet -t -f digital $USER $SHELL @$HOST $HOME
+#colorscript -e debian
 
 # Loading the SSH key(s) using KeyChain.
 /usr/bin/keychain -q --nogui $HOME/.ssh/id_ed25519
