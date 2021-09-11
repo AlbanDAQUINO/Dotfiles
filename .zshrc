@@ -24,9 +24,9 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-#
-#figlet -t -f digital $USER $SHELL @$HOST $HOME
-#colorscript -e debian
+# Shell Greetings
+lsb_release -ds | figlet -t -f digital
+colorscript -e crunchbang-mini
 
 # Loading the SSH key(s) using KeyChain.
 /usr/bin/keychain -q --nogui $HOME/.ssh/id_ed25519
