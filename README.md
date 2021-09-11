@@ -72,7 +72,7 @@ All my dot files in one place ...
 **yta-best** : *youtube-dl --extract-audio --audio-format best*  
 **yta-flac** : *youtube-dl --extract-audio --audio-format flac*  
 **yta-m4a** : *youtube-dl --extract-audio --audio-format m4a*  
-**-mp3** : *youtube-dl --extract-audio --audio-format mp3*  
+**yta-mp3** : *youtube-dl --extract-audio --audio-format mp3*  
 **yta-opus** : *youtube-dl --extract-audio --audio-format opus*  
 **yta-vorbis** : *youtube-dl --extract-audio --audio-format vorbis*  
 **yta-wav** : *youtube-dl --extract-audio --audio-format wav*  
