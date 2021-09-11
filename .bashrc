@@ -85,9 +85,10 @@ if ! shopt -oq posix; then
 fi
 
 # Loading the SSH key(s) using KeyChain.
-/usr/bin/keychain -q --nogui ~/.ssh/id_ed25519
-/usr/bin/keychain -q --nogui ~/.ssh/id_rsa
-source ~/.keychain/DESKTOP-ORI7896-sh
+/usr/bin/keychain -q --nogui $HOME/.ssh/id_ed25519
+/usr/bin/keychain -q --nogui $HOME/.ssh/id_rsa
+[[ ! -f ~/.ssh/id_group1_devops ]] || /usr/bin/keychain -q --nogui $HOME/.ssh/id_group1_devops
+source $HOME/.keychain/DESKTOP-ORI7896-sh
 
 ### ARCHIVE EXTRACTION
 # usage: ex <file>
@@ -110,3 +111,7 @@ ex ()
     echo "'$1' is not a valid file."
   fi
 }
+
+# Shell Greetings
+colorscript -e crunchbang-mini
+lsb_release -ds | figlet -t -f digital
