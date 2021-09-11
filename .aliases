@@ -18,12 +18,12 @@ alias clean='sudo apt --purge autoremove'
 # Shell - Common
 alias cd..='cd ..'
 alias cls='clear'
-alias cls.='clear && colorscript -e crunchbang-mini'
 alias mkdir='mkdir -pv'
 alias ls='ls -AGlhv --color=auto'
 alias dir='ls -AGlhv --color=auto --group-directories-first'
 alias zombies='ps -A -ostat,pid,ppid | grep -e "[zZ]"'
 if [[ -f /usr/bin/colorscript ]]; then
+  alias cls.='clear && colorscript -e crunchbang-mini'
   alias rcolors='colorscript -r'
 fi
 

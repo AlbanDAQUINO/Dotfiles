@@ -25,8 +25,8 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Shell Greetings
-lsb_release -ds | figlet -t -f digital
 colorscript -e crunchbang-mini
+lsb_release -ds | figlet -t -f digital
 
 # Loading the SSH key(s) using KeyChain.
 /usr/bin/keychain -q --nogui $HOME/.ssh/id_ed25519
