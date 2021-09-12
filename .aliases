@@ -18,22 +18,35 @@ alias clean='sudo apt --purge autoremove'
 # Shell - Common
 alias cd..='cd ..'
 alias cls='clear'
-alias cls.='clear && colorscript -e crunchbang-mini'
 alias mkdir='mkdir -pv'
 alias ls='ls -AGlhv --color=auto'
 alias dir='ls -AGlhv --color=auto --group-directories-first'
 alias zombies='ps -A -ostat,pid,ppid | grep -e "[zZ]"'
-type /usr/bin/colorscript >/dev/null 2>&1 && alias rcolors='colorscript -r'
+if [[ -f /usr/bin/colorscript ]]; then
+  alias cls.='clear && colorscript -e crunchbang-mini'
+  alias rcolors='colorscript -r'
+fi
 
 ## Shell - Exa
-type /usr/bin/exa >/dev/null 2>&1 && alias ll='exa -al --tree --level=1'
-type /usr/bin/exa >/dev/null 2>&1 && alias la='exa -ahl --group-directories-first --sort=name'
-type /usr/bin/exa >/dev/null 2>&1 && alias l.='exa -a --group-directories-first --sort=name | egrep "^\."'
+if [[ -f /usr/bin/exa ]]; then
+  alias ll='exa -al --tree --level=1'
+  alias la='exa -ahl --group-directories-first --sort=name'
+  alias l.='exa -a --group-directories-first --sort=name | egrep "^\."'
+fi
 
 ## Shell - Grep.
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
+
+## Shell - Yadm
+if [[ -f /usr/bin/yadm ]]; then
+  alias ydstatus='yadm status'
+  alias ydadd='yadm add'
+  alias ydfetch='yadm fetch'
+  alias ydcommit='yadm commit -m'
+  alias ydpush='yadm push'
+fi
 
 # Git
 alias gitkey='export GPG_TTY=$(tty)'
@@ -52,10 +65,12 @@ alias tag='git tag'
 alias newtag='git tag -a'
 
 # Terraform
-type /usr/bin/terraform >/dev/null 2>&1 && alias trplan='terraform plan -out'
-type /usr/bin/terraform >/dev/null 2>&1 && alias trapply='terraform apply'
-type /usr/bin/terraform >/dev/null 2>&1 && alias trlist='terraform state list'
-type /usr/bin/terraform >/dev/null 2>&1 && alias trshow='terraform state show'
+if [[ -f /usr/bin/terraform ]]; then
+  alias trplan='terraform plan -out'
+  alias trapply='terraform apply'
+  alias trlist='terraform state list'
+  alias trshow='terraform state show'
+fi
 
 # Resources
 ## Top process(es) eating memory
@@ -74,12 +89,14 @@ alias cp='cp -i'
 alias df='df -h'
 
 ### Youtube Download
-type /usr/bin/youtube-dl >/dev/null 2>&1 && alias yta-aac='youtube-dl --extract-audio --audio-format aac'
-type /usr/bin/youtube-dl >/dev/null 2>&1 && alias yta-best='youtube-dl --extract-audio --audio-format best'
-type /usr/bin/youtube-dl >/dev/null 2>&1 && alias yta-flac='youtube-dl --extract-audio --audio-format flac'
-type /usr/bin/youtube-dl >/dev/null 2>&1 && alias yta-m4a='youtube-dl --extract-audio --audio-format m4a'
-type /usr/bin/youtube-dl >/dev/null 2>&1 && alias yta-mp3='youtube-dl --extract-audio --audio-format mp3'
-type /usr/bin/youtube-dl >/dev/null 2>&1 && alias yta-opus='youtube-dl --extract-audio --audio-format opus'
-type /usr/bin/youtube-dl >/dev/null 2>&1 && alias yta-vorbis='youtube-dl --extract-audio --audio-format vorbis'
-type /usr/bin/youtube-dl >/dev/null 2>&1 && alias yta-wav='youtube-dl --extract-audio --audio-format wav'
-type /usr/bin/youtube-dl >/dev/null 2>&1 && alias ytv-best='youtube-dl -f bestvideo+bestaudio'
+if [[ -f /usr/bin/youtube-dl ]]; then
+  alias yta-aac='youtube-dl --extract-audio --audio-format aac'
+  alias yta-best='youtube-dl --extract-audio --audio-format best'
+  alias yta-flac='youtube-dl --extract-audio --audio-format flac'
+  alias yta-m4a='youtube-dl --extract-audio --audio-format m4a'
+  alias yta-mp3='youtube-dl --extract-audio --audio-format mp3'
+  alias yta-opus='youtube-dl --extract-audio --audio-format opus'
+  alias yta-vorbis='youtube-dl --extract-audio --audio-format vorbis'
+  alias yta-wav='youtube-dl --extract-audio --audio-format wav'
+  alias ytv-best='youtube-dl -f bestvideo+bestaudio'
+fi
