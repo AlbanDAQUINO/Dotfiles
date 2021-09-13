@@ -85,8 +85,8 @@ if ! shopt -oq posix; then
 fi
 
 # Loading the SSH key(s) using KeyChain.
-/usr/bin/keychain -q --nogui $HOME/.ssh/id_ed25519
-/usr/bin/keychain -q --nogui $HOME/.ssh/id_rsa
+/usr/bin/keychain -q --nogui $HOME/.ssh/id_ed25519_albandaquino_gmail
+/usr/bin/keychain -q --nogui $HOME/.ssh/id_rsa_alban_desktop-ori7896
 [[ ! -f ~/.ssh/id_group1_devops ]] || /usr/bin/keychain -q --nogui $HOME/.ssh/id_group1_devops
 source $HOME/.keychain/DESKTOP-ORI7896-sh
 

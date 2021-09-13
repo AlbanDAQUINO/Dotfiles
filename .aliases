@@ -41,11 +41,12 @@ alias fgrep='fgrep --color=auto'
 
 ## Shell - Yadm
 if [[ -f /usr/bin/yadm ]]; then
-  alias ydstatus='yadm status'
-  alias ydadd='yadm add'
-  alias ydfetch='yadm fetch'
-  alias ydcommit='yadm commit -m'
-  alias ydpush='yadm push'
+  alias ystatus='yadm status'
+  alias yadd='yadm add'
+  alias yfetch='yadm fetch'
+  alias ycommit='yadm commit -m'
+  alias ypush='yadm push'
+  alias ypull='yadm pull'
 fi
 
 # Git

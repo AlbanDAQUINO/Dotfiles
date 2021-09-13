@@ -31,11 +31,12 @@ All my dot files in one place ...
 **fgrep** : *fgrep --color=auto*  
 
 > ## Shell - Yadm
-**ydstatus** : *yadm status*  
-**ydadd** : *yadm add*  
-**ydfetch** : *yadm fetch*  
-**ydcommit** : *yadm commit -m*  
-**ydpush** : *yadm push*  
+**ystatus** : *yadm status*  
+**yadd** : *yadm add*  
+**yfetch** : *yadm fetch*  
+**ycommit** : *yadm commit -m*  
+**ypush** : *yadm push*  
+**ypull** : *yadm pull*  
 
 > ## Git
 **gitkey** : *export GPG_TTY=$(tty)*  
