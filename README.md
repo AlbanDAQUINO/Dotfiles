@@ -30,6 +30,13 @@ All my dot files in one place ...
 **egrep** : *egrep --color=auto*  
 **fgrep** : *fgrep --color=auto*  
 
+> ## Shell - Yadm
+**ydstatus** : *yadm status*  
+**ydadd** : *yadm add*  
+**ydfetch** : *yadm fetch*  
+**ydcommit** : *yadm commit -m*  
+**ydpush** : *yadm push*  
+
 > ## Git
 **gitkey** : *export GPG_TTY=$(tty)*  
 **gitview** : *git log --oneline --decorate --graph --all*  
