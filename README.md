@@ -4,14 +4,14 @@ All my dot files in one place ...
 # Aliases
 > ## APT
 **update** : *sudo apt update*  
-**upgrade** ** : *sudo apt upgrade  
-**search** : *apt search  
-**install** : *sudo apt install  
-**uninstall** : *sudo apt --purge remove  
-**clean** : *sudo apt --purge autoremove  
+**upgrade** ** : *sudo apt upgrade*  
+**search** : *apt search*  
+**install** : *sudo apt install*  
+**uninstall** : *sudo apt --purge remove*  
+**clean** : *sudo apt --purge autoremove*  
 
 > ## Shell - Common
-**cd..** : *cd ..  
+**cd..** : *cd ..*  
 **cls** : *clear*  
 **cls.** : *clear && colorscript -e crunchbang-mini*  
 **mkdir** : *mkdir -pv*  
