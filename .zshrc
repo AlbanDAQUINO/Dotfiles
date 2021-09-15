@@ -25,10 +25,10 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Loading the SSH key(s) using KeyChain.
-/usr/bin/keychain -q --nogui $HOME/.ssh/id_ed25519_albandaquino_gmail
-/usr/bin/keychain -q --nogui $HOME/.ssh/id_rsa_alban_desktop-ori7896
-[[ ! -f ~/.ssh/id_group1_devops ]] || /usr/bin/keychain -q --nogui $HOME/.ssh/id_group1_devops
-source $HOME/.keychain/DESKTOP-ORI7896-sh
+[[ ! -f ~/.ssh/id_ed25519_albandaquino_gmail.pem ]] || /usr/bin/keychain -q ~/.ssh/id_ed25519_albandaquino_gmail.pem
+[[ ! -f ~/.ssh/id_rsa_alban_desktop-ori7896.pem ]] || /usr/bin/keychain -q --nogui ~/.ssh/id_rsa_alban_desktop-ori7896.pem
+[[ ! -f ~/.ssh/simplon/id_group1_devops.pem ]] || /usr/bin/keychain -q --nogui ~/.ssh/simplon/id_group1_devops.pem
+source ~/.keychain/DESKTOP-ORI7896-sh
 
 ### ARCHIVE EXTRACTION
 # usage: ex <file>
