@@ -67,10 +67,12 @@ alias newtag='git tag -a'
 
 # Terraform
 if [[ -f /usr/bin/terraform ]]; then
-  alias trplan='terraform plan -out'
+  alias trplan='terraform plan'
+  alias trplanf='terraform plan -out'
   alias trapply='terraform apply'
   alias trlist='terraform state list'
   alias trshow='terraform state show'
+  alias terrafull='echo "Terraform Full Schabang ---\n" && terraform fmt && terraform validate && terraform plan -out'
 fi
 
 # Resources
