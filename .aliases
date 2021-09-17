@@ -72,7 +72,7 @@ if [[ -f /usr/bin/terraform ]]; then
   alias trapply='terraform apply'
   alias trlist='terraform state list'
   alias trshow='terraform state show'
-  alias terrafull='echo "Terraform Full Schabang ---\n" && terraform fmt && terraform validate && terraform plan -out'
+  alias terrafull='echo "Terraform Full Schabang ---" && terraform fmt && terraform validate && terraform plan -out'
 fi
 
 # Resources
