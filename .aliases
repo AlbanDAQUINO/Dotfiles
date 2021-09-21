@@ -23,7 +23,7 @@ alias ls='ls -AGlhv --color=auto'
 alias dir='ls -AGlhv --color=auto --group-directories-first'
 alias zombies='ps -A -ostat,pid,ppid | grep -e "[zZ]"'
 if [[ -f /usr/bin/colorscript ]]; then
-  alias cls.='clear && colorscript -e crunchbang-mini'
+  alias cls='clear && colorscript -e crunchbang-mini'
   alias rcolors='colorscript -r'
 fi
 
@@ -72,7 +72,9 @@ if [[ -f /usr/bin/terraform ]]; then
   alias trapply='terraform apply'
   alias trlist='terraform state list'
   alias trshow='terraform state show'
-  alias terrafull='echo "Terraform Full Schabang ---" && terraform fmt && terraform validate && terraform plan -out'
+  alias terrafull='echo "Terraform Full (Format, Validate, Plan) ---" && terraform init && terraform fmt && terraform validate && terraform plan -out'
+  alias tryolo='cls && echo "Terraform YOLO ! ---" && terraform init && terraform fmt && terraform validate && terraform plan -out "yolo.tfplan" && terraform apply "yolo.tfplan"'
+  alias trboom='terraform destroy'
 fi
 
 # Resources
