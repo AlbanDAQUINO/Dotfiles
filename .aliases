@@ -74,8 +74,9 @@ if [[ -f /usr/bin/terraform ]]; then
   alias trlist='terraform state list'
   alias trshow='terraform state show'
   alias terrafull='echo "Terraform Full (Format, Validate, Plan) ---" && terraform init && terraform fmt && terraform validate && terraform plan -out'
+  # Hmmm ...
   alias tryolo='cls && echo "Terraform YOLO ! ---" && terraform init && terraform fmt && terraform validate && terraform plan -out "yolo.tfplan" && terraform apply "yolo.tfplan"'
-  alias trboom='terraform destroy'
+  alias trboom='terraform destroy --auto-approve'
 fi
 
 # Resources

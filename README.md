@@ -17,6 +17,7 @@
 **mkdir** : *mkdir -pv*  
 **ls** : *ls -AGlhv --color=auto --group-directories-first*  
 **dir** : *ls -AGlhv --color=auto --group-directories-first*  
+**ssht** : *ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null*  
 **zombies** : *ps -A -ostat,pid,ppid | grep -e "[zZ]"*  
 **rcolors** : *colorscript -r*  
 
@@ -63,9 +64,11 @@
 **trplan** : *terraform plan*  
 **trplanf** : *terraform plan -out*
 **trapply** : *terraform apply*  
+**trboom** : *terraform destroy --auto-approve*  
 **trlist** : *terraform state list*  
 **trshow** : *terraform state show*  
 **terrafull** : *echo "Terraform Full Schabang ---" && terraform fmt && terraform validate && terraform plan -out*  
+**tryolo** : *cls && echo "Terraform YOLO ! ---" && terraform init && terraform fmt && terraform validate && terraform plan -out "yolo.tfplan" && terraform apply "yolo.tfplan"
 
 > ## Top process(es) eating memory
 
