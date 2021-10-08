@@ -18,6 +18,9 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# Displaying MotD
+run-parts /etc/update-motd.d/
+
 # Loading Custom Aliases ...
 [[ ! -f ~/.aliases ]] || source ~/.aliases
 
@@ -53,7 +56,3 @@ ex ()
     echo "'$1' is not a valid file."
   fi
 }
-
-# Shell Greetings
-colorscript -e crunchbang-mini
-lsb_release -ds | figlet -t -f digital
