@@ -73,7 +73,10 @@
 **trshow** : *terraform state show*  
 **trko** : *terraform destroy*  
 **terrafull** : *echo "Terraform Full Schabang ---" && terraform fmt && terraform validate && terraform plan -out*  
+
+> ### Hmmm
 **tryolo** : *cls && echo "Terraform YOLO ! ---" && terraform init && terraform fmt && terraform validate && terraform plan -out "yolo.tfplan" && terraform apply "yolo.tfplan"*
+**trboom** : *terraform destroy --auto-approve*
 
 > ## Top process(es) eating memory
 
