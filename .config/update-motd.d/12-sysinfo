@@ -1,0 +1,31 @@
+#!/bin/sh
+
+upSeconds="$(/usr/bin/cut -d. -f1 /proc/uptime)"
+secs=$((${upSeconds}%60))
+mins=$((${upSeconds}/60%60))
+hours=$((${upSeconds}/3600%24))
+days=$((${upSeconds}/86400))
+UPTIME=`printf "%d day(s) %02dh %02dm %02ds" "$days" "$hours" "$mins" "$secs"`
+MEM_USED=`cat /proc/meminfo | grep Active: | awk {'print ($2/1024)'}`
+MEM_FREE=`cat /proc/meminfo | grep MemAvailable | awk {'print ($2/1024)'}`
+MEM_TOTAL=`cat /proc/meminfo | grep MemTotal | awk {'print ($2/1024)'}`
+IP_LOCAL=`ip a | grep glo | awk '{print $2}' | head -1 | cut -f1 -d/`
+IP_EXTERNAL=`wget -q -O - http://icanhazip.com/ | tail`
+WEATHER_AMBARES=`curl -s "http://rss.accuweather.com/rss/liveweather_rss.asp?metric=1&locCode=EUR|FR|GIRONDE|AMBARES-ET-LAGRAVE" | sed -n '/Currently:/ s/.*: \(.*\): \([0-9]*\)\([CF]\).*/\2°\3, \1/p'`
+
+
+# get the load averages
+read one five fifteen rest < /proc/loadavg
+
+# Display the MotD
+echo "
+Today is `date +"%A, %e %B %Y, %r"`
+ 
+Memory             : ${MEM_USED} MB (Used) ${MEM_FREE} MB (Free) ${MEM_TOTAL} MB (Total)
+iP Address         : ${IP_LOCAL} [ ${IP_EXTERNAL} ]
+Load Averages      : ${one}, ${five}, ${fifteen} (1, 5, 15 min)
+Weather            : ${WEATHER_AMBARES}
+Uptime             : ${UPTIME}
+Running Processes  : `ps ax | wc -l | tr -d " "`
+"
+
