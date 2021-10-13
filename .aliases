@@ -20,9 +20,13 @@ alias cd..='cd ..'
 alias cls='clear'
 alias mkdir='mkdir -pv'
 alias ls='ls -AGlhv --color=auto'
+alias ll='ls -AGlhv --color=auto'
 alias dir='ls -AGlhv --color=auto --group-directories-first'
 alias ssht='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 alias zombies='ps -A -ostat,pid,ppid | grep -e "[zZ]"'
+if [[ -f /usr/bin/screenfetch ]]; then
+  alias sf='screenfetch'
+fi
 if [[ -f /usr/bin/colorscript ]]; then
   alias cls='clear && colorscript -e crunchbang-mini'
   alias rcolors='colorscript -r'
@@ -31,6 +35,7 @@ fi
 ## Shell - Exa
 if [[ -f /usr/bin/exa ]]; then
   alias ll='exa -al --tree --level=1'
+  alias lli='exa -al --tree --level=1 --icons'
   alias la='exa -ahl --group-directories-first --sort=name'
   alias l.='exa -a --group-directories-first --sort=name | egrep "^\."'
 fi
@@ -43,8 +48,8 @@ alias fgrep='fgrep --color=auto'
 ## Shell - Yadm
 if [[ -f /usr/bin/yadm ]]; then
   alias ystatus='yadm status'
-  alias yadd='yadm add'
   alias yfetch='yadm fetch'
+  alias yadd='yadm add'
   alias ycommit='yadm commit -m'
   alias ypush='yadm push'
   alias ypull='yadm pull'

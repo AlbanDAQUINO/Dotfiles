@@ -17,7 +17,6 @@ plugins=(git zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
 # Displaying MotD
 run-parts /etc/update-motd.d/
 
