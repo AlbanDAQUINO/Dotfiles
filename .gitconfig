@@ -1,14 +1,19 @@
 [user]
-  name = Alban d'Aquino
-	email = alban.daquino@gmail.com
-	signingkey = 4592F85FBE175E45
+name = Alban d'Aquino
+email = alban.daquino@gmail.com
+signingkey = 4592F85FBE175E45
+
 [init]
-	defaultBranch = main
+defaultBranch = main
+
 [commit]
-	gpgsign = true
+gpgsign = true
+
 [gpg]
-	program = /usr/bin/gpg
+program = /usr/bin/gpg
+
 [credential]
-	helper = cache --timeout=3600
+helper = cache --timeout=3600
+
 [pull]
-	rebase = false
+rebase = false

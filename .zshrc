@@ -17,6 +17,8 @@ plugins=(git zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+# Displaying MotD
+run-parts /etc/update-motd.d/
 
 # Loading Custom Aliases ...
 [[ ! -f ~/.aliases ]] || source ~/.aliases
@@ -25,10 +27,12 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Loading the SSH key(s) using KeyChain.
-/usr/bin/keychain -q --nogui $HOME/.ssh/id_ed25519
-/usr/bin/keychain -q --nogui $HOME/.ssh/id_rsa
-[[ ! -f ~/.ssh/id_group1_devops ]] || /usr/bin/keychain -q --nogui $HOME/.ssh/id_group1_devops
-source $HOME/.keychain/DESKTOP-ORI7896-sh
+[[ ! -f ~/.ssh/id_ed25519_albandaquino_gmail.pem ]] || /usr/bin/keychain -q ~/.ssh/id_ed25519_albandaquino_gmail.pem
+[[ ! -f ~/.ssh/id_rsa_alban_desktop-ori7896.pem ]] || /usr/bin/keychain -q --nogui ~/.ssh/id_rsa_alban_desktop-ori7896.pem
+# For WSL (Debian, Ubuntu, ...)
+[[ ! -f ~/.keychain/DESKTOP-ORI7896-sh ]] || source ~/.keychain/DESKTOP-ORI7896-sh
+# For my Zorin OS Virtual Machine
+[[ ! -f ~/.keychain/zorinos-vmw-sh ]] || source ~/.keychain/zorinos-vmw-sh
 
 ### ARCHIVE EXTRACTION
 # usage: ex <file>
@@ -51,7 +55,3 @@ ex ()
     echo "'$1' is not a valid file."
   fi
 }
-
-# Shell Greetings
-colorscript -e crunchbang-mini
-lsb_release -ds | figlet -t -f digital
