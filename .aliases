@@ -12,10 +12,12 @@ alias update='sudo apt update'
 alias upgrade='sudo apt upgrade'
 alias search='apt search'
 alias install='sudo apt install'
-alias uninstall='sudo apt --purge remove'
+alias remove='sudo apt --purge remove'
 alias clean='sudo apt --purge autoremove'
 
 # Shell - Common
+alias ..='cd ..'
+alias ...='cd ../..'
 alias cd..='cd ..'
 alias cls='clear'
 alias mkdir='mkdir -pv'
@@ -30,6 +32,9 @@ fi
 if [[ -f /usr/bin/colorscript ]]; then
   alias cls='clear && colorscript -e crunchbang-mini'
   alias rcolors='colorscript -r'
+fi
+if [[ -f /usr/bin/screenfetch ]]; then
+  alias sf='screenfetch'
 fi
 
 ## Shell - Exa
@@ -49,10 +54,10 @@ alias fgrep='fgrep --color=auto'
 if [[ -f /usr/bin/yadm ]]; then
   alias ystatus='yadm status'
   alias yfetch='yadm fetch'
-  alias yadd='yadm add'
   alias ycommit='yadm commit -m'
   alias ypush='yadm push'
   alias ypull='yadm pull'
+  alias yadd='yadm add'
 fi
 
 # Git
@@ -78,6 +83,7 @@ if [[ -f /usr/bin/terraform ]]; then
   alias trapply='terraform apply'
   alias trlist='terraform state list'
   alias trshow='terraform state show'
+  alias trko='terraform destroy'
   alias terrafull='echo "Terraform Full (Format, Validate, Plan) ---" && terraform init && terraform fmt && terraform validate && terraform plan -out'
   # Hmmm ...
   alias tryolo='cls && echo "Terraform YOLO ! ---" && terraform init && terraform fmt && terraform validate && terraform plan -out "yolo.tfplan" && terraform apply "yolo.tfplan"'

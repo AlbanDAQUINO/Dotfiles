@@ -6,16 +6,19 @@
 **upgrade** : *sudo apt upgrade*  
 **search** : *apt search*  
 **install** : *sudo apt install*  
-**uninstall** : *sudo apt --purge remove*  
+**remove** : *sudo apt --purge remove*  
 **clean** : *sudo apt --purge autoremove*  
 
 > ## Shell - Common
 
+**..** : *cd ..*  
+**...** : *cd ../..*  
 **cd..** : *cd ..*  
 **cls** : *clear*  
 **cls.** : *clear && colorscript -e crunchbang-mini*  
 **mkdir** : *mkdir -pv*  
 **ls** : *ls -AGlhv --color=auto --group-directories-first*  
+**ll** : *ls -AGlhv --color=auto*  
 **dir** : *ls -AGlhv --color=auto --group-directories-first*  
 **ssht** : *ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null*  
 **zombies** : *ps -A -ostat,pid,ppid | grep -e "[zZ]"*  
@@ -24,6 +27,7 @@
 > ## Shell - Exa
 
 **ll** : *exa -al --tree --level=1*  
+**lli** : *exa -al --tree --level=1 --icons*  
 **la** : *exa -ahl --group-directories-first --sort=name*  
 **l.** : *exa -a --group-directories-first --sort=name | egrep "^\."*  
 
@@ -36,11 +40,11 @@
 > ## Shell - Yadm
 
 **ystatus** : *yadm status*  
-**yadd** : *yadm add*  
 **yfetch** : *yadm fetch*  
 **ycommit** : *yadm commit -m*  
 **ypush** : *yadm push*  
 **ypull** : *yadm pull*  
+**yadd** : *yadm add*  
 
 > ## Git
 
@@ -67,8 +71,9 @@
 **trboom** : *terraform destroy --auto-approve*  
 **trlist** : *terraform state list*  
 **trshow** : *terraform state show*  
+**trko** : *terraform destroy*  
 **terrafull** : *echo "Terraform Full Schabang ---" && terraform fmt && terraform validate && terraform plan -out*  
-**tryolo** : *cls && echo "Terraform YOLO ! ---" && terraform init && terraform fmt && terraform validate && terraform plan -out "yolo.tfplan" && terraform apply "yolo.tfplan"
+**tryolo** : *cls && echo "Terraform YOLO ! ---" && terraform init && terraform fmt && terraform validate && terraform plan -out "yolo.tfplan" && terraform apply "yolo.tfplan"*
 
 > ## Top process(es) eating memory
 
