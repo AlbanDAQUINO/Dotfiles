@@ -100,6 +100,7 @@ alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
 
 # Network
 alias ping='sudo ping -a -c 10 -W 1'
+alias openport='sudo ss -tupln'
 
 ## Adding Flags / This one saved by butt so many times ...
 alias wget='wget -c'
