@@ -1,6 +1,4 @@
-# 
-# ~/.aliases
-# 
+#! /bin/sh
 
 #
 # Custom Aliases
@@ -26,9 +24,6 @@ alias ll='ls -AGlhv --color=auto'
 alias dir='ls -AGlhv --color=auto --group-directories-first'
 alias ssht='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 alias zombies='ps -A -ostat,pid,ppid | grep -e "[zZ]"'
-if [[ -f /usr/bin/screenfetch ]]; then
-  alias sf='screenfetch'
-fi
 if [[ -f /usr/bin/colorscript ]]; then
   alias cls='clear && colorscript -e crunchbang-mini'
   alias rcolors='colorscript -r'
