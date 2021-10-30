@@ -1,4 +1,0 @@
-#!/bin/bash
-
-lsb_release -ds | figlet -t -f digital
-

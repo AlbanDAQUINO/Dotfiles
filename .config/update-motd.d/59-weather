@@ -1,4 +1,0 @@
-#!/bin/bash
-
-ansiweather -s true -l ambares-et-lagrave
-
