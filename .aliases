@@ -14,8 +14,8 @@ alias remove='sudo apt --purge remove'
 alias clean='sudo apt --purge autoremove'
 
 # Shell - Common
-alias ..='cd ..'
-alias ...='cd ../..'
+alias '..'='cd ..'
+alias '...'='cd ../..'
 alias cd..='cd ..'
 alias cls='clear'
 alias mkdir='mkdir -pv'
@@ -25,6 +25,7 @@ alias dir='ls -AGlhv --color=auto --group-directories-first'
 alias ssht='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 alias zombies='ps -A -ostat,pid,ppid | grep -e "[zZ]"'
 alias banner='clear && run-parts /etc/update-motd.d'
+# Some color in your life
 if [[ -f /usr/bin/colorscript ]]; then
   alias cls='clear && colorscript -e crunchbang-mini'
   alias rcolors='colorscript -r'
@@ -87,15 +88,16 @@ if [[ -f /usr/bin/terraform ]]; then
 fi
 
 # Resources
+alias ps='ps -afux'
 ## Top process(es) eating memory
-alias psmem='ps auxf | sort -nr -k 4'
-alias psmem10='ps auxf | sort -nr -k 4 | head -10'
+alias psmem='ps afux | sort -nr -k 4'
+alias psmem10='ps afux | sort -nr -k 4 | head -10'
 ## Top process(es) eating cpu
-alias pscpu='ps auxf | sort -nr -k 3'
-alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
+alias pscpu='ps afux | sort -nr -k 3'
+alias pscpu10='ps afux | sort -nr -k 3 | head -10'
 
 # Network
-alias ping='sudo ping -a -c 10 -W 1'
+alias ping='sudo ping -a -c 10'
 alias openport='sudo ss -tupln'
 
 ## Adding Flags / This one saved by butt so many times ...
