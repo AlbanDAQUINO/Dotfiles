@@ -23,7 +23,7 @@ alias ls='ls -AGlhv --color=auto'
 alias ll='ls -AGlhv --color=auto'
 alias dir='ls -AGlhv --color=auto --group-directories-first'
 alias ssht='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
-alias zombies='ps -A -ostat,pid,ppid | grep -e "[zZ]"'
+alias zombies='/bin/ps -A -ostat,pid,ppid | grep -e "[zZ]"'
 alias banner='clear && run-parts /etc/update-motd.d'
 # Some color in your life
 if [[ -f /usr/bin/colorscript ]]; then
@@ -58,20 +58,22 @@ if [[ -f /usr/bin/yadm ]]; then
 fi
 
 # Git
-alias gitkey='export GPG_TTY=$(tty)'
-alias gitview='git log --oneline --decorate --graph --all'
-alias addup='git add -u'
-alias addall='git add .'
-alias branch='git branch'
-alias checkout='git checkout'
-alias clone='git clone'
-alias commit='git commit -m'
-alias fetch='git fetch'
-alias pull='git pull origin'
-alias push='git push origin'
-alias gs='git status' # STATUS is protected.
-alias tag='git tag'
-alias newtag='git tag -a'
+if [[ -f /usr/bin/git ]]; then
+  alias gitkey='export GPG_TTY=$(tty)'
+  alias gitview='git log --oneline --decorate --graph --all'
+  alias addup='git add -u'
+  alias addall='git add .'
+  alias branch='git branch'
+  alias checkout='git checkout'
+  alias clone='git clone'
+  alias commit='git commit -m'
+  alias fetch='git fetch'
+  alias pull='git pull origin'
+  alias push='git push origin'
+  alias gs='git status' # STATUS is protected.
+  alias tag='git tag'
+  alias newtag='git tag -a'
+fi
 
 # Terraform
 if [[ -f /usr/bin/terraform ]]; then
@@ -90,14 +92,14 @@ fi
 # Resources
 alias ps='ps -afux'
 ## Top process(es) eating memory
-alias psmem='ps afux | sort -nr -k 4'
-alias psmem10='ps afux | sort -nr -k 4 | head -10'
+alias psmem='ps -afux | sort -nr -k 4'
+alias psmem10='ps -afux | sort -nr -k 4 | head -10'
 ## Top process(es) eating cpu
-alias pscpu='ps afux | sort -nr -k 3'
-alias pscpu10='ps afux | sort -nr -k 3 | head -10'
+alias pscpu='ps -afux | sort -nr -k 3'
+alias pscpu10='ps -afux | sort -nr -k 3 | head -10'
 
 # Network
-alias ping='sudo ping -a -c 10'
+alias ping='echo "--- Pinging 10 times --------------------------------------" && sudo ping -a -c 10'
 alias openport='sudo ss -tupln'
 
 ## Adding Flags / This one saved by butt so many times ...
