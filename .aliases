@@ -61,23 +61,24 @@ fi
 if [[ -f /usr/bin/git ]]; then
   alias gitkey='export GPG_TTY=$(tty)'
   alias gitview='git log --oneline --decorate --graph --all'
-  alias addup='git add -u'
-  alias addall='git add .'
-  alias branch='git branch'
-  alias checkout='git checkout'
-  alias clone='git clone'
-  alias commit='git commit -m'
-  alias fetch='git fetch'
-  alias pull='git pull origin'
-  alias push='git push origin'
+  alias gaddup='git add -u'
+  alias gaddall='git add .'
+  alias gbranch='git branch'
+  alias gcheckout='git checkout'
+  alias gclone='git clone'
+  alias gcommit='git commit -m'
+  alias gfetch='git fetch'
+  alias gpull='git pull origin'
+  alias gpush='git push origin'
   alias gs='git status' # STATUS is protected.
-  alias tag='git tag'
-  alias newtag='git tag -a'
+  alias gtag='git tag'
+  alias gnewtag='git tag -a'
 fi
 
 # Terraform
 if [[ -f /usr/bin/terraform ]]; then
   alias trplan='terraform plan'
+  alias trformat='terraform fmt'
   alias trplanf='terraform plan -out'
   alias trapply='terraform apply'
   alias trlist='terraform state list'
@@ -99,7 +100,7 @@ alias pscpu='ps -afux | sort -nr -k 3'
 alias pscpu10='ps -afux | sort -nr -k 3 | head -10'
 
 # Network
-alias ping='echo "--- Pinging 10 times --------------------------------------" && sudo ping -a -c 10'
+alias ping='echo "--- Pinging 10 times ---" && sudo ping -a -c 10'
 alias openport='sudo ss -tupln'
 
 ## Adding Flags / This one saved by butt so many times ...
