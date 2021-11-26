@@ -87,6 +87,7 @@ fi
 # Loading the SSH key(s) using KeyChain.
 [[ ! -f ~/.ssh/id_ed25519_albandaquino_gmail.pem ]] || /usr/bin/keychain -q ~/.ssh/id_ed25519_albandaquino_gmail.pem
 [[ ! -f ~/.ssh/id_rsa_alban_desktop-ori7896.pem ]] || /usr/bin/keychain -q --nogui ~/.ssh/id_rsa_alban_desktop-ori7896.pem
+[[ ! -f ~/.ssh/id_ed25519_alban_devops.pem ]] || /usr/bin/keychain -q ~/.ssh/id_ed25519_alban_devops.pem
 # For WSL (Debian, Ubuntu, ...)
 [[ ! -f ~/.keychain/DESKTOP-ORI7896-sh ]] || source ~/.keychain/DESKTOP-ORI7896-sh
 # For my Zorin OS Virtual Machine

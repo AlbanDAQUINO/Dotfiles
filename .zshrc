@@ -15,6 +15,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
 # User configuration
 # Displaying MotD
 run-parts /etc/update-motd.d/
@@ -22,12 +25,10 @@ run-parts /etc/update-motd.d/
 # Loading Custom Aliases ...
 [[ ! -f ~/.aliases ]] || source ~/.aliases
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 # Loading the SSH key(s) using KeyChain.
-[[ ! -f ~/.ssh/id_ed25519_albandaquino_gmail.pem ]] || /usr/bin/keychain -q ~/.ssh/id_ed25519_albandaquino_gmail.pem
-[[ ! -f ~/.ssh/id_rsa_alban_desktop-ori7896.pem ]] || /usr/bin/keychain -q --nogui ~/.ssh/id_rsa_alban_desktop-ori7896.pem
+[[ ! -f ~/.ssh/id_rsa_alban_desktop-ori7896.pem ]] || /usr/bin/keychain -q --nogui ~/.ssh/id_rsa_alban_desktop-ori7896.pem      # Under...
+[[ ! -f ~/.ssh/id_ed25519_albandaquino_gmail.pem ]] || /usr/bin/keychain -q ~/.ssh/id_ed25519_albandaquino_gmail.pem            # Origin
+[[ ! -f ~/.ssh/id_ed25519_alban_devops.pem ]] || /usr/bin/keychain -q ~/.ssh/id_ed25519_alban_devops.pem                        # Origin!
 # For WSL (Debian, Ubuntu, ...)
 [[ ! -f ~/.keychain/DESKTOP-ORI7896-sh ]] || source ~/.keychain/DESKTOP-ORI7896-sh
 # For my Zorin OS Virtual Machine
