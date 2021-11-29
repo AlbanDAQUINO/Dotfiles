@@ -23,7 +23,8 @@ alias dir='ls -AGlhv --color=auto --group-directories-first'
 alias ssht='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 alias zombies='/bin/ps -A -ostat,pid,ppid | grep -e "[zZ]"'
 alias banner='clear && run-parts /etc/update-motd.d'
-# Some color in your life
+
+# Adding Some color in your life
 if [[ -f /usr/bin/colorscript ]]; then
   alias cls='clear && colorscript -e crunchbang-mini'
   alias rcolors='colorscript -r'
@@ -34,7 +35,6 @@ fi
 if [[ -f /usr/bin/highlight ]]; then
   alias cat='highlight -O xterm256 --force'
 fi
-
 
 ## Shell - Exa
 if [[ -f /usr/bin/exa ]]; then
@@ -102,10 +102,10 @@ alias pscpu='ps -afux | sort -nr -k 3'
 alias pscpu10='ps -afux | sort -nr -k 3 | head -10'
 
 # Network
-alias ping='echo "--- Pinging 10 times ---" && sudo ping -a -c 10'
+alias ping='echo "--- Pinging 3 times ---" && sudo ping -a -c 3'
 alias openport='sudo ss -tupln'
 
-## Adding Flags / This one saved by butt so many times ...
+## Adding Flags / Those will save your butt !
 alias wget='wget -c'
 alias cp='cp -i'
 alias df='df -h'
