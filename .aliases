@@ -33,7 +33,7 @@ if [[ -f /usr/bin/screenfetch ]]; then
   alias sf='screenfetch'
 fi
 if [[ -f /usr/bin/highlight ]]; then
-  alias cat='highlight -O xterm256 --force'
+  alias cat='highlight -O ansi --force'
 fi
 
 ## Shell - Exa
