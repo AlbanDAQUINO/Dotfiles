@@ -12,17 +12,16 @@ alias remove='sudo apt --purge remove'
 alias clean='sudo apt --purge autoremove'
 
 # Shell - Common
+alias banner='clear && run-parts /etc/update-motd.d'
 alias '..'='cd ..'
 alias '...'='cd ../..'
 alias cd..='cd ..'
 alias cls='clear'
 alias mkdir='mkdir -pv'
 alias ls='ls -AGlhv --color=auto'
-alias ll='ls -AGlhv --color=auto'
-alias dir='ls -AGlhv --color=auto --group-directories-first'
-alias ssht='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
-alias zombies='/bin/ps -A -ostat,pid,ppid | grep -e "[zZ]"'
-alias banner='clear && run-parts /etc/update-motd.d'
+alias ll='/usr/bin/ls -AGlhv --color=auto'
+alias dir='/usr/bin/ls -AGlhv --color=auto --group-directories-first'
+alias gpgtty='export GPG_TTY=$(tty)'
 
 # Adding Some color in your life
 if [[ -f /usr/bin/colorscript ]]; then
@@ -61,7 +60,6 @@ fi
 
 # Git
 if [[ -f /usr/bin/git ]]; then
-  alias gitkey='export GPG_TTY=$(tty)'
   alias gitview='git log --oneline --decorate --graph --all'
   alias gaddup='git add -u'
   alias gaddall='git add .'
@@ -94,6 +92,7 @@ fi
 
 # Resources
 alias ps='ps -afux'
+alias zombies='/bin/ps -A -ostat,pid,ppid | grep -e "[zZ]"'
 ## Top process(es) eating memory
 alias psmem='ps -afux | sort -nr -k 4'
 alias psmem10='ps -afux | sort -nr -k 4 | head -10'
@@ -103,6 +102,7 @@ alias pscpu10='ps -afux | sort -nr -k 3 | head -10'
 
 # Network
 alias ping='echo "--- Pinging 3 times ---" && sudo ping -a -c 3'
+alias ssht='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 alias openport='sudo ss -tupln'
 
 ## Adding Flags / Those will save your butt !
