@@ -7,20 +7,40 @@ unalias -a
 if [[ -f /usr/bin/apt ]]; then
   alias aptupdate='sudo apt update'
   alias aptupgrade='sudo apt upgrade'
-  alias aptsearch='apt search'
   alias aptinstall='sudo apt install'
+  alias aptsearch='apt search'
+  alias aptshow='sudo apt show'
+  alias aptinstalled='aptshow'
+  alias aptshowinstalled='sudo apt list --installed'
   alias aptremove='sudo apt remove --purge'
-  alias aptclean='sudo apt autoremove --purge'
+  alias aptcleanremove='sudo apt autoremove --purge'
 fi
 
 # PACMAN
 if [[ -f /usr/bin/pacman ]]; then
   alias pacupdate='sudo pacman -Sy'
+  alias pacupgrade='sudo pacman -Syyu'
   alias pacinstall='sudo pacman -S'
   alias pacsearch='sudo pacman -Ss'
   alias pacshow='sudo pacman -Si'
   alias pacinstalled='sudo pacman -Qs'
   alias pacshowinstalled='sudo pacman -Qi'
+  alias pacremove='sudo pacman -Rs'
+  alias paccleanremove='sudo pacman -Rsn'
+fi
+
+# YAY
+if [[ -f /usr/bin/yay ]]; then
+  alias yayupdate='yay -Sy'
+  alias yayupgrade='yay -Syyu'
+  alias yayinstall='yay -S'
+  alias yaysearch='yay -Ss'
+  alias yayshow='yay -Si'
+  alias yayinstalled='yay -Qs'
+  alias yayshowinstalled='yay -Qi'
+  alias yayremove='yay -Rs'
+  alias yaycleanremove='yay -Rsn'
+  alias yayinfos='yay -Ps'
 fi
 
 # Shell - Common
@@ -82,7 +102,7 @@ fi
 
 # Git
 if [[ -f /usr/bin/git ]]; then
-  alias gitview='git log --oneline --decorate --graph --all'
+  alias gview='git log --oneline --decorate --graph --all'
   alias gaddup='git add -u'
   alias gaddall='git add .'
   alias gbranch='git branch'
@@ -92,7 +112,7 @@ if [[ -f /usr/bin/git ]]; then
   alias gfetch='git fetch'
   alias gpull='git pull origin'
   alias gpush='git push origin'
-  alias gs='git status' # STATUS is protected.
+  alias gstatus='git status' # STATUS is protected.
   alias gtag='git tag'
   alias gnewtag='git tag -a'
 fi
@@ -130,29 +150,37 @@ alias ssht='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 
 # Resources - Service
 if [[ -f /etc/wsl.conf ]]; then
-  alias srvall='sudo service --status-all'
+  alias srvstatus='sudo service --status-all'
   alias srvrunning='srvall | grep -e " + "'
   alias srvstopped='srvall | grep -e " - "'
+  # alias srvreload=''
+  # alias srvstart=''
+  # alias srvstop=''
+  # alias srvrestart=''
 fi
 
 # Resources - Systemd
 if [[ ! -f /etc/wsl.conf ]]; then
-  alias srvstatus='sudo systemctl status'
-  alias srvreload='sudo systemctl reload'
-  alias srvstart='sudo systemctl start'
-  alias srvstop='sudo systemctl stop'
+  alias sctlstatus='sudo systemctl list-units --type=service | egrep " active"'
+  alias sctlrunning='sudo systemctl list-units --type=service | egrep " running"'
+  alias sctlstopped='sudo systemctl list-units --type=service | egrep " exited"'
+  alias sctlshow='sudo systemctl status'
+  alias sctlreload='sudo systemctl reload'
+  alias sctlstart='sudo systemctl start'
+  alias sctlstop='sudo systemctl stop'
+  alias sctlrestart='sudo systemctl restart'
 fi
 
 # Misc.
 ## Youtube Download
 if [[ -f /usr/bin/youtube-dl ]]; then
-  alias yta-aac='youtube-dl --extract-audio --audio-format aac'
-  alias yta-best='youtube-dl --extract-audio --audio-format best'
-  alias yta-flac='youtube-dl --extract-audio --audio-format flac'
-  alias yta-m4a='youtube-dl --extract-audio --audio-format m4a'
-  alias yta-mp3='youtube-dl --extract-audio --audio-format mp3'
-  alias yta-opus='youtube-dl --extract-audio --audio-format opus'
-  alias yta-vorbis='youtube-dl --extract-audio --audio-format vorbis'
-  alias yta-wav='youtube-dl --extract-audio --audio-format wav'
-  alias ytv-best='youtube-dl -f bestvideo+bestaudio'
+  alias ytaudio-aac='youtube-dl --extract-audio --audio-format aac'
+  alias ytaudio-best='youtube-dl --extract-audio --audio-format best'
+  alias ytaudio-flac='youtube-dl --extract-audio --audio-format flac'
+  alias ytaudio-m4a='youtube-dl --extract-audio --audio-format m4a'
+  alias ytaudio-mp3='youtube-dl --extract-audio --audio-format mp3'
+  alias ytaudio-opus='youtube-dl --extract-audio --audio-format opus'
+  alias ytaudio-vorbis='youtube-dl --extract-audio --audio-format vorbis'
+  alias ytaudio-wav='youtube-dl --extract-audio --audio-format wav'
+  alias ytvideo-best='youtube-dl -f bestvideo+bestaudio'
 fi

@@ -1,112 +1,129 @@
 # Aliases
 
-> ## APT
+```bash
+#! /bin/sh
 
-**update** : *sudo apt update*  
-**upgrade** : *sudo apt upgrade*  
-**search** : *apt search*  
-**install** : *sudo apt install*  
-**remove** : *sudo apt --purge remove*  
-**clean** : *sudo apt --purge autoremove*  
+# Removing all previous set of aliases
+unalias -a
 
-> ## Shell - Common
+# APT
+if [[ -f /usr/bin/apt ]]; then
+  alias aptupdate='sudo apt update'
+  alias aptupgrade='sudo apt upgrade'
+  alias aptsearch='apt search'
+  alias aptinstall='sudo apt install'
+  alias aptremove='sudo apt remove --purge'
+  alias aptclean='sudo apt autoremove --purge'
+fi
 
-**..** : *cd ..*  
-**...** : *cd ../..*  
-**cd..** : *cd ..*  
-**cls** : *clear*  
-**cls.** : *clear && colorscript -e crunchbang-mini*  
-**mkdir** : *mkdir -pv*  
-**ls** : *ls -AGlhv --color=auto --group-directories-first*  
-**ll** : *ls -AGlhv --color=auto*  
-**dir** : *ls -AGlhv --color=auto --group-directories-first*  
-**ssht** : *ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null*  
-**zombies** : *ps -A -ostat,pid,ppid | grep -e "[zZ]"*  
-**rcolors** : *colorscript -r*  
+# PACMAN
+if [[ -f /usr/bin/pacman ]]; then
+  alias pacupdate='sudo pacman -Sy'
+  alias pacinstall='sudo pacman -S'
+  alias pacsearch='sudo pacman -Ss'
+  alias pacshow='sudo pacman -Si'
+  alias pacinstalled='sudo pacman -Qs'
+  alias pacshowinstalled='sudo pacman -Qi'
+fi
 
-> ## Shell - Exa
+# Shell - Common
+alias cls='clear'
+alias 'cd..'='cd ..'
+alias '..'='cd ..'
+alias '..2'='cd ../..'
+alias '..3'='cd ../../..'
+alias ls='ls -AGlhv --color=auto'
+alias ll='ls'
 
-**ll** : *exa -al --tree --level=1*  
-**lli** : *exa -al --tree --level=1 --icons*  
-**la** : *exa -ahl --group-directories-first --sort=name*  
-**l.** : *exa -a --group-directories-first --sort=name | egrep "^\."*  
+# Shell -  Flags
+alias cp='cp -i'
+alias df='df -h'
+if [[ -f /usr/bin/wget ]]; then
+  alias wget='wget -c'
+fi
 
-> ## Shell - Grep
+# Shell - Banner
+if [[ -d /etc/update-motd.d/ ]]; then
+  alias banner='clear && run-parts /etc/update-motd.d'
+fi
 
-**grep** : *grep --color=auto*  
-**egrep** : *egrep --color=auto*  
-**fgrep** : *fgrep --color=auto*  
+# Shell - Adding Some Color
+## Grep
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+## ScreenFetch
+if [[ -f /usr/bin/screenfetch ]]; then
+  alias sf='screenfetch'
+fi
+## HighLight
+if [[ -f /usr/bin/highlight ]]; then
+  alias cat='highlight -O ansi --force'
+fi
+## Exa
+if [[ -f /usr/bin/exa ]]; then
+  alias ll='exa -al --tree --level=1'
+  alias lli='exa -al --tree --level=1 --icons'
+  alias la='exa -ahl --group-directories-first --sort=name'
+  alias l.='exa -a --group-directories-first --sort=name | egrep "^\."'
+fi
 
-> ## Shell - Yadm
+# Git
+if [[ -f /usr/bin/git ]]; then
+  alias gview='git log --oneline --decorate --graph --all'
+  alias gaddup='git add -u'
+  alias gaddall='git add .'
+  alias gbranch='git branch'
+  alias gcheckout='git checkout'
+  alias gclone='git clone'
+  alias gcommit='git commit -m'
+  alias gfetch='git fetch'
+  alias gpull='git pull origin'
+  alias gpush='git push origin'
+  alias gstatus='git status' # STATUS is protected.
+  alias gtag='git tag'
+  alias gnewtag='git tag -a'
+fi
 
-**ystatus** : *yadm status*  
-**yfetch** : *yadm fetch*  
-**ycommit** : *yadm commit -m*  
-**ypush** : *yadm push*  
-**ypull** : *yadm pull*  
-**yadd** : *yadm add*  
+# Resources - CPU
+alias ps='ps -afux'
+alias zombies='/bin/ps -A -ostat,pid,ppid | grep -e "[zZ]"'
 
-> ## Git
+## Top process(es) eating memory
+alias psmem='/bin/ps -afux | sort -nr -k 4'
+alias psmem10='/bin/ps -afux | sort -nr -k 4 | head -10'
+## Top process(es) eating cpu
+alias pscpu='/bin/ps -afux | sort -nr -k 3'
+alias pscpu10='/bin/ps -afux | sort -nr -k 3 | head -10'
 
-**gitkey** : *export GPG_TTY=$(tty)*  
-**gitview** : *git log --oneline --decorate --graph --all*  
-**addup** : *git add -u*  
-**addall** : *git add .*  
-**branch** : *git branch*  
-**checkout** : *git checkout*  
-**clone** : *git clone*  
-**commit** : *git commit -m*  
-**fetch** : *git fetch*  
-**pull** : *git pull origin*  
-**push** : *git push origin*  
-**gs** : *git status*  
-**tag** : *git tag*  
-**newtag** : *git tag -a*  
+# Resources - Network
+alias openport='sudo ss -tupln'
+alias ping='echo "--- Pinging 3 times ---" && sudo /bin/ping -a -c 3'
+alias ssht='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 
-> ## Terraform
+# Resources - Service
+if [[ -f /etc/wsl.conf ]]; then
+  alias srvstatus='sudo service --status-all'
+  alias srvrunning='srvall | grep -e " + "'
+  alias srvstopped='srvall | grep -e " - "'
+  # alias srvreload=''
+  # alias srvstart=''
+  # alias srvstop=''
+  # alias srvrestart=''
+fi
 
-**trplan** : *terraform plan*  
-**trplanf** : *terraform plan -out*
-**trapply** : *terraform apply*  
-**trboom** : *terraform destroy --auto-approve*  
-**trlist** : *terraform state list*  
-**trshow** : *terraform state show*  
-**trko** : *terraform destroy*  
-**terrafull** : *echo "Terraform Full Schabang ---" && terraform fmt && terraform validate && terraform plan -out*  
+# Resources - Systemd
+if [[ ! -f /etc/wsl.conf ]]; then
+  alias sctlstatus='sudo systemctl list-units --type=service | egrep " active"'
+  alias sctlrunning='sudo systemctl list-units --type=service | egrep " running"'
+  alias sctlstopped='sudo systemctl list-units --type=service | egrep " exited"'
+  alias sctlshow='sudo systemctl status'
+  alias sctlreload='sudo systemctl reload'
+  alias sctlstart='sudo systemctl start'
+  alias sctlstop='sudo systemctl stop'
+  alias sctlrestart='sudo systemctl restart'
+fi
 
-> ### Hmmm
-**tryolo** : *cls && echo "Terraform YOLO ! ---" && terraform init && terraform fmt && terraform validate && terraform plan -out "yolo.tfplan" && terraform apply "yolo.tfplan"*
-**trboom** : *terraform destroy --auto-approve*
+# Misc.
 
-> ## Top process(es) eating memory
-
-**psmem** : *ps auxf | sort -nr -k 4*  
-**psmem10** : *ps auxf | sort -nr -k 4 | head -10*  
-
-> ## Top process(es) eating cpu
-
-**pscpu** : *ps auxf | sort -nr -k 3*  
-**pscpu10** : *ps auxf | sort -nr -k 3 | head -10*  
-
-> ## Network
-
-**ping** : *sudo ping -a -c 10 -W 1*  
-
-> ## Adding Flags / This one saved by butt so many times
-
-**wget** : *wget -c*  
-
-**cp** : *cp -i*  
-**df** : *df -h*  
-
-> ### Youtube Download
-
-**yta-aac** : *youtube-dl --extract-audio --audio-format aac*  
-**yta-best** : *youtube-dl --extract-audio --audio-format best*  
-**yta-flac** : *youtube-dl --extract-audio --audio-format flac*  
-**yta-m4a** : *youtube-dl --extract-audio --audio-format m4a*  
-**yta-mp3** : *youtube-dl --extract-audio --audio-format mp3*  
-**yta-opus** : *youtube-dl --extract-audio --audio-format opus*  
-**yta-vorbis** : *youtube-dl --extract-audio --audio-format vorbis*  
-**yta-wav** : *youtube-dl --extract-audio --audio-format wav*  
-**ytv-best** : *youtube-dl -f bestvideo+bestaudio*  
+```
