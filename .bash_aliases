@@ -14,6 +14,7 @@ if [[ -f /usr/bin/apt ]]; then
   alias aptshowinstalled='sudo apt list --installed'
   alias aptremove='sudo apt remove --purge'
   alias aptcleanremove='sudo apt autoremove --purge'
+  alias aptinfos='sudo apt --version'
 fi
 
 # PACMAN
@@ -27,6 +28,7 @@ if [[ -f /usr/bin/pacman ]]; then
   alias pacshowinstalled='sudo pacman -Qi'
   alias pacremove='sudo pacman -Rs'
   alias paccleanremove='sudo pacman -Rsn'
+  alias pacinfos='sudo pacman --version'
 fi
 
 # YAY

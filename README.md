@@ -10,20 +10,42 @@ unalias -a
 if [[ -f /usr/bin/apt ]]; then
   alias aptupdate='sudo apt update'
   alias aptupgrade='sudo apt upgrade'
-  alias aptsearch='apt search'
   alias aptinstall='sudo apt install'
+  alias aptsearch='apt search'
+  alias aptshow='sudo apt show'
+  alias aptinstalled='aptshow'
+  alias aptshowinstalled='sudo apt list --installed'
   alias aptremove='sudo apt remove --purge'
-  alias aptclean='sudo apt autoremove --purge'
+  alias aptcleanremove='sudo apt autoremove --purge'
+  alias aptinfos='sudo apt --version'
 fi
 
 # PACMAN
 if [[ -f /usr/bin/pacman ]]; then
   alias pacupdate='sudo pacman -Sy'
+  alias pacupgrade='sudo pacman -Syyu'
   alias pacinstall='sudo pacman -S'
   alias pacsearch='sudo pacman -Ss'
   alias pacshow='sudo pacman -Si'
   alias pacinstalled='sudo pacman -Qs'
   alias pacshowinstalled='sudo pacman -Qi'
+  alias pacremove='sudo pacman -Rs'
+  alias paccleanremove='sudo pacman -Rsn'
+  alias pacinfos='sudo pacman --version'
+fi
+
+# YAY
+if [[ -f /usr/bin/yay ]]; then
+  alias yayupdate='yay -Sy'
+  alias yayupgrade='yay -Syyu'
+  alias yayinstall='yay -S'
+  alias yaysearch='yay -Ss'
+  alias yayshow='yay -Si'
+  alias yayinstalled='yay -Qs'
+  alias yayshowinstalled='yay -Qi'
+  alias yayremove='yay -Rs'
+  alias yaycleanremove='yay -Rsn'
+  alias yayinfos='yay -Ps'
 fi
 
 # Shell - Common
@@ -67,6 +89,21 @@ if [[ -f /usr/bin/exa ]]; then
   alias la='exa -ahl --group-directories-first --sort=name'
   alias l.='exa -a --group-directories-first --sort=name | egrep "^\."'
 fi
+## Colorscript
+if [[ -f /usr/bin/colorscript ]]; then
+  alias cls='clear && colorscript -e crunchbang-mini'
+  alias randomcolors='colorscript -r'
+fi
+
+# Shell - Yadm
+if [[ -f /usr/bin/yadm ]]; then
+  alias ystatus='yadm status'
+  alias yfetch='yadm fetch'
+  alias ycommit='yadm commit -m'
+  alias ypush='yadm push'
+  alias ypull='yadm pull'
+  alias yadd='yadm add'
+fi
 
 # Git
 if [[ -f /usr/bin/git ]]; then
@@ -83,6 +120,21 @@ if [[ -f /usr/bin/git ]]; then
   alias gstatus='git status' # STATUS is protected.
   alias gtag='git tag'
   alias gnewtag='git tag -a'
+fi
+
+# Terraform
+if [[ -f /usr/bin/terraform ]]; then
+  alias trplan='terraform plan'
+  alias trformat='terraform fmt'
+  alias trplanf='terraform plan -out'
+  alias trapply='terraform apply'
+  alias trlist='terraform state list'
+  alias trshow='terraform state show'
+  alias trko='terraform destroy'
+  alias terrafull='echo "Terraform Full (Format, Validate, Plan) ---" && terraform init && terraform fmt && terraform validate && terraform plan -out'
+  # Hmmm ...
+  alias tryolo='cls && echo "Terraform YOLO ! ---" && terraform init && terraform fmt && terraform validate && terraform plan -out "yolo.tfplan" && terraform apply "yolo.tfplan"'
+  alias trboom='terraform destroy --auto-approve'
 fi
 
 # Resources - CPU
@@ -125,5 +177,17 @@ if [[ ! -f /etc/wsl.conf ]]; then
 fi
 
 # Misc.
+## Youtube Download
+if [[ -f /usr/bin/youtube-dl ]]; then
+  alias ytaudio-aac='youtube-dl --extract-audio --audio-format aac'
+  alias ytaudio-best='youtube-dl --extract-audio --audio-format best'
+  alias ytaudio-flac='youtube-dl --extract-audio --audio-format flac'
+  alias ytaudio-m4a='youtube-dl --extract-audio --audio-format m4a'
+  alias ytaudio-mp3='youtube-dl --extract-audio --audio-format mp3'
+  alias ytaudio-opus='youtube-dl --extract-audio --audio-format opus'
+  alias ytaudio-vorbis='youtube-dl --extract-audio --audio-format vorbis'
+  alias ytaudio-wav='youtube-dl --extract-audio --audio-format wav'
+  alias ytvideo-best='youtube-dl -f bestvideo+bestaudio'
+fi
 
 ```
