@@ -1,54 +1,76 @@
 #! /bin/sh
-# Custom Aliases
-#
+
+# Removing all previous set of aliases
 unalias -a
 
 # APT
-alias update='sudo apt update'
-alias upgrade='sudo apt upgrade'
-alias search='apt search'
-alias install='sudo apt install'
-alias remove='sudo apt --purge remove'
-alias clean='sudo apt --purge autoremove'
+if [[ -f /usr/bin/apt ]]; then
+  alias aptupdate='sudo apt update'
+  alias aptupgrade='sudo apt upgrade'
+  alias aptsearch='apt search'
+  alias aptinstall='sudo apt install'
+  alias aptremove='sudo apt remove --purge'
+  alias aptclean='sudo apt autoremove --purge'
+fi
+
+# PACMAN
+if [[ -f /usr/bin/pacman ]]; then
+  alias pacupdate='sudo pacman -Sy'
+  alias pacinstall='sudo pacman -S'
+  alias pacsearch='sudo pacman -Ss'
+  alias pacshow='sudo pacman -Si'
+  alias pacinstalled='sudo pacman -Qs'
+  alias pacshowinstalled='sudo pacman -Qi'
+fi
 
 # Shell - Common
-alias banner='clear && run-parts /etc/update-motd.d'
-alias '..'='cd ..'
-alias '...'='cd ../..'
-alias cd..='cd ..'
 alias cls='clear'
-alias mkdir='mkdir -pv'
+alias 'cd..'='cd ..'
+alias '..'='cd ..'
+alias '..2'='cd ../..'
+alias '..3'='cd ../../..'
 alias ls='ls -AGlhv --color=auto'
-alias ll='/usr/bin/ls -AGlhv --color=auto'
-alias dir='/usr/bin/ls -AGlhv --color=auto --group-directories-first'
-alias gpgtty='export GPG_TTY=$(tty)'
+alias ll='ls'
 
-# Adding Some color in your life
-if [[ -f /usr/bin/colorscript ]]; then
-  alias cls='clear && colorscript -e crunchbang-mini'
-  alias rcolors='colorscript -r'
+# Shell -  Flags
+alias cp='cp -i'
+alias df='df -h'
+if [[ -f /usr/bin/wget ]]; then
+  alias wget='wget -c'
 fi
+
+# Shell - Banner
+if [[ -d /etc/update-motd.d/ ]]; then
+  alias banner='clear && run-parts /etc/update-motd.d'
+fi
+
+# Shell - Adding Some Color
+## Grep
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+## ScreenFetch
 if [[ -f /usr/bin/screenfetch ]]; then
   alias sf='screenfetch'
 fi
+## HighLight
 if [[ -f /usr/bin/highlight ]]; then
   alias cat='highlight -O ansi --force'
 fi
-
-## Shell - Exa
+## Exa
 if [[ -f /usr/bin/exa ]]; then
   alias ll='exa -al --tree --level=1'
   alias lli='exa -al --tree --level=1 --icons'
   alias la='exa -ahl --group-directories-first --sort=name'
   alias l.='exa -a --group-directories-first --sort=name | egrep "^\."'
 fi
+## Colorscript
+if [[ -f /usr/bin/colorscript ]]; then
+  alias cls='clear && colorscript -e crunchbang-mini'
+  alias randomcolors='colorscript -r'
+fi
 
-## Shell - Grep.
-alias grep='grep --color=auto'
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
-
-## Shell - Yadm
+# Shell - Yadm
 if [[ -f /usr/bin/yadm ]]; then
   alias ystatus='yadm status'
   alias yfetch='yadm fetch'
@@ -90,27 +112,39 @@ if [[ -f /usr/bin/terraform ]]; then
   alias trboom='terraform destroy --auto-approve'
 fi
 
-# Resources
+# Resources - CPU
 alias ps='ps -afux'
 alias zombies='/bin/ps -A -ostat,pid,ppid | grep -e "[zZ]"'
+
 ## Top process(es) eating memory
-alias psmem='ps -afux | sort -nr -k 4'
-alias psmem10='ps -afux | sort -nr -k 4 | head -10'
+alias psmem='/bin/ps -afux | sort -nr -k 4'
+alias psmem10='/bin/ps -afux | sort -nr -k 4 | head -10'
 ## Top process(es) eating cpu
-alias pscpu='ps -afux | sort -nr -k 3'
-alias pscpu10='ps -afux | sort -nr -k 3 | head -10'
+alias pscpu='/bin/ps -afux | sort -nr -k 3'
+alias pscpu10='/bin/ps -afux | sort -nr -k 3 | head -10'
 
-# Network
-alias ping='echo "--- Pinging 3 times ---" && sudo ping -a -c 3'
-alias ssht='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+# Resources - Network
 alias openport='sudo ss -tupln'
+alias ping='echo "--- Pinging 3 times ---" && sudo /bin/ping -a -c 3'
+alias ssht='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 
-## Adding Flags / Those will save your butt !
-alias wget='wget -c'
-alias cp='cp -i'
-alias df='df -h'
+# Resources - Service
+if [[ -f /etc/wsl.conf ]]; then
+  alias srvall='sudo service --status-all'
+  alias srvrunning='srvall | grep -e " + "'
+  alias srvstopped='srvall | grep -e " - "'
+fi
 
-### Youtube Download
+# Resources - Systemd
+if [[ ! -f /etc/wsl.conf ]]; then
+  alias srvstatus='sudo systemctl status'
+  alias srvreload='sudo systemctl reload'
+  alias srvstart='sudo systemctl start'
+  alias srvstop='sudo systemctl stop'
+fi
+
+# Misc.
+## Youtube Download
 if [[ -f /usr/bin/youtube-dl ]]; then
   alias yta-aac='youtube-dl --extract-audio --audio-format aac'
   alias yta-best='youtube-dl --extract-audio --audio-format best'
@@ -122,4 +156,3 @@ if [[ -f /usr/bin/youtube-dl ]]; then
   alias yta-wav='youtube-dl --extract-audio --audio-format wav'
   alias ytv-best='youtube-dl -f bestvideo+bestaudio'
 fi
-
