@@ -39,7 +39,7 @@ fi
 
 if [ "$color_prompt" = yes ]; then
     # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    PS1='\[\e[1;36m\]\@\[\e[00m\] : \[\e[1;32m\]\u @\h\[\e[00m\] \n \[\e[34m\]\w\[\e[00m\] \$\[\e[m\] '
+    PS1="\[\e]0;\u@\h: \w\a\]\[\e[1;36m\]\@\[\e[00m\] : \[\e[34m\]\w\[\e[00m\] \n \[\e[1;32m\]\u @\h\[\e[00m\] \$\[\e[m\] "
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -87,6 +87,7 @@ fi
 # Loading the SSH key(s) using KeyChain.
 [[ ! -f ~/.ssh/id_ed25519_albandaquino_gmail.pem ]] || /usr/bin/keychain -q ~/.ssh/id_ed25519_albandaquino_gmail.pem
 [[ ! -f ~/.ssh/id_rsa_alban_desktop-ori7896.pem ]] || /usr/bin/keychain -q --nogui ~/.ssh/id_rsa_alban_desktop-ori7896.pem
+[[ ! -f ~/.ssh/id_ed25519_alban_devops.pem ]] || /usr/bin/keychain -q ~/.ssh/id_ed25519_alban_devops.pem
 # For WSL (Debian, Ubuntu, ...)
 [[ ! -f ~/.keychain/DESKTOP-ORI7896-sh ]] || source ~/.keychain/DESKTOP-ORI7896-sh
 # For my Zorin OS Virtual Machine

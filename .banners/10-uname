@@ -1,0 +1,8 @@
+#!/bin/sh
+
+echo " "
+echo "Welcome on :"
+figlet -t -f digital "Devuan GNU/Linux 4 (Chimaera)"
+uname -nr
+echo " "
+

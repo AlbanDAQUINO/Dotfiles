@@ -1,9 +1,11 @@
-#!/bin/bash
+#!/bin/sh
 #
-#    10-sysinfo - generate the system information
+#    00-header - create the header of the MOTD
 #    Copyright (c) 2013 Nick Charlton
+#    Copyright (c) 2009-2010 Canonical Ltd.
 #
 #    Authors: Nick Charlton <hello@nickcharlton.net>
+#             Dustin Kirkland <kirkland@canonical.com>
 #
 #    This program is free software; you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -19,17 +21,13 @@
 #    with this program; if not, write to the Free Software Foundation, Inc.,
 #    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-date=`date`
-load=`cat /proc/loadavg | awk '{print $1}'`
-root_usage=`df -h / | awk '/\// {print $(NF-1)}'`
-memory_usage=`free -m | awk '/Mem/ { printf("%3.1f%%", $3/$2*100) }'`
-swap_usage=`free -m | awk '/Swap/ { printf("%3.1f%%", $3/$2*100) }'`
-users=`users | wc -w`
+[ -r /etc/lsb-release ] && . /etc/lsb-release
 
-echo "System information as of: $date"
-echo
-printf "System load:\t%s\tMemory usage:\t%s\n" $load $memory_usage
-printf "Usage on /:\t%s\tSwap usage:\t%s\n" $root_usage $swap_usage
-printf "Local users:\t%s\n" $users
-echo
+if [ -z "$DISTRIB_DESCRIPTION" ] && [ -x /usr/bin/lsb_release ]; then
+        # Fall back to using the very slow lsb_release utility
+        DISTRIB_DESCRIPTION=$(lsb_release -s -d)
+fi
 
+printf "\n"
+printf "Welcome to %s.\n" "$(lsb_release -sd)"
+printf "Kernel [%s]\n" "$(uname -r)"
