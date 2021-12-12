@@ -78,6 +78,10 @@ alias fgrep='fgrep --color=auto'
 if [[ -f /usr/bin/screenfetch ]]; then
   alias sf='screenfetch'
 fi
+## NeoFetch
+if [[ -f /usr/bin/neofetch ]]; then
+  alias neof='/usr/bin/neofetch'
+fi
 ## HighLight
 if [[ -f /usr/bin/highlight ]]; then
   alias cat='highlight -O ansi --force'

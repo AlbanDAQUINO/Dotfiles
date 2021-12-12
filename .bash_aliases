@@ -62,6 +62,9 @@ if [[ -f /usr/bin/wget ]]; then
 fi
 
 # Shell - Banner
+if [[ -d ~/.banners/ ]]; then
+  alias banner='clear && run-parts ~/.banners'
+fi
 if [[ -d /etc/update-motd.d/ ]]; then
   alias banner='clear && run-parts /etc/update-motd.d'
 fi
@@ -74,6 +77,10 @@ alias fgrep='fgrep --color=auto'
 ## ScreenFetch
 if [[ -f /usr/bin/screenfetch ]]; then
   alias sf='screenfetch'
+fi
+## NeoFetch
+if [[ -f /usr/bin/neofetch ]]; then
+  alias neof='/usr/bin/neofetch'
 fi
 ## HighLight
 if [[ -f /usr/bin/highlight ]]; then
@@ -104,7 +111,7 @@ fi
 
 # Git
 if [[ -f /usr/bin/git ]]; then
-  alias gview='git log --oneline --decorate --graph --all'
+  alias ggraph='git log --oneline --decorate --graph --all'
   alias gaddup='git add -u'
   alias gaddall='git add .'
   alias gbranch='git branch'
@@ -114,7 +121,7 @@ if [[ -f /usr/bin/git ]]; then
   alias gfetch='git fetch'
   alias gpull='git pull origin'
   alias gpush='git push origin'
-  alias gstatus='git status' # STATUS is protected.
+  alias gstatus='git status'
   alias gtag='git tag'
   alias gnewtag='git tag -a'
 fi
