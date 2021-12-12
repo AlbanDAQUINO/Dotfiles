@@ -111,6 +111,11 @@ source ~/.bash_aliases
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# Motd
+if [[ -d ~/.banners/ ]]; then
+  banner
+fi
+
 ### SSH Keys ###
 # Loading the SSH key(s) using KeyChain.
 [[ ! -f ~/.ssh/id_ed25519_alban_desktop-hp6740.pem ]] || /usr/bin/keychain --nogui ~/.ssh/id_ed25519_alban_desktop-hp6740.pem    # UnderKiMo..!
@@ -119,8 +124,5 @@ source ~/.bash_aliases
 [[ ! -f ~/.ssh/id_ed25519_alban_devops.pem ]] || /usr/bin/keychain -q --nogui ~/.ssh/id_ed25519_alban_devops.pem                 # Origin!
 # For EndeavourOS (Arch Linux)
 [[ ! -f ~/.keychain/desktop-hp6740-sh ]] || source ~/.keychain/desktop-hp6740-sh
-
-
-
 
 ### EOF ###
