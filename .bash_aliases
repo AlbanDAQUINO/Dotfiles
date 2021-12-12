@@ -137,6 +137,11 @@ alias openport='sudo ss -tupln'
 alias ping='echo "--- Pinging 3 times ---" && sudo /bin/ping -a -c 3'
 alias ssht='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 
+# Resources - Hardware informations
+if [[ -f /usr/bin/inxi ]]; then
+  alias hwinfos='inxi -CGxxxz --display'
+fi
+
 # Resources - Service
 if [[ -f /etc/wsl.conf ]]; then
   alias srvstatus='sudo service --status-all'
