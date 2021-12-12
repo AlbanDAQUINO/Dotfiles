@@ -160,8 +160,8 @@ alias ssht='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 # Resources - Service
 if [[ -f /etc/wsl.conf ]]; then
   alias srvstatus='sudo service --status-all'
-  alias srvrunning='srvall | grep -e " + "'
-  alias srvstopped='srvall | grep -e " - "'
+  alias srvrunning='srvstatus | grep -e " + "'
+  alias srvstopped='srvstatus | grep -e " - "'
   # alias srvreload=''
   # alias srvstart=''
   # alias srvstop=''
