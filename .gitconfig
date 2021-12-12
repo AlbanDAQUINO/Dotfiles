@@ -1,7 +1,7 @@
 [user]
 name = Alban d'Aquino
 email = alban.daquino@gmail.com
-signingkey = 4592F85FBE175E45
+signingkey = 7C3BD7FD4B61D14E
 
 [init]
 defaultBranch = main
