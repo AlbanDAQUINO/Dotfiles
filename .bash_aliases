@@ -62,6 +62,9 @@ if [[ -f /usr/bin/wget ]]; then
 fi
 
 # Shell - Banner
+if [[ -d ~/.banners/ ]]; then
+  alias banner='clear && run-parts ~/.banners'
+fi
 if [[ -d /etc/update-motd.d/ ]]; then
   alias banner='clear && run-parts /etc/update-motd.d'
 fi

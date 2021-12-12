@@ -114,9 +114,9 @@ source ~/.bash_aliases
 ### SSH Keys ###
 # Loading the SSH key(s) using KeyChain.
 [[ ! -f ~/.ssh/id_ed25519_alban_desktop-hp6740.pem ]] || /usr/bin/keychain --nogui ~/.ssh/id_ed25519_alban_desktop-hp6740.pem    # UnderKiMo..!
-[[ ! -f ~/.ssh/id_rsa_alban_desktop-ori7896.pem ]] || /usr/bin/keychain -q --nogui ~/.ssh/id_rsa_alban_desktop-ori7896.pem          # Under...
-[[ ! -f ~/.ssh/id_ed25519_albandaquino_gmail.pem ]] || /usr/bin/keychain -q --nogui ~/.ssh/id_ed25519_albandaquino_gmail.pem        # Origin
-[[ ! -f ~/.ssh/id_ed25519_alban_devops.pem ]] || /usr/bin/keychain -q --nogui ~/.ssh/id_ed25519_alban_devops.pem                    # Origin!
+[[ ! -f ~/.ssh/id_rsa_alban_desktop-ori7896.pem ]] || /usr/bin/keychain -q --nogui ~/.ssh/id_rsa_alban_desktop-ori7896.pem       # Under..!
+[[ ! -f ~/.ssh/id_ed25519_albandaquino_gmail.pem ]] || /usr/bin/keychain -q --nogui ~/.ssh/id_ed25519_albandaquino_gmail.pem     # Origin
+[[ ! -f ~/.ssh/id_ed25519_alban_devops.pem ]] || /usr/bin/keychain -q --nogui ~/.ssh/id_ed25519_alban_devops.pem                 # Origin!
 # For EndeavourOS (Arch Linux)
 [[ ! -f ~/.keychain/desktop-hp6740-sh ]] || source ~/.keychain/desktop-hp6740-sh
 
