@@ -91,6 +91,16 @@ if [[ -f /usr/bin/exa ]]; then
   alias l.='exa -a --group-directories-first --sort=name | egrep "^\."'
 fi
 
+# Shell - Yadm
+if [[ -f /usr/bin/yadm ]]; then
+  alias ystatus='yadm status'
+  alias yfetch='yadm fetch'
+  alias ycommit='yadm commit -m'
+  alias ypush='yadm push'
+  alias ypull='yadm pull'
+  alias yadd='yadm add'
+fi
+
 # Git
 if [[ -f /usr/bin/git ]]; then
   alias gview='git log --oneline --decorate --graph --all'
