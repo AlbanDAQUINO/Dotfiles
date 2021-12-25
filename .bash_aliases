@@ -1,4 +1,4 @@
-#! /bin/sh
+# Alh's Mess of Aliases
 
 # Removing all previous set of aliases
 unalias -a
@@ -15,6 +15,19 @@ if [[ -f /usr/bin/apt ]]; then
   alias aptremove='sudo apt remove --purge'
   alias aptcleanremove='sudo apt autoremove --purge'
   alias aptinfos='sudo apt --version'
+fi
+
+# APTitude
+if [[ -f /usr/bin/aptitude ]]; then
+  alias apdupdate='sudo aptitude update'
+  alias apdupgrade='sudo aptitude upgrade'
+  alias apdinstall='sudo aptitude install'
+  alias apdsearch='apt aptitude'
+  alias apdshow='sudo aptitude show'
+  alias apdinstalled='aptshow'
+  # alias aptshowinstalled='sudo aptitude list --installed'
+  alias apdremove='sudo aptitude purge'
+  alias apdinfos='sudo aptitude --version'
 fi
 
 # PACMAN
