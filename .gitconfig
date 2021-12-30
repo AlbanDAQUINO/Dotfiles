@@ -1,19 +1,26 @@
 [user]
-name = Alban d'Aquino
-email = alban.daquino@gmail.com
-signingkey = 4592F85FBE175E45
-
-[init]
-defaultBranch = main
-
-[commit]
-gpgsign = true
-
-[gpg]
-program = /usr/bin/gpg
+    email = "alban.daquino@gmail.com"
+    name = "Alban d'Aquino"
+    signingkey = 4592F85FBE175E45
 
 [credential]
-helper = cache --timeout=3600
+    # helper = keychain
+
+[github]
+    user = alban.daquino
+    # token = 
+
+[init]
+    defaultBranch = main
+
+[commit]
+    gpgsign = true
+
+[gpg]
+    program = /usr/bin/gpg
+
+[credential]
+    helper = cache --timeout=3600
 
 [pull]
-rebase = false
+    rebase = false

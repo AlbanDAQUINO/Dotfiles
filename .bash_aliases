@@ -19,15 +19,15 @@ fi
 
 # APTitude
 if [[ -f /usr/bin/aptitude ]]; then
-  alias apdupdate='sudo aptitude update'
-  alias apdupgrade='sudo aptitude upgrade'
-  alias apdinstall='sudo aptitude install'
-  alias apdsearch='apt aptitude'
-  alias apdshow='sudo aptitude show'
-  alias apdinstalled='aptshow'
+  alias aptdupdate='sudo aptitude update'
+  alias aptdupgrade='sudo aptitude upgrade'
+  alias aptdinstall='sudo aptitude install'
+  alias aptdsearch='apt aptitude'
+  alias aptdshow='sudo aptitude show'
+  alias aptdinstalled='aptshow'
   # alias aptshowinstalled='sudo aptitude list --installed'
-  alias apdremove='sudo aptitude purge'
-  alias apdinfos='sudo aptitude --version'
+  alias aptdremove='sudo aptitude purge'
+  alias aptdinfos='sudo aptitude --version'
 fi
 
 # PACMAN
@@ -212,3 +212,4 @@ if [[ -f /usr/bin/youtube-dl ]]; then
   alias ytaudio-wav='youtube-dl --extract-audio --audio-format wav'
   alias ytvideo-best='youtube-dl -f bestvideo+bestaudio'
 fi
+
