@@ -8,6 +8,17 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
+# Are we in the bottle?
+#if [[ ! -v INSIDE_GENIE ]]; then
+#  read -t 3 -p "yn? * Preparing to enter genie bottle (in 3s); abort? " yn
+#  echo
+#
+#  if [[ $yn != "y" ]]; then
+#    echo "Starting genie:"
+#    exec /usr/bin/genie -s
+#  fi
+#fi
+
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
