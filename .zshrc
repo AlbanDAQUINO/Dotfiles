@@ -52,7 +52,7 @@ case $_distro in
     *devuan*)                ICON="";;
     *manjaro*)               ICON="";;
     *rhel*)                  ICON="";;
-    *windows*                ICON="";;
+    *windows*)               ICON="";;
     *)                       ICON="";;
 esac
 
