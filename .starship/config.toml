@@ -104,10 +104,10 @@ stashed = " 﫻${count}"
 renamed = " ${count}"
 deleted = " ${count}"
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
-staged = '[$count+](bold 034)'
+staged = ' [$count](034)'
 behind = "⇣${count}"
 ahead = "⇡${count}"
-style = "bold 034"
+style = "034"
 # format = '[\($all_status\)]($style) '
 format = '[\($ahead_behind$all_status\)]($style) '
 

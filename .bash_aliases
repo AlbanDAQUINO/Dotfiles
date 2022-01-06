@@ -105,8 +105,9 @@ if [[ -f /usr/bin/highlight ]]; then
 fi
 ## Exa
 if [[ -f /usr/bin/exa ]]; then
-  alias ll='exa -al --tree --level=1'
-  alias lli='exa -al --tree --level=1 --icons'
+#  alias ll='exa -al --tree --level=1'
+  alias ll='exa -al --tree --level=1 --group-directories-first --sort=name'
+  alias lli='exa -al --tree --level=1 --group-directories-first --sort=name --icons'
   alias la='exa -ahl --group-directories-first --sort=name'
   alias lc='exa --icons -a --group-directories-first'
   alias l.='exa -a --group-directories-first --sort=name | egrep "^\."'
