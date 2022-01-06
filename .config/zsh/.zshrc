@@ -91,6 +91,7 @@ function colormap() {
 
 ### Loading Custom Aliases ...
 [[ ! -f ~/.bash_aliases ]] || source ~/.bash_aliases
+[[ ! -f ~/.config/zsh/.zshrc ]] || alias rlzsh='source ~/.config/zsh/.zshrc'
 
 ### Zsh - Prompt
 eval "$(starship init zsh)"
