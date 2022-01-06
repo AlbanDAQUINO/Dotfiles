@@ -11,7 +11,7 @@
 
 ### Exports
 export EDITOR="nvim"
-export TERM="xterm-256color"
+# export TERM="xterm-256color"
 export GPG_TTY=$TTY
 
 # History
@@ -30,6 +30,7 @@ fi
 ### Zsh
 # Which plugins would you like to load?
 source ~/.config/zsh/plugins/zsh-autosuggestion.zsh
+source ~/.config/zsh/plugins/simple-completion.zsh
 
 ### Function extract for common file formats ###
 # Set a name based on the distro

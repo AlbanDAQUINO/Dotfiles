@@ -8,7 +8,7 @@ format = """\
 [╭╴](238)$env_var\
 $all[╰─](238)$character"""
 # move the rest of the prompt to the right
-right_format = """$cmd_duration $time $battery"""
+right_format = """$cmd_duration $status$time $battery"""
 command_timeout = 3_000
 
 # Shows an icon that should be included by zshrc script based on the distribution or os
@@ -38,6 +38,20 @@ error_symbol = "[✗](bold 160)"
 # success_symbol = "[](238)"
 # error_symbol = "[](bold 160)"
 
+# Status
+[status]
+symbol = "✗"
+success_symbol = "✔️"
+not_executable_symbol = "🚫"
+not_found_symbol ="🔍"
+sigint_symbol = "🧱"
+signal_symbol = "⚡"
+style = "bold 160"
+format = "[$symbol $status]($style) "
+recognize_signal_code = true
+disabled = false
+
+# Shows Command dureation if > 10s
 [cmd_duration]
 min_time = 10_000  # Show command duration over 10,000 milliseconds (=10 sec)
 format = "Took [$duration]($style)"
@@ -56,7 +70,7 @@ truncation_length = 3
 truncate_to_repo = true
 truncation_symbol = " …/"
 home_symbol = " ~"
-read_only_style = "197"
+read_only_style = "160"
 read_only = ""
 format = "[$read_only]($read_only_style) [$path](039) "
 
@@ -96,20 +110,19 @@ style = "bold 034"
 
 # Show the Git status
 [git_status]
+style = "034"
 up_to_date = ""
 conflicted = ""
-untracked = " ${count}"
-modified = " ${count}"
-stashed = " 﫻${count}"
-renamed = " ${count}"
-deleted = " ${count}"
-diverged = "⇕⇡${ahead_count}⇣${behind_count}"
-staged = ' [$count](034)'
+untracked = "${count} "
+modified = "${count} "
+stashed = "﫻${count} "
+renamed = "${count} "
+deleted = "${count} "
+staged = "[$count](034) "
 behind = "⇣${count}"
 ahead = "⇡${count}"
-style = "034"
-# format = '[\($all_status\)]($style) '
-format = '[\($ahead_behind$all_status\)]($style) '
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+format = '[\($all_status$ahead_behind\)]($style) '
 
 # Force Python symbol and version
 [python]
