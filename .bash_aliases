@@ -227,3 +227,7 @@ if [[ -f /usr/bin/youtube-dl ]]; then
   alias ytvideo-best='youtube-dl -f bestvideo+bestaudio'
 fi
 
+## Shell Config Reload
+if [[ -d $ZDOTDIR ]]; then
+  alias zrl='source $ZDOTDIR/.zshrc'
+fi
