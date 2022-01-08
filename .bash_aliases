@@ -1,3 +1,12 @@
+#        d8888 888 888      
+#       d88888 888 888      
+#      d88P888 888 888      
+#     d88P 888 888 88888b.  
+#    d88P  888 888 888 "88b 
+#   d88P   888 888 888  888 
+#  d8888888888 888 888  888 
+# d88P     888 888 888  888    v6.5.2-41
+#
 # Alh's Mess of Aliases
 
 # Removing all previous set of aliases
@@ -22,7 +31,7 @@ if [[ -f /usr/bin/aptitude ]]; then
   alias aptdupdate='sudo aptitude update'
   alias aptdupgrade='sudo aptitude upgrade'
   alias aptdinstall='sudo aptitude install'
-  alias aptdsearch='apt aptitude'
+  alias aptdsearch='aptitude search'
   alias aptdshow='sudo aptitude show'
   alias aptdinstalled='aptshow'
   # alias aptshowinstalled='sudo aptitude list --installed'
@@ -193,7 +202,7 @@ if [[ -f /etc/wsl.conf ]]; then
 fi
 
 # Resources - Systemd
-if [[ ! -f /etc/wsl.conf ]]; then
+if [[ -f /bin/systemctl && ! -f /etc/wsl.conf ]]; then
   alias sctlstatus='sudo systemctl list-units --type=service | egrep " active"'
   alias sctlrunning='sudo systemctl list-units --type=service | egrep " running"'
   alias sctlstopped='sudo systemctl list-units --type=service | egrep " exited"'
