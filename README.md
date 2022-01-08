@@ -1,7 +1,19 @@
-# Aliases
+# Dotfiles
+Where the magic happens.  
 
+## Aliases
 ```bash
-#! /bin/sh
+#!/bin/sh
+#        d8888 888 888      
+#       d88888 888 888      
+#      d88P888 888 888      
+#     d88P 888 888 88888b.  
+#    d88P  888 888 888 "88b 
+#   d88P   888 888 888  888 
+#  d8888888888 888 888  888 
+# d88P     888 888 888  888    v6.5.2-41
+#
+# Alh's Mess of Aliases
 
 # Removing all previous set of aliases
 unalias -a
@@ -18,6 +30,19 @@ if [[ -f /usr/bin/apt ]]; then
   alias aptremove='sudo apt remove --purge'
   alias aptcleanremove='sudo apt autoremove --purge'
   alias aptinfos='sudo apt --version'
+fi
+
+# APTitude
+if [[ -f /usr/bin/aptitude ]]; then
+  alias aptdupdate='sudo aptitude update'
+  alias aptdupgrade='sudo aptitude upgrade'
+  alias aptdinstall='sudo aptitude install'
+  alias aptdsearch='aptitude search'
+  alias aptdshow='sudo aptitude show'
+  alias aptdinstalled='aptshow'
+  # alias aptshowinstalled='sudo aptitude list --installed'
+  alias aptdremove='sudo aptitude purge'
+  alias aptdinfos='sudo aptitude --version'
 fi
 
 # PACMAN
@@ -63,8 +88,15 @@ alias df='df -h'
 if [[ -f /usr/bin/wget ]]; then
   alias wget='wget -c'
 fi
+if [[ -f /usr/bin/doas ]]; then
+  # alias doas="doas --"
+  alias sudo="doas"
+fi
 
 # Shell - Banner
+if [[ -d ~/.banners/ ]]; then
+  alias banner='clear && run-parts ~/.banners'
+fi
 if [[ -d /etc/update-motd.d/ ]]; then
   alias banner='clear && run-parts /etc/update-motd.d'
 fi
@@ -88,9 +120,11 @@ if [[ -f /usr/bin/highlight ]]; then
 fi
 ## Exa
 if [[ -f /usr/bin/exa ]]; then
-  alias ll='exa -al --tree --level=1'
-  alias lli='exa -al --tree --level=1 --icons'
+#  alias ll='exa -al --tree --level=1'
+  alias ll='exa -al --tree --level=1 --group-directories-first --sort=name'
+  alias lli='exa -al --tree --level=1 --group-directories-first --sort=name --icons'
   alias la='exa -ahl --group-directories-first --sort=name'
+  alias lc='exa --icons -a --group-directories-first'
   alias l.='exa -a --group-directories-first --sort=name | egrep "^\."'
 fi
 ## Colorscript
@@ -111,7 +145,7 @@ fi
 
 # Git
 if [[ -f /usr/bin/git ]]; then
-  alias gview='git log --oneline --decorate --graph --all'
+  alias ggraph='git log --oneline --decorate --graph --all'
   alias gaddup='git add -u'
   alias gaddall='git add .'
   alias gbranch='git branch'
@@ -121,7 +155,7 @@ if [[ -f /usr/bin/git ]]; then
   alias gfetch='git fetch'
   alias gpull='git pull origin'
   alias gpush='git push origin'
-  alias gstatus='git status' # STATUS is protected.
+  alias gstatus='git status'
   alias gtag='git tag'
   alias gnewtag='git tag -a'
 fi
@@ -157,11 +191,16 @@ alias openport='sudo ss -tupln'
 alias ping='echo "--- Pinging 3 times ---" && sudo /bin/ping -a -c 3'
 alias ssht='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 
+# Resources - Hardware informations
+if [[ -f /usr/bin/inxi ]]; then
+  alias hwinfos='inxi -CGxxxz --display'
+fi
+
 # Resources - Service
 if [[ -f /etc/wsl.conf ]]; then
   alias srvstatus='sudo service --status-all'
-  alias srvrunning='srvall | grep -e " + "'
-  alias srvstopped='srvall | grep -e " - "'
+  alias srvrunning='srvstatus | grep -e " + "'
+  alias srvstopped='srvstatus | grep -e " - "'
   # alias srvreload=''
   # alias srvstart=''
   # alias srvstop=''
@@ -169,7 +208,7 @@ if [[ -f /etc/wsl.conf ]]; then
 fi
 
 # Resources - Systemd
-if [[ ! -f /etc/wsl.conf ]]; then
+if [[ -f /bin/systemctl && ! -f /etc/wsl.conf ]]; then
   alias sctlstatus='sudo systemctl list-units --type=service | egrep " active"'
   alias sctlrunning='sudo systemctl list-units --type=service | egrep " running"'
   alias sctlstopped='sudo systemctl list-units --type=service | egrep " exited"'

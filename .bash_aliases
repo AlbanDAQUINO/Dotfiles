@@ -83,7 +83,7 @@ if [[ -f /usr/bin/wget ]]; then
   alias wget='wget -c'
 fi
 if [[ -f /usr/bin/doas ]]; then
-  alias doas="doas --"
+  # alias doas="doas --"
   alias sudo="doas"
 fi
 
