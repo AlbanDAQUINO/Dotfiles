@@ -87,10 +87,6 @@ alias df='df -h'
 if [[ -f /usr/bin/wget ]]; then
   alias wget='wget -c'
 fi
-if [[ -f /usr/bin/doas ]]; then
-  # alias doas="doas --"
-  alias sudo="doas"
-fi
 
 # Shell - Banner
 if [[ -d ~/.banners/ ]]; then
@@ -125,6 +121,10 @@ if [[ -f /usr/bin/exa ]]; then
   alias la='exa -ahl --group-directories-first --sort=name'
   alias lc='exa --icons -a --group-directories-first'
   alias l.='exa -a --group-directories-first --sort=name | egrep "^\."'
+fi
+## Tree
+if [[ -f /usr/bin/tree ]]; then
+  alias tree='/usr/bin/tree -C -L'
 fi
 ## Colorscript
 if [[ -f /usr/bin/colorscript ]]; then
@@ -189,6 +189,11 @@ alias pscpu10='/bin/ps -afux | sort -nr -k 3 | head -10'
 alias openport='sudo ss -tupln'
 alias ping='echo "--- Pinging 3 times ---" && sudo /bin/ping -a -c 3'
 alias ssht='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+
+# Resources - Doas
+if [[ -f /usr/bin/doas && -f /etc/doas.conf ]]; then
+  alias sudo="doas"
+fi
 
 # Resources - Hardware informations
 if [[ -f /usr/bin/inxi ]]; then
