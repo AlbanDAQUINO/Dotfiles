@@ -73,6 +73,8 @@ alias 'cd..'='cd ..'
 alias '..'='cd ..'
 alias '..2'='cd ../..'
 alias '..3'='cd ../../..'
+alias '..4'='cd ../../../..'
+alias '..5'='cd ../../../../..'
 alias ls='ls -AGlhv --color=auto'
 alias ll='ls'
 
