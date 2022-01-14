@@ -14,7 +14,7 @@
 set +x
 
 # 
-read -i "y" -p "Do you want to unlock your SSH keys [y/n] " unlock_ssh_keys
+read -p "Do you want to unlock your SSH keys [y/n] " unlock_ssh_keys
 
 # 
 case $unlock_ssh_keys in
