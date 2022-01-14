@@ -5,7 +5,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v6.5.2-41
+# d88P     888 888 888  888    v6.5.2-48
 #
 # Alh's Mess of Aliases
 
@@ -105,6 +105,10 @@ fi
 ## NeoFetch
 if [[ -f /usr/bin/neofetch ]]; then
   alias neof='/usr/bin/neofetch'
+fi
+## BatCat
+if [[ -f /usr/bin/batcat ]]; then
+  alias bcat='batcat'
 fi
 ## HighLight
 if [[ -f /usr/bin/highlight ]]; then
