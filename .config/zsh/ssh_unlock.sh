@@ -60,6 +60,6 @@ case $unlock_ssh_keys in
         esac
     ;;
     *)
-        echo "─ Skipping unlock."
+        echo "└─ Skipping unlock."
     ;;
 esac
