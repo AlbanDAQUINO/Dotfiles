@@ -104,7 +104,7 @@ symbol = ""
 # symbol = " "
 symbol = " "
 format = "on [$symbol](034) [$branch]($style) "
-truncation_length = 4
+truncation_length = 15
 truncation_symbol = "…/"
 style = "bold 034"
 
@@ -113,7 +113,7 @@ style = "bold 034"
 style = "034"
 up_to_date = ""
 conflicted = ""
-untracked = "${count} "
+untracked = "?${count} "
 modified = "${count} "
 stashed = "﫻${count} "
 renamed = "${count} "

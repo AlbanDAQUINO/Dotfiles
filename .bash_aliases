@@ -150,7 +150,7 @@ if [[ -f /usr/bin/git ]]; then
   alias gcommit='git commit -m'
   alias gfetch='git fetch'
   alias gpull='git pull origin'
-  alias gpush='git push origin'
+  alias gpush='git push'
   alias gstatus='git status'
   alias gtag='git tag'
   alias gnewtag='git tag -a'
