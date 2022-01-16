@@ -73,6 +73,8 @@ alias 'cd..'='cd ..'
 alias '..'='cd ..'
 alias '..2'='cd ../..'
 alias '..3'='cd ../../..'
+alias '..4'='cd ../../../..'
+alias '..5'='cd ../../../../..'
 alias ls='ls -AGlhv --color=auto'
 alias ll='ls'
 
@@ -91,6 +93,12 @@ if [[ -d /etc/update-motd.d/ ]]; then
   alias banner='clear && run-parts /etc/update-motd.d'
 fi
 
+# Shell - GPG
+if [[ -f /usr/bin/gpg/ ]]; then
+  alias gpgdecrypt='gpg --decrypt-files'
+  alias gpgencrypt='gpg --default-recipient-self --armor --encrypt-files'
+fi
+
 # Shell - Adding Some Color
 ## Grep
 alias grep='grep --color=auto'
@@ -103,6 +111,10 @@ fi
 ## NeoFetch
 if [[ -f /usr/bin/neofetch ]]; then
   alias neof='/usr/bin/neofetch'
+fi
+## BatCat
+if [[ -f /usr/bin/batcat ]]; then
+  alias bcat='batcat'
 fi
 ## HighLight
 if [[ -f /usr/bin/highlight ]]; then
@@ -148,7 +160,7 @@ if [[ -f /usr/bin/git ]]; then
   alias gcommit='git commit -m'
   alias gfetch='git fetch'
   alias gpull='git pull origin'
-  alias gpush='git push origin'
+  alias gpush='git push'
   alias gstatus='git status'
   alias gtag='git tag'
   alias gnewtag='git tag -a'

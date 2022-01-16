@@ -5,7 +5,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v2.1.20
+# d88P     888 888 888  888    v2.1.22
 #
 # This is just my zshrc file...
 
@@ -62,7 +62,7 @@ case $_distro in
     *)                       ICON="";;
 esac
 ### Export the distro icon
-export STARSHIP_DISTRO=" $ICON"
+export STARSHIP_DISTRO="$ICON"
 
 ## Archive Extraction / usage: ex <file>
 function ex () {
@@ -102,18 +102,16 @@ run-parts /etc/update-motd.d/
 # SSH / Keychain - Offering to unlock the keys
 if [ -f $ZDOTDIR/kunlock.sh ]; then
   ~/.config/zsh/kunlock.sh
-
   # For my WSLs (Debian, Ubuntu, ...)
   if [ -f $HOME/.keychain/DESKTOP-ORI7896-sh ]; then source $HOME/.keychain/DESKTOP-ORI7896-sh; fi
-
-  # For my C-Discount Work Computer
-  if [ -f $HOME/.keychain/CL-3GKR3F3-sh ]; then source ~/.keychain/CL-3GKR3F3-sh; fi
-
   # For my WSLs (Debian, Ubuntu, ...)
-  if [ -f $HOME/.keychain/desktop-hp6740-sh ]; then source ~/.keychain/desktop-hp6740-sh; fi
-
-  #
-  echo "└─ Agent PiD: $SSH_AGENT_PID " 
+  if [ -f $HOME/.keychain/desktop-hp6740-sh ]; then source $HOME/.keychain/desktop-hp6740-sh; fi
+  # For my C-Discount Work Computer
+  if [ -f $HOME/.keychain/CL-3GKR3F3-sh ]; then source $HOME/.keychain/CL-3GKR3F3-sh; fi
+  # Display a console message
+  if [ $SSH_AGENT_PID != "" ]; then
+    echo "└─ Found SSH_Agent (PiD: $SSH_AGENT_PID) " 
+  else
+    echo "└─ SSH_Agent not found! " 
+  fi
 fi
-
-
