@@ -5,7 +5,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v2.1.19
+# d88P     888 888 888  888    v2.1.20
 #
 # This is just my zshenv file...
 # Note(s): Global Order: zshenv, zprofile, zshrc, zlogin

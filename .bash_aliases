@@ -5,7 +5,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v6.5.2-48
+# d88P     888 888 888  888    v6.5.2-49
 #
 # Alh's Mess of Aliases
 
@@ -91,6 +91,12 @@ if [[ -d ~/.banners/ ]]; then
 fi
 if [[ -d /etc/update-motd.d/ ]]; then
   alias banner='clear && run-parts /etc/update-motd.d'
+fi
+
+# Shell - GPG
+if [[ -f /usr/bin/gpg/ ]]; then
+  alias gpgdecrypt='gpg --decrypt-files'
+  alias gpgencrypt='gpg --default-recipient-self --armor --encrypt-files'
 fi
 
 # Shell - Adding Some Color
