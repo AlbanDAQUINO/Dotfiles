@@ -20,17 +20,15 @@ disabled = false
 # Shows the SHELL indicator
 [shell]
 style = "white"
-# zsh_indicator = "[_](bold white)"
 zsh_indicator = "[_](bold white)"
+bash_indicator = "[_](bold white)"
 powershell_indicator = "[](cyan)[_](bold white)"
 unknown_indicator = "[?sh](bold white)"
 disabled = false
 
 # Change the default prompt indicator
 [character]
-# success_symbol = ""
 success_symbol = "[ ❯](034)"
-# error_symbol = "[✗](bold 160) [❯](250)"
 error_symbol = "[❯](250)"
 
 # Shows the time
@@ -65,6 +63,12 @@ style_root = "red bold"
 format = "[$user]($style) "
 disabled = false
 show_always = true
+
+# Shows hostname
+[hostname]
+format = "[@ $hostname]($style)"
+style = "bold 202"
+disabled = true
 
 # Shows the current directory
 [directory]
