@@ -9,33 +9,33 @@
 #
 # This is just my zshrc file...
 
-### Exports
+# Exports
 export EDITOR="nvim"
-# export TERM="xterm-256color"
+## export TERM="xterm-256color"
 export GPG_TTY=$TTY
 
-# History
+## History
 HISTFILE=~/.config/zsh/.zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
 
-# If not running interactively, don't do anything
+## If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-### PATH
+# PATH
 if [ -d "$HOME/.local/bin" ] ;
   then PATH="$HOME/.local/bin:$PATH"
 fi
 
-### Zsh
-# Which plugins would you like to load?
+# Zsh
+## Which plugins would you like to load?
 source ~/.config/zsh/plugins/zsh-autosuggestion.zsh
 source ~/.config/zsh/plugins/simple-completion.zsh
 
-### Function extract for common file formats ###
-# Set a name based on the distro
+## Function extract for common file formats ###
+### Set a name based on the distro
 _distro=$(awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }')
-# Set an icon based on the distro
+### Set an icon based on the distro
 case $_distro in
     *kali*)                  ICON="ﴣ";;
     *arch*)                  ICON="";;
@@ -61,10 +61,10 @@ case $_distro in
     *windows*)               ICON="";;
     *)                       ICON="";;
 esac
-# Export the distro icon
+### Export the distro icon
 export STARSHIP_DISTRO=" $ICON"
 
-# Archive Extraction / usage: ex <file>
+## Archive Extraction / usage: ex <file>
 function ex () {
   if [ -f $1 ] ; then
     case $1 in
@@ -84,24 +84,24 @@ function ex () {
   fi
 }
 
-# Colormap / Usage: colormap
+## Colormap / Usage: colormap
 function colormap() {
   for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
 }
 
-### Loading Custom Aliases ...
+## Loading Custom Aliases ...
 [[ ! -f ~/.bash_aliases ]] || source ~/.bash_aliases
 [[ ! -f ~/.config/zsh/.zshrc ]] || alias rlzsh='source ~/.config/zsh/.zshrc'
 
-### Zsh - Prompt
+## Zsh - Prompt
 eval "$(starship init zsh)"
 
 # Displaying MotD
 run-parts /etc/update-motd.d/
 
 # 
-if [[ -f ~/.config/zsh/ssh_unlock.sh ]]; then
-  ~/.config/zsh/ssh_unlock.sh
+if [[ -f $ZDOTDIR/kunlock.sh ]]; then
+  $ZDOTDIR/kunlock.sh
 else
   # Loading the SSH key(s) using KeyChain.
   [[ ! -f ~/.ssh/id_rsa_alban_desktop-ori7896.pem ]] || /usr/bin/keychain -q --nogui ~/.ssh/id_rsa_alban_desktop-ori7896.pem      # Under..!

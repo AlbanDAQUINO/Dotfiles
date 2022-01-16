@@ -1,3 +1,4 @@
+#!/bin/bash
 #        d8888 888 888      
 #       d88888 888 888      
 #      d88P888 888 888      
@@ -8,14 +9,12 @@
 # d88P     888 888 888  888    v1.0.0
 #
 # Alh's SSH Unlock script.
-#!/bin/bash
 
 # 
 set +x
 
 # 
 read -p "Do you want to unlock your SSH keys [y/n] " unlock_ssh_keys
-
 # 
 case $unlock_ssh_keys in
     y)
