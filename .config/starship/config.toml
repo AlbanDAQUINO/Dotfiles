@@ -6,9 +6,9 @@ add_newline = true
 # Change the default prompt format
 format = """\
 [╭╴](238)$env_var\
-$all[╰─](238)$character"""
+$all[╰─](238)$shell$status$character"""
 # move the rest of the prompt to the right
-right_format = """$cmd_duration $status$time $battery"""
+right_format = """$cmd_duration$time $battery"""
 command_timeout = 3_000
 
 # Shows an icon that should be included by zshrc script based on the distribution or os
@@ -19,24 +19,26 @@ disabled = false
 
 # Shows the SHELL indicator
 [shell]
-zsh_indicator = "" 
-powershell_indicator = "_"
-unknown_indicator = "shell"
-disabled = true
+style = "white"
+# zsh_indicator = "[_](bold white)"
+zsh_indicator = "[_](bold white)"
+powershell_indicator = "[](cyan)[_](bold white)"
+unknown_indicator = "[?sh](bold white)"
+disabled = false
+
+# Change the default prompt indicator
+[character]
+# success_symbol = ""
+success_symbol = "[ ❯](034)"
+# error_symbol = "[✗](bold 160) [❯](250)"
+error_symbol = "[❯](250)"
 
 # Shows the time
 [time]
-disabled = false
 format = '🕙 [\[$time\]]($style)'
 time_format = "%T"
 utc_time_offset = "1"
-
-# Change the default prompt characters
-[character]
-success_symbol = "[❯](034)"
-error_symbol = "[✗](bold 160)"
-# success_symbol = "[](238)"
-# error_symbol = "[](bold 160)"
+disabled = false
 
 # Status
 [status]
@@ -47,7 +49,7 @@ not_found_symbol ="🔍"
 sigint_symbol = "🧱"
 signal_symbol = "⚡"
 style = "bold 160"
-format = "[$symbol $status]($style) "
+format = "[$status$symbol]($style) "
 recognize_signal_code = true
 disabled = false
 
@@ -66,7 +68,7 @@ show_always = true
 
 # Shows the current directory
 [directory]
-truncation_length = 3
+truncation_length = 20
 truncate_to_repo = true
 truncation_symbol = " …/"
 home_symbol = " ~"
@@ -81,15 +83,15 @@ charging_symbol = "🔌 "
 discharging_symbol = " ⚡ "
 # "bold red" style when capacity is between 0% and 10%
 [[battery.display]]
-threshold = 10
+threshold = 20
 style = "bold red"
 # "bold orange" style when capacity is between 10% and 30%
 [[battery.display]]
-threshold = 30
+threshold = 40
 style = "bold orange"
 # when capacity is over 30%, the battery indicator will not be displayed
 [[battery.display]]
-threshold = 50
+threshold = 60
 style = "bold yellow"
 # Displays the "battery full" symbol
 [[battery.display]]
@@ -140,7 +142,7 @@ format = "using [ vagrant $version]($style) "
 # Shows Docker context
 [docker_context]
 format = "using [ $context](bold blue) "
-detect_files = ["docker-compose.yml", "docker-compose.yaml", "Dockerfile"]
+detect_files = ["./docker-compose.yml", "./docker-compose.yaml", "./Dockerfile"]
 only_with_files = true
 
 # Shows Helm version
