@@ -5,7 +5,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v2.1.19
+# d88P     888 888 888  888    v2.1.20
 #
 # This is just my zshrc file...
 
@@ -15,7 +15,7 @@ export EDITOR="nvim"
 export GPG_TTY=$TTY
 
 ## History
-HISTFILE=~/.config/zsh/.zsh_history
+HISTFILE=$ZDOTDIR/.zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
 
@@ -29,8 +29,8 @@ fi
 
 # Zsh
 ## Which plugins would you like to load?
-source ~/.config/zsh/plugins/zsh-autosuggestion.zsh
-source ~/.config/zsh/plugins/simple-completion.zsh
+source $ZDOTDIR/plugins/zsh-autosuggestion.zsh
+source $ZDOTDIR/plugins/simple-completion.zsh
 
 ## Function extract for common file formats ###
 ### Set a name based on the distro
@@ -91,7 +91,7 @@ function colormap() {
 
 ## Loading Custom Aliases ...
 [[ ! -f ~/.bash_aliases ]] || source ~/.bash_aliases
-[[ ! -f ~/.config/zsh/.zshrc ]] || alias rlzsh='source ~/.config/zsh/.zshrc'
+[[ ! -f $ZDOTDIR/.zshrc ]] || alias rlzsh='source $ZDOTDIR/.zshrc'
 
 ## Zsh - Prompt
 eval "$(starship init zsh)"
@@ -100,21 +100,20 @@ eval "$(starship init zsh)"
 run-parts /etc/update-motd.d/
 
 # SSH / Keychain - Offering to unlock the keys
-if [[ -f $ZDOTDIR/kunlock.sh ]]; then
-  $ZDOTDIR/kunlock.sh
-# else
-#   # Loading the SSH key(s) using KeyChain.
-#   [[ ! -f ~/.ssh/id_rsa_alban_desktop-ori7896.pem ]] || /usr/bin/keychain -q --nogui ~/.ssh/id_rsa_alban_desktop-ori7896.pem      # Under..!
-#   [[ ! -f ~/.ssh/id_ed25519_alban_cdiscount.pem ]] || /usr/bin/keychain -q --nogui ~/.ssh/id_ed25519_alban_cdiscount.pem          # UnderMo..!
-#   [[ ! -f ~/.ssh/id_ed25519_alban_desktop-hp6740.pem ]] || /usr/bin/keychain -q ~/.ssh/id_ed25519_alban_desktop-hp6740.pem        # UnderKiMo..!
-#   [[ ! -f ~/.ssh/id_ed25519_albandaquino_gmail.pem ]] || /usr/bin/keychain -q --nogui ~/.ssh/id_ed25519_albandaquino_gmail.pem    # Ori..
-#   [[ ! -f ~/.ssh/id_rsa_albandaquino_cdiscount.pem ]] || /usr/bin/keychain -q --nogui ~/.ssh/id_rsa_albandaquino_cdiscount.pem    # Ori..!
-#   [[ ! -f ~/.ssh/id_ed25519_alban_devops.pem ]] || /usr/bin/keychain -q --nogui ~/.ssh/id_ed25519_alban_devops.pem                # Ori..!
+if [ -f $ZDOTDIR/kunlock.sh ]; then
+  ~/.config/zsh/kunlock.sh
 
-#   # For my WSLs (Debian, Ubuntu, ...)
-#   [[ ! -f ~/.keychain/DESKTOP-ORI7896-sh ]] || source ~/.keychain/DESKTOP-ORI7896-sh
-#   # For my Zorin OS Virtual Machine
-#   [[ ! -f ~/.keychain/zorinos-vmw-sh ]] || source ~/.keychain/zorinos-vmw-sh
-#   # For my C-Discount Work Computer
-#   [[ ! -f ~/.keychain/CL-3GKR3F3-sh ]] || source ~/.keychain/CL-3GKR3F3-sh
+  # For my WSLs (Debian, Ubuntu, ...)
+  if [ -f $HOME/.keychain/DESKTOP-ORI7896-sh ]; then source $HOME/.keychain/DESKTOP-ORI7896-sh; fi
+
+  # For my C-Discount Work Computer
+  if [ -f $HOME/.keychain/CL-3GKR3F3-sh ]; then source ~/.keychain/CL-3GKR3F3-sh; fi
+
+  # For my WSLs (Debian, Ubuntu, ...)
+  if [ -f $HOME/.keychain/desktop-hp6740-sh ]; then source ~/.keychain/desktop-hp6740-sh; fi
+
+  #
+  echo "└─ Agent PiD: $SSH_AGENT_PID " 
 fi
+
+
