@@ -205,6 +205,7 @@ fi
 # Resources - Hardware informations
 if [[ -f /usr/bin/inxi ]]; then
   alias hwinfos='inxi -CGxxxz --display'
+  alias sysinfos='inxi -v1G --display'
 fi
 
 # Resources - Service

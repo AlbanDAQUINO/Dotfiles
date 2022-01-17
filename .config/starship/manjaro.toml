@@ -22,7 +22,7 @@ command_timeout = 3_000
 
 # Shows an icon based on the os or distribution
 [env_var.STARSHIP_DISTRO]
-style = "160"
+style = "042"
 # - Debian: 160 / Devuan: 093 / Manjaro: 042 / Ubuntu: 208 / Windows: 033
 format = '[$env_value]($style) '
 variable = "STARSHIP_DISTRO"
