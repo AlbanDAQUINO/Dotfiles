@@ -1,8 +1,3 @@
-# Dotfiles
-Where the magic happens.  
-
-## Aliases
-```bash
 #        d8888 888 888      
 #       d88888 888 888      
 #      d88P888 888 888      
@@ -78,6 +73,8 @@ alias 'cd..'='cd ..'
 alias '..'='cd ..'
 alias '..2'='cd ../..'
 alias '..3'='cd ../../..'
+alias '..4'='cd ../../../..'
+alias '..5'='cd ../../../../..'
 alias ls='ls -AGlhv --color=auto'
 alias ll='ls'
 
@@ -96,6 +93,12 @@ if [[ -d /etc/update-motd.d/ ]]; then
   alias banner='clear && run-parts /etc/update-motd.d'
 fi
 
+# Shell - GPG
+if [[ -f /usr/bin/gpg/ ]]; then
+  alias gpgdecrypt='gpg --decrypt-files'
+  alias gpgencrypt='gpg --default-recipient-self --armor --encrypt-files'
+fi
+
 # Shell - Adding Some Color
 ## Grep
 alias grep='grep --color=auto'
@@ -108,6 +111,10 @@ fi
 ## NeoFetch
 if [[ -f /usr/bin/neofetch ]]; then
   alias neof='/usr/bin/neofetch'
+fi
+## BatCat
+if [[ -f /usr/bin/batcat ]]; then
+  alias bcat='batcat'
 fi
 ## HighLight
 if [[ -f /usr/bin/highlight ]]; then
@@ -153,7 +160,7 @@ if [[ -f /usr/bin/git ]]; then
   alias gcommit='git commit -m'
   alias gfetch='git fetch'
   alias gpull='git pull origin'
-  alias gpush='git push origin'
+  alias gpush='git push'
   alias gstatus='git status'
   alias gtag='git tag'
   alias gnewtag='git tag -a'
@@ -180,10 +187,10 @@ alias zombies='/bin/ps -A -ostat,pid,ppid | grep -e "[zZ]"'
 
 ## Top process(es) eating memory
 alias psmem='/bin/ps -afux | sort -nr -k 4'
-alias psmem10='/bin/ps -afux | sort -nr -k 4 | head -10'
+alias psmem3='/bin/ps -afux | sort -nr -k 4 | head -5'
 ## Top process(es) eating cpu
 alias pscpu='/bin/ps -afux | sort -nr -k 3'
-alias pscpu10='/bin/ps -afux | sort -nr -k 3 | head -10'
+alias pscpu3='/bin/ps -afux | sort -nr -k 3 | head -5'
 
 # Resources - Network
 alias openport='sudo ss -tupln'
@@ -224,17 +231,8 @@ if [[ -f /bin/systemctl && ! -f /etc/wsl.conf ]]; then
 fi
 
 # Misc.
-## Youtube Download
-if [[ -f /usr/bin/youtube-dl ]]; then
-  alias ytaudio-aac='youtube-dl --extract-audio --audio-format aac'
-  alias ytaudio-best='youtube-dl --extract-audio --audio-format best'
-  alias ytaudio-flac='youtube-dl --extract-audio --audio-format flac'
-  alias ytaudio-m4a='youtube-dl --extract-audio --audio-format m4a'
-  alias ytaudio-mp3='youtube-dl --extract-audio --audio-format mp3'
-  alias ytaudio-opus='youtube-dl --extract-audio --audio-format opus'
-  alias ytaudio-vorbis='youtube-dl --extract-audio --audio-format vorbis'
-  alias ytaudio-wav='youtube-dl --extract-audio --audio-format wav'
-  alias ytvideo-best='youtube-dl -f bestvideo+bestaudio'
-fi
+### Colormap / Usage: colormap()
+function colormap() {
+  for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
+}
 
-```

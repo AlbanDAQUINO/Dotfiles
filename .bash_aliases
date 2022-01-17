@@ -1,4 +1,13 @@
-#! /bin/sh
+#        d8888 888 888      
+#       d88888 888 888      
+#      d88P888 888 888      
+#     d88P 888 888 88888b.  
+#    d88P  888 888 888 "88b 
+#   d88P   888 888 888  888 
+#  d8888888888 888 888  888 
+# d88P     888 888 888  888    v6.5.2-49
+#
+# Alh's Mess of Aliases
 
 # Removing all previous set of aliases
 unalias -a
@@ -7,20 +16,55 @@ unalias -a
 if [[ -f /usr/bin/apt ]]; then
   alias aptupdate='sudo apt update'
   alias aptupgrade='sudo apt upgrade'
-  alias aptsearch='apt search'
   alias aptinstall='sudo apt install'
+  alias aptsearch='apt search'
+  alias aptshow='sudo apt show'
+  alias aptinstalled='aptshow'
+  alias aptshowinstalled='sudo apt list --installed'
   alias aptremove='sudo apt remove --purge'
-  alias aptclean='sudo apt autoremove --purge'
+  alias aptcleanremove='sudo apt autoremove --purge'
+  alias aptinfos='sudo apt --version'
+fi
+
+# APTitude
+if [[ -f /usr/bin/aptitude ]]; then
+  alias aptdupdate='sudo aptitude update'
+  alias aptdupgrade='sudo aptitude upgrade'
+  alias aptdinstall='sudo aptitude install'
+  alias aptdsearch='aptitude search'
+  alias aptdshow='sudo aptitude show'
+  alias aptdinstalled='aptshow'
+  # alias aptshowinstalled='sudo aptitude list --installed'
+  alias aptdremove='sudo aptitude purge'
+  alias aptdinfos='sudo aptitude --version'
 fi
 
 # PACMAN
 if [[ -f /usr/bin/pacman ]]; then
   alias pacupdate='sudo pacman -Sy'
+  alias pacupgrade='sudo pacman -Syyu'
   alias pacinstall='sudo pacman -S'
   alias pacsearch='sudo pacman -Ss'
   alias pacshow='sudo pacman -Si'
   alias pacinstalled='sudo pacman -Qs'
   alias pacshowinstalled='sudo pacman -Qi'
+  alias pacremove='sudo pacman -Rs'
+  alias paccleanremove='sudo pacman -Rsn'
+  alias pacinfos='sudo pacman --version'
+fi
+
+# YAY
+if [[ -f /usr/bin/yay ]]; then
+  alias yayupdate='yay -Sy'
+  alias yayupgrade='yay -Syyu'
+  alias yayinstall='yay -S'
+  alias yaysearch='yay -Ss'
+  alias yayshow='yay -Si'
+  alias yayinstalled='yay -Qs'
+  alias yayshowinstalled='yay -Qi'
+  alias yayremove='yay -Rs'
+  alias yaycleanremove='yay -Rsn'
+  alias yayinfos='yay -Ps'
 fi
 
 # Shell - Common
@@ -29,6 +73,8 @@ alias 'cd..'='cd ..'
 alias '..'='cd ..'
 alias '..2'='cd ../..'
 alias '..3'='cd ../../..'
+alias '..4'='cd ../../../..'
+alias '..5'='cd ../../../../..'
 alias ls='ls -AGlhv --color=auto'
 alias ll='ls'
 
@@ -40,8 +86,17 @@ if [[ -f /usr/bin/wget ]]; then
 fi
 
 # Shell - Banner
+if [[ -d ~/.banners/ ]]; then
+  alias banner='clear && run-parts ~/.banners'
+fi
 if [[ -d /etc/update-motd.d/ ]]; then
   alias banner='clear && run-parts /etc/update-motd.d'
+fi
+
+# Shell - GPG
+if [[ -f /usr/bin/gpg/ ]]; then
+  alias gpgdecrypt='gpg --decrypt-files'
+  alias gpgencrypt='gpg --default-recipient-self --armor --encrypt-files'
 fi
 
 # Shell - Adding Some Color
@@ -53,16 +108,30 @@ alias fgrep='fgrep --color=auto'
 if [[ -f /usr/bin/screenfetch ]]; then
   alias sf='screenfetch'
 fi
+## NeoFetch
+if [[ -f /usr/bin/neofetch ]]; then
+  alias neof='/usr/bin/neofetch'
+fi
+## BatCat
+if [[ -f /usr/bin/batcat ]]; then
+  alias bcat='batcat'
+fi
 ## HighLight
 if [[ -f /usr/bin/highlight ]]; then
   alias cat='highlight -O ansi --force'
 fi
 ## Exa
 if [[ -f /usr/bin/exa ]]; then
-  alias ll='exa -al --tree --level=1'
-  alias lli='exa -al --tree --level=1 --icons'
+#  alias ll='exa -al --tree --level=1'
+  alias ll='exa -al --tree --level=1 --group-directories-first --sort=name'
+  alias lli='exa -al --tree --level=1 --group-directories-first --sort=name --icons'
   alias la='exa -ahl --group-directories-first --sort=name'
+  alias lc='exa --icons -a --group-directories-first'
   alias l.='exa -a --group-directories-first --sort=name | egrep "^\."'
+fi
+## Tree
+if [[ -f /usr/bin/tree ]]; then
+  alias tree='/usr/bin/tree -C -L'
 fi
 ## Colorscript
 if [[ -f /usr/bin/colorscript ]]; then
@@ -82,7 +151,7 @@ fi
 
 # Git
 if [[ -f /usr/bin/git ]]; then
-  alias gitview='git log --oneline --decorate --graph --all'
+  alias ggraph='git log --oneline --decorate --graph --all'
   alias gaddup='git add -u'
   alias gaddall='git add .'
   alias gbranch='git branch'
@@ -91,8 +160,8 @@ if [[ -f /usr/bin/git ]]; then
   alias gcommit='git commit -m'
   alias gfetch='git fetch'
   alias gpull='git pull origin'
-  alias gpush='git push origin'
-  alias gs='git status' # STATUS is protected.
+  alias gpush='git push'
+  alias gstatus='git status'
   alias gtag='git tag'
   alias gnewtag='git tag -a'
 fi
@@ -128,31 +197,54 @@ alias openport='sudo ss -tupln'
 alias ping='echo "--- Pinging 3 times ---" && sudo /bin/ping -a -c 3'
 alias ssht='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 
+# Resources - Doas
+if [[ -f /usr/bin/doas && -f /etc/doas.conf ]]; then
+  alias sudo="doas"
+fi
+
+# Resources - Hardware informations
+if [[ -f /usr/bin/inxi ]]; then
+  alias hwinfos='inxi -CGxxxz --display'
+fi
+
 # Resources - Service
 if [[ -f /etc/wsl.conf ]]; then
-  alias srvall='sudo service --status-all'
-  alias srvrunning='srvall | grep -e " + "'
-  alias srvstopped='srvall | grep -e " - "'
+  alias srvstatus='sudo service --status-all'
+  alias srvrunning='srvstatus | grep -e " + "'
+  alias srvstopped='srvstatus | grep -e " - "'
+  # alias srvreload=''
+  # alias srvstart=''
+  # alias srvstop=''
+  # alias srvrestart=''
 fi
 
 # Resources - Systemd
-if [[ ! -f /etc/wsl.conf ]]; then
-  alias srvstatus='sudo systemctl status'
-  alias srvreload='sudo systemctl reload'
-  alias srvstart='sudo systemctl start'
-  alias srvstop='sudo systemctl stop'
+if [[ -f /bin/systemctl && ! -f /etc/wsl.conf ]]; then
+  alias sctlstatus='sudo systemctl list-units --type=service | egrep " active"'
+  alias sctlrunning='sudo systemctl list-units --type=service | egrep " running"'
+  alias sctlstopped='sudo systemctl list-units --type=service | egrep " exited"'
+  alias sctlshow='sudo systemctl status'
+  alias sctlreload='sudo systemctl reload'
+  alias sctlstart='sudo systemctl start'
+  alias sctlstop='sudo systemctl stop'
+  alias sctlrestart='sudo systemctl restart'
 fi
 
 # Misc.
 ## Youtube Download
 if [[ -f /usr/bin/youtube-dl ]]; then
-  alias yta-aac='youtube-dl --extract-audio --audio-format aac'
-  alias yta-best='youtube-dl --extract-audio --audio-format best'
-  alias yta-flac='youtube-dl --extract-audio --audio-format flac'
-  alias yta-m4a='youtube-dl --extract-audio --audio-format m4a'
-  alias yta-mp3='youtube-dl --extract-audio --audio-format mp3'
-  alias yta-opus='youtube-dl --extract-audio --audio-format opus'
-  alias yta-vorbis='youtube-dl --extract-audio --audio-format vorbis'
-  alias yta-wav='youtube-dl --extract-audio --audio-format wav'
-  alias ytv-best='youtube-dl -f bestvideo+bestaudio'
+  alias ytaudio-aac='youtube-dl --extract-audio --audio-format aac'
+  alias ytaudio-best='youtube-dl --extract-audio --audio-format best'
+  alias ytaudio-flac='youtube-dl --extract-audio --audio-format flac'
+  alias ytaudio-m4a='youtube-dl --extract-audio --audio-format m4a'
+  alias ytaudio-mp3='youtube-dl --extract-audio --audio-format mp3'
+  alias ytaudio-opus='youtube-dl --extract-audio --audio-format opus'
+  alias ytaudio-vorbis='youtube-dl --extract-audio --audio-format vorbis'
+  alias ytaudio-wav='youtube-dl --extract-audio --audio-format wav'
+  alias ytvideo-best='youtube-dl -f bestvideo+bestaudio'
+fi
+
+## Shell Config Reload
+if [[ -d $ZDOTDIR ]]; then
+  alias zrl='source $ZDOTDIR/.zshrc'
 fi
