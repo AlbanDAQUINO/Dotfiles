@@ -37,28 +37,28 @@ source $ZDOTDIR/plugins/simple-completion.zsh
 _distro=$(awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }')
 ### Set an icon based on the distro
 case $_distro in
-    *kali*)                  ICON="ﴣ";;
-    *arch*)                  ICON="";;
-    *debian*)                ICON="";;
-    *raspbian*)              ICON="";;
-    *ubuntu*)                ICON="";;
-    *elementary*)            ICON="";;
-    *fedora*)                ICON="";;
-    *coreos*)                ICON="";;
-    *gentoo*)                ICON="";;
-    *mageia*)                ICON="";;
-    *centos*)                ICON="";;
-    *opensuse*|*tumbleweed*) ICON="";;
-    *sabayon*)               ICON="";;
-    *slackware*)             ICON="";;
-    *linuxmint*)             ICON="";;
     *alpine*)                ICON="";;
     *aosc*)                  ICON="";;
-    *nixos*)                 ICON="";;
+    *arch*)                  ICON="";;
+    *centos*)                ICON="";;
+    *coreos*)                ICON="";;
+    *debian*)                ICON="";;
     *devuan*)                ICON="";;
+    *elementary*)            ICON="";;
+    *fedora*)                ICON="";;
+    *gentoo*)                ICON="";;
+    *kali*)                  ICON="ﴣ";;
+    *linuxmint*)             ICON="";;
+    *mageia*)                ICON="";;
     *manjaro*)               ICON="";;
+    *nixos*)                 ICON="";;
+    *opensuse*|*tumbleweed*) ICON="";;
+    *raspbian*)              ICON="";;
     *rhel*)                  ICON="";;
-    *windows*)               ICON="";;
+    *sabayon*)               ICON="";;
+    *slackware*)             ICON="";;
+    *ubuntu*)                ICON="";;
+    *windows*)               ICON="";;
     *)                       ICON="";;
 esac
 ### Export the distro icon

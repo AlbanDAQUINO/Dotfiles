@@ -22,7 +22,7 @@ command_timeout = 3_000
 
 # Shows an icon based on the os or distribution
 [env_var.STARSHIP_DISTRO]
-style = "160"
+style = "033"
 # - Debian: 160 / Devuan: 093 / Manjaro: 042 / Ubuntu: 208 / Windows: 033
 format = '[$env_value]($style) '
 variable = "STARSHIP_DISTRO"
@@ -41,7 +41,9 @@ disabled = false
 [character]
 # success_symbol = "[ ❯](034)"
 # error_symbol = "[❯](250)"
-success_symbol = "[](bold 034)[_](bold white)"
+# success_symbol = "[](bold 034)[_](bold white)"
+# error_symbol = "[](bold 160)[_](bold white)"
+success_symbol = "[](bold 033)[_](bold white)"
 error_symbol = "[](bold 160)[_](bold white)"
 
 # Shows the time
@@ -155,8 +157,7 @@ disabled = false
 
 # Force Python symbol and version
 [python]
-symbol = ""  # ""
-# format = "$symbol"
+symbol = " "
 python_binary = "python3"
 disabled = false
 
