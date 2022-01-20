@@ -5,9 +5,9 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v1.0.19
+# d88P     888 888 888  888    v1.0.21
 #
-# ~/.config/starship.toml
+# ~/.config/starship/config.toml
 
 # Inserts a blank line between shell prompts
 add_newline = true
@@ -57,11 +57,12 @@ disabled = false
 
 # Shows the SHELL indicator
 [shell]
-style = "white"
-zsh_indicator = ""
-bash_indicator = ""
-powershell_indicator = "PS"
-unknown_indicator = "?sh"
+style = "dimmed white"
+# Alternate:  
+zsh_indicator = "[](white) ZSH"
+bash_indicator = "[](white) BASH"
+powershell_indicator = "[](white) PS"
+unknown_indicator = "[?](white) SHELL"
 disabled = false
 
 # Status
@@ -80,8 +81,9 @@ disabled = false
 
 # Change the default prompt indicator
 [character]
-# success_symbol = "[ ❯](034)"
-# error_symbol = "[❯](250)"
+# Windows Poweshell: 
+# success_symbol = "[](bold 033)[_](bold white)"
+# Linux:
 success_symbol = "[](bold 034)[_](bold white)"
 error_symbol = "[](bold 160)[_](bold white)"
 

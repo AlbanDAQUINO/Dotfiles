@@ -1,240 +1,169 @@
-# Dotfiles
-Where the magic happens.  
+# Preface
 
-## Aliases
-```bash
-#        d8888 888 888      
-#       d88888 888 888      
-#      d88P888 888 888      
-#     d88P 888 888 88888b.  
-#    d88P  888 888 888 "88b 
-#   d88P   888 888 888  888 
-#  d8888888888 888 888  888 
-# d88P     888 888 888  888    v6.5.2-41
-#
-# Alh's Mess of Aliases
+Here's how to install and beautify `zsh`.
 
-# Removing all previous set of aliases
-unalias -a
+This is for Debian based systems. It should be pretty easy to adapt for other distros.
 
-# APT
-if [[ -f /usr/bin/apt ]]; then
-  alias aptupdate='sudo apt update'
-  alias aptupgrade='sudo apt upgrade'
-  alias aptinstall='sudo apt install'
-  alias aptsearch='apt search'
-  alias aptshow='sudo apt show'
-  alias aptinstalled='aptshow'
-  alias aptshowinstalled='sudo apt list --installed'
-  alias aptremove='sudo apt remove --purge'
-  alias aptcleanremove='sudo apt autoremove --purge'
-  alias aptinfos='sudo apt --version'
-fi
 
-# APTitude
-if [[ -f /usr/bin/aptitude ]]; then
-  alias aptdupdate='sudo aptitude update'
-  alias aptdupgrade='sudo aptitude upgrade'
-  alias aptdinstall='sudo aptitude install'
-  alias aptdsearch='aptitude search'
-  alias aptdshow='sudo aptitude show'
-  alias aptdinstalled='aptshow'
-  # alias aptshowinstalled='sudo aptitude list --installed'
-  alias aptdremove='sudo aptitude purge'
-  alias aptdinfos='sudo aptitude --version'
-fi
 
-# PACMAN
-if [[ -f /usr/bin/pacman ]]; then
-  alias pacupdate='sudo pacman -Sy'
-  alias pacupgrade='sudo pacman -Syyu'
-  alias pacinstall='sudo pacman -S'
-  alias pacsearch='sudo pacman -Ss'
-  alias pacshow='sudo pacman -Si'
-  alias pacinstalled='sudo pacman -Qs'
-  alias pacshowinstalled='sudo pacman -Qi'
-  alias pacremove='sudo pacman -Rs'
-  alias paccleanremove='sudo pacman -Rsn'
-  alias pacinfos='sudo pacman --version'
-fi
+## System Updates
 
-# YAY
-if [[ -f /usr/bin/yay ]]; then
-  alias yayupdate='yay -Sy'
-  alias yayupgrade='yay -Syyu'
-  alias yayinstall='yay -S'
-  alias yaysearch='yay -Ss'
-  alias yayshow='yay -Si'
-  alias yayinstalled='yay -Qs'
-  alias yayshowinstalled='yay -Qi'
-  alias yayremove='yay -Rs'
-  alias yaycleanremove='yay -Rsn'
-  alias yayinfos='yay -Ps'
-fi
+Start by updating your system (if not already done).
 
-# Shell - Common
-alias cls='clear'
-alias 'cd..'='cd ..'
-alias '..'='cd ..'
-alias '..2'='cd ../..'
-alias '..3'='cd ../../..'
-alias ls='ls -AGlhv --color=auto'
-alias ll='ls'
+```shell
+sudo apt update && sudo apt upgrade
+```
 
-# Shell -  Flags
-alias cp='cp -i'
-alias df='df -h'
-if [[ -f /usr/bin/wget ]]; then
-  alias wget='wget -c'
-fi
 
-# Shell - Banner
-if [[ -d ~/.banners/ ]]; then
-  alias banner='clear && run-parts ~/.banners'
-fi
-if [[ -d /etc/update-motd.d/ ]]; then
-  alias banner='clear && run-parts /etc/update-motd.d'
-fi
 
-# Shell - Adding Some Color
-## Grep
-alias grep='grep --color=auto'
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
-## ScreenFetch
-if [[ -f /usr/bin/screenfetch ]]; then
-  alias sf='screenfetch'
-fi
-## NeoFetch
-if [[ -f /usr/bin/neofetch ]]; then
-  alias neof='/usr/bin/neofetch'
-fi
-## HighLight
-if [[ -f /usr/bin/highlight ]]; then
-  alias cat='highlight -O ansi --force'
-fi
-## Exa
-if [[ -f /usr/bin/exa ]]; then
-#  alias ll='exa -al --tree --level=1'
-  alias ll='exa -al --tree --level=1 --group-directories-first --sort=name'
-  alias lli='exa -al --tree --level=1 --group-directories-first --sort=name --icons'
-  alias la='exa -ahl --group-directories-first --sort=name'
-  alias lc='exa --icons -a --group-directories-first'
-  alias l.='exa -a --group-directories-first --sort=name | egrep "^\."'
-fi
-## Tree
-if [[ -f /usr/bin/tree ]]; then
-  alias tree='/usr/bin/tree -C -L'
-fi
-## Colorscript
-if [[ -f /usr/bin/colorscript ]]; then
-  alias cls='clear && colorscript -e crunchbang-mini'
-  alias randomcolors='colorscript -r'
-fi
+## ZSH installation
 
-# Shell - Yadm
-if [[ -f /usr/bin/yadm ]]; then
-  alias ystatus='yadm status'
-  alias yfetch='yadm fetch'
-  alias ycommit='yadm commit -m'
-  alias ypush='yadm push'
-  alias ypull='yadm pull'
-  alias yadd='yadm add'
-fi
+Then install `zsh` as well as `curl`, `software-properties-common` and `wget`.
 
-# Git
-if [[ -f /usr/bin/git ]]; then
-  alias ggraph='git log --oneline --decorate --graph --all'
-  alias gaddup='git add -u'
-  alias gaddall='git add .'
-  alias gbranch='git branch'
-  alias gcheckout='git checkout'
-  alias gclone='git clone'
-  alias gcommit='git commit -m'
-  alias gfetch='git fetch'
-  alias gpull='git pull origin'
-  alias gpush='git push origin'
-  alias gstatus='git status'
-  alias gtag='git tag'
-  alias gnewtag='git tag -a'
-fi
+```shell
+sudo apt install --yes --no-install-recommends curl software-properties-common wget zsh
+```
 
-# Terraform
-if [[ -f /usr/bin/terraform ]]; then
-  alias trplan='terraform plan'
-  alias trformat='terraform fmt'
-  alias trplanf='terraform plan -out'
-  alias trapply='terraform apply'
-  alias trlist='terraform state list'
-  alias trshow='terraform state show'
-  alias trko='terraform destroy'
-  alias terrafull='echo "Terraform Full (Format, Validate, Plan) ---" && terraform init && terraform fmt && terraform validate && terraform plan -out'
-  # Hmmm ...
-  alias tryolo='cls && echo "Terraform YOLO ! ---" && terraform init && terraform fmt && terraform validate && terraform plan -out "yolo.tfplan" && terraform apply "yolo.tfplan"'
-  alias trboom='terraform destroy --auto-approve'
-fi
 
-# Resources - CPU
-alias ps='ps -afux'
-alias zombies='/bin/ps -A -ostat,pid,ppid | grep -e "[zZ]"'
 
-## Top process(es) eating memory
-alias psmem='/bin/ps -afux | sort -nr -k 4'
-alias psmem10='/bin/ps -afux | sort -nr -k 4 | head -10'
-## Top process(es) eating cpu
-alias pscpu='/bin/ps -afux | sort -nr -k 3'
-alias pscpu10='/bin/ps -afux | sort -nr -k 3 | head -10'
+## 🚀 installation
 
-# Resources - Network
-alias openport='sudo ss -tupln'
-alias ping='echo "--- Pinging 3 times ---" && sudo /bin/ping -a -c 3'
-alias ssht='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+To install `starship` you will need to run the installation script directly from the website using curl (no `sudo` or `doas` needed, the script will ask for it if/when needed).
 
-# Resources - Doas
-if [[ -f /usr/bin/doas && -f /etc/doas.conf ]]; then
-  alias sudo="doas"
-fi
+```shell
+sh -c "$(curl -fsSL https://starship.rs/install.sh)"
+```
 
-# Resources - Hardware informations
-if [[ -f /usr/bin/inxi ]]; then
-  alias hwinfos='inxi -CGxxxz --display'
-fi
+⚠ *Only to this if you know what you're doing or if you trust the source!*
 
-# Resources - Service
-if [[ -f /etc/wsl.conf ]]; then
-  alias srvstatus='sudo service --status-all'
-  alias srvrunning='srvstatus | grep -e " + "'
-  alias srvstopped='srvstatus | grep -e " - "'
-  # alias srvreload=''
-  # alias srvstart=''
-  # alias srvstop=''
-  # alias srvrestart=''
-fi
 
-# Resources - Systemd
-if [[ -f /bin/systemctl && ! -f /etc/wsl.conf ]]; then
-  alias sctlstatus='sudo systemctl list-units --type=service | egrep " active"'
-  alias sctlrunning='sudo systemctl list-units --type=service | egrep " running"'
-  alias sctlstopped='sudo systemctl list-units --type=service | egrep " exited"'
-  alias sctlshow='sudo systemctl status'
-  alias sctlreload='sudo systemctl reload'
-  alias sctlstart='sudo systemctl start'
-  alias sctlstop='sudo systemctl stop'
-  alias sctlrestart='sudo systemctl restart'
-fi
 
-# Misc.
-## Youtube Download
-if [[ -f /usr/bin/youtube-dl ]]; then
-  alias ytaudio-aac='youtube-dl --extract-audio --audio-format aac'
-  alias ytaudio-best='youtube-dl --extract-audio --audio-format best'
-  alias ytaudio-flac='youtube-dl --extract-audio --audio-format flac'
-  alias ytaudio-m4a='youtube-dl --extract-audio --audio-format m4a'
-  alias ytaudio-mp3='youtube-dl --extract-audio --audio-format mp3'
-  alias ytaudio-opus='youtube-dl --extract-audio --audio-format opus'
-  alias ytaudio-vorbis='youtube-dl --extract-audio --audio-format vorbis'
-  alias ytaudio-wav='youtube-dl --extract-audio --audio-format wav'
-  alias ytvideo-best='youtube-dl -f bestvideo+bestaudio'
-fi
+If you need help with the installation script:
+
+```shell
+sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --help
+```
+
+
+
+### Links :
+
+> Installation link : [Starship Installation](https://starship.rs/guide/#%F0%9F%9A%80-installation)
+
+> Configuration link : [Starship Configuration](https://starship.rs/config/)
+
+
+
+
+
+## Basic configuration
+
+To get started with `starship` edit your `.zshrc` file to add the following:
+
+```shell
+# ~/.zshrc
+eval "$(starship init zsh)"
+```
+
+Then `source` your `.zshrc` file for the changes to take effect.
+
+
+
+### Configuration files
+
+To activate `starship` in `zsh`, it's your `.zshrc` file.
+
+> It's usually found at the root of your `home` directory.
+
+To configure your `starship` prompt, it your `starship.toml` file.
+
+> It's usually found in your `/.config/` directory.
+
+
+
+
+
+## Advanced configuration
+
+Here's how I configured it:
+
+```shell
+~/.zshenv -> .config/zsh/.zshenv
+
+~/.config/zsh/
+├── plugins/
+│   ├── simple-completion.zsh
+│   └── zsh-autosuggestion.zsh
+├── .aliases
+├── .zprofile
+├── .zshenv
+├── .zsh_history
+└── .zshrc
+
+~/.config/starship/
+├── cache/
+├── config.toml
+├── manjaro.toml
+└── powershell.toml
+
+
+```
+
+
+
+### ZSH
+
+Create a `zsh` folder in your `~/.config/` directory and add a `plugins` directory to it.
+
+Then copy/create your `.zshenv`, `.zprofile`, `.zshrc` and `aliases` files to `~/.config/zsh/`. Also, put your plugins in the `plugins` directory.
+
+> Global Order: zshenv, zprofile, zshrc, zlogin
+
+
+
+Edit your `.zshenv` file to add the following:
+
+```shell
+# Starship
+export STARSHIP_CONFIG=$HOME/.config/starship/config.toml
+export STARSHIP_CACHE=$HOME/.config/starship/cache
+# Zsh
+export ZDOTDIR=$HOME/.config/zsh
+
+```
+
+This will set the default `zsh` directory to `~/.config/zsh/`, set the defaut `starship` configuration file to `~/.config/starship/config.toml` and cache directory to `~/.config/starship/cache/`.
+
+
+
+Create a symbolic link to the `.zshenv` file in your `home` directory.
+
+```shell
+ln -s ~/.config/zsh/.zshenv ~
+```
+
+
+
+Edit your `.zshrc` file to add the following:
+
+```shell
+# ~/.zshrc
+eval "$(starship init zsh)"
+```
+
+
+
+### Starship
+
+Create a `starship` folder in your `~/.config/` directory and add a `cache` directory to it.
+
+Then copy/create your `config.toml` file to `~/.config/starship/`.
+
+
+
+As an example, here the configuration I'm using:
+
+```toml
+
 
 ```
