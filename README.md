@@ -41,6 +41,7 @@ Then `source` your `.zshrc` file for the changes to take effect.
 ### Configuration files
 To activate `starship` in `zsh`, it's your `.zshrc` file.  
 > It's usually found at the root of your `home` directory.  
+
 To configure your `starship` prompt, it's your `starship.toml` file.  
 > It's usually found in your `/.config/` directory.  
 
