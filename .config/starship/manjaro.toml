@@ -7,7 +7,7 @@
 #  d8888888888 888 888  888 
 # d88P     888 888 888  888    v1.0.21
 #
-# ~/.config/starship.toml
+# ~/.config/starship/config.toml
 
 # Inserts a blank line between shell prompts
 add_newline = true
@@ -22,8 +22,8 @@ command_timeout = 3_000
 
 # Shows an icon based on the os or distribution
 [env_var.STARSHIP_DISTRO]
-style = "042"
 # - Debian: 160 / Devuan: 093 / Manjaro: 042 / Ubuntu: 208 / Windows: 033
+style = "042"
 format = '[$env_value]($style) '
 variable = "STARSHIP_DISTRO"
 disabled = false
