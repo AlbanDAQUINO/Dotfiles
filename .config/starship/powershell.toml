@@ -5,7 +5,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v1.0.18
+# d88P     888 888 888  888    v1.0.19
 #
 # ~/.config/starship.toml
 
@@ -127,9 +127,9 @@ disabled = true
 
 # Shows the Git branch
 [git_branch]
-# symbol = " "
+# Alternatives = " "
 symbol = " "
-format = "on [$symbol](034) [$branch]($style) "
+format = "on [$symbol](034) [$branch](bold 076) "
 truncation_length = 15
 truncation_symbol = "…/"
 style = "bold 034"
@@ -138,30 +138,36 @@ disabled = false
 # Show the Git status
 [git_status]
 style = "034"
-up_to_date = ""
-conflicted = ""
-untracked = "${count} "
-modified = "${count} "
-stashed = "﫻${count} "
-renamed = "${count} "  # "  "
-deleted = "${count} "
-staged = "[$count](034) "
-behind = "⇣${count}"
-ahead = "⇡${count}"
+# Repository
+up_to_date = "[](082)"
+conflicted = "[](082)"
+behind = "[⇣${count}](082)"
+ahead = "[⇡${count}](082)"
+# Branch
+untracked = " ${count}"
+modified = " ${count}"
+stashed = " 﫻${count}"
+# Alternatives = "   笠   "
+renamed = " ${count}"
+deleted = " ${count}"
+staged = " ${count}"
+# Final Prompt
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
-format = '[\($all_status$ahead_behind\)]($style) '
+format = '[\($ahead_behind$all_status\)]($style) '
 disabled = false
 
 # Force Python symbol and version
 [python]
-symbol = ""  # ""
+# Alternatives = ""
+symbol = ""
 # format = "$symbol"
 python_binary = "python3"
 disabled = false
 
 # Shows Terraform version
 [terraform]
-format = "using [ terraform $version]($style) "   # "" 
+# Alternatives = "  "
+format = "using [ terraform $version]($style) "
 disabled = false
 
 # Shows Vagrant version
@@ -198,11 +204,11 @@ disabled = false
 [aws]
 symbol = ""
 style = "yellow"
-format = 'on [$symbol $profile (\($region\))]($style) '
+format = '[$symbol $profile \($region\)]($style) '
 disabled=true
 # Add AWS zone aliases
 [aws.region_aliases]
-eu-west-3 = "Paris"
+eu-west-3 = "EU, Paris"
 us-west-1 = "US, Virginia"
 
 [kubernetes]
