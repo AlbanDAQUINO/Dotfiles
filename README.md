@@ -26,8 +26,8 @@ sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --help
 ```
 
 ### Links :
-> Installation link : [Starship Installation](https://starship.rs/guide/#%F0%9F%9A%80-installation)
-> Configuration link : [Starship Configuration](https://starship.rs/config/)
+> Installation link : [Starship Installation](https://starship.rs/guide/#%F0%9F%9A%80-installation)  
+> Configuration link : [Starship Configuration](https://starship.rs/config/)  
 
 ## Basic configuration
 To get started with `starship` edit your `.zshrc` file to add the following:  
@@ -40,9 +40,9 @@ Then `source` your `.zshrc` file for the changes to take effect.
 
 ### Configuration files
 To activate `starship` in `zsh`, it's your `.zshrc` file.  
-> It's usually found at the root of your `home` directory.
+> It's usually found at the root of your `home` directory.  
 To configure your `starship` prompt, it's your `starship.toml` file.  
-> It's usually found in your `/.config/` directory.
+> It's usually found in your `/.config/` directory.  
 
 ## Advanced configuration
 Here's how I configured it:  
