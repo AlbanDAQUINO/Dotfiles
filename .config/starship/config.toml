@@ -5,7 +5,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v1.0.21
+# d88P     888 888 888  888    v1.0.22
 #
 # ~/.config/starship/config.toml
 
@@ -91,7 +91,7 @@ error_symbol = "[](bold 160)[_](bold white)"
 [cmd_duration]
 # Show command execution time over 5 secs (in ms)
 min_time = 5_000
-format = "Took [$duration]($style)"
+format = "Took [$duration]($style) "
 disabled = false
 
 # Shows the time
@@ -127,6 +127,14 @@ style = "bold 034"
 [memory_usage]
 symbol = ""
 disabled = true
+
+# Shows if Sudo credentials are cached
+[sudo]
+allow_windows = false
+symbol = "🧙 "
+style = "bold blue"
+format = "[as $symbol]($style)"
+disabled = false
 
 # Shows the Git branch
 [git_branch]

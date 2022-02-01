@@ -5,7 +5,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v2.1.22
+# d88P     888 888 888  888    v2.1.23
 #
 # This is just my zshrc file...
 
@@ -32,10 +32,10 @@ fi
 source $ZDOTDIR/plugins/zsh-autosuggestion.zsh
 source $ZDOTDIR/plugins/simple-completion.zsh
 
-## Function extract for common file formats ###
-### Set a name based on the distro
+# Starship prompt
+## Set a name based on the distro
 _distro=$(awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }')
-### Set an icon based on the distro
+## Set an icon based on the distro
 case $_distro in
     *alpine*)                ICON="";;
     *aosc*)                  ICON="";;
@@ -61,10 +61,10 @@ case $_distro in
     *windows*)               ICON="";;
     *)                       ICON="";;
 esac
-### Export the distro icon
+## Export the distro icon
 export STARSHIP_DISTRO="$ICON"
 
-## Archive Extraction / usage: ex <file>
+# Archive Extraction / usage: ex <file>
 function ex () {
   if [ -f $1 ] ; then
     case $1 in
@@ -84,16 +84,15 @@ function ex () {
   fi
 }
 
-## Colormap / Usage: colormap
+# Colormap / Usage: colormap
 function colormap() {
   for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
 }
 
-## Loading Custom Aliases ...
+# Loading Custom Aliases ...
 [[ ! -f ~/.bash_aliases ]] || source ~/.bash_aliases
-[[ ! -f $ZDOTDIR/.zshrc ]] || alias rlzsh='source $ZDOTDIR/.zshrc'
 
-## Zsh - Prompt
+# Zsh - Prompt initialisation
 eval "$(starship init zsh)"
 
 # Displaying MotD
@@ -104,9 +103,9 @@ if [ -f $ZDOTDIR/kunlock.sh ]; then
   ~/.config/zsh/kunlock.sh
   # For my WSLs (Debian, Ubuntu, ...)
   if [ -f $HOME/.keychain/DESKTOP-ORI7896-sh ]; then source $HOME/.keychain/DESKTOP-ORI7896-sh; fi
-  # For my WSLs (Debian, Ubuntu, ...)
+  # For my Manjaro
   if [ -f $HOME/.keychain/desktop-hp6740-sh ]; then source $HOME/.keychain/desktop-hp6740-sh; fi
-  # For my C-Discount Work Computer
+  # For my Work Computer
   if [ -f $HOME/.keychain/CL-3GKR3F3-sh ]; then source $HOME/.keychain/CL-3GKR3F3-sh; fi
   # Display a console message
   if [ $SSH_AGENT_PID != "" ]; then
