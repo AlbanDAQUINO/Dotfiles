@@ -5,7 +5,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v6.5.2-50
+# d88P     888 888 888  888    v6.5.2-51
 #
 # Alh's Mess of Aliases
 
@@ -88,7 +88,7 @@ fi
 
 # Shell - Banner
 if [[ -d ~/.banners/ ]]; then
-  alias banner='clear && run-parts ~/.banners'
+  alias banner='clear && run-parts ~/.config/banners'
 fi
 if [[ -d /etc/update-motd.d/ ]]; then
   alias banner='clear && run-parts /etc/update-motd.d'
