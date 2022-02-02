@@ -5,7 +5,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v6.5.2-49
+# d88P     888 888 888  888    v6.5.2-50
 #
 # Alh's Mess of Aliases
 
@@ -81,6 +81,7 @@ alias ll='ls'
 # Shell -  Flags
 alias cp='cp -i'
 alias df='df -h'
+alias mkdir='mkdir -pv'
 if [[ -f /usr/bin/wget ]]; then
   alias wget='wget -c'
 fi
