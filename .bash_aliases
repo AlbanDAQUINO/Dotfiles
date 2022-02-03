@@ -5,7 +5,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v6.5.2-51
+# d88P     888 888 888  888    v6.5.2-52
 #
 # Alh's Mess of Aliases
 
@@ -162,6 +162,7 @@ if [[ -f /usr/bin/git ]]; then
   alias gfetch='git fetch'
   alias gpull='git pull origin'
   alias gpush='git push'
+  alias gpushb='git push --set-upstream origin'
   alias gstatus='git status'
   alias gtag='git tag'
   alias gnewtag='git tag -a'
