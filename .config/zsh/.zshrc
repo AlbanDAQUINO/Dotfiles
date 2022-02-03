@@ -90,7 +90,8 @@ function colormap() {
 }
 
 # Loading Custom Aliases ...
-[[ ! -f ~/.bash_aliases ]] || source ~/.bash_aliases
+[[ ! -f ~/.config/zsh/.bash_aliases ]] || source ~/.config/zsh/.bash_aliases
+[[ ! -f ~/.config/zsh/.custom_aliases ]] || source ~/.config/zsh/.custom_aliases
 
 # Zsh - Prompt initialisation
 eval "$(starship init zsh)"
