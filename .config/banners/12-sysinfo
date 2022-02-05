@@ -13,7 +13,6 @@ IP_LOCAL=`ip a | grep glo | awk '{print $2}' | head -1 | cut -f1 -d/`
 IP_EXTERNAL=`wget -q -O - http://icanhazip.com/ | tail`
 WEATHER_LOCAL=`curl -s "http://rss.accuweather.com/rss/liveweather_rss.asp?metric=1&locCode=EUR|FR|GIRONDE|BORDEAUX" | sed -n '/Currently:/ s/.*: \(.*\): \([0-9]*\)\([CF]\).*/\2°\3, \1/p'`
 
-
 # get the load averages
 read one five fifteen rest < /proc/loadavg
 
@@ -24,7 +23,7 @@ echo " "
 echo " Memory             : ${MEM_USED} MB (User) ${MEM_FREE} MB (Free) ${MEM_TOTAL} MB (Total)"
 echo " iP Address         : \e[1;32m${IP_LOCAL}\e[00m [ \e[1;33m${IP_EXTERNAL}\e[00m ]"
 echo " Load Averages      : ${one}, ${five}, ${fifteen} (1, 5, 15 min)"
-echo " Weather            : ${WEATHER_LOCAL}"
+echo " Weather (Bordeaux) : ${WEATHER_LOCAL}"
 echo " Uptime             : ${UPTIME}"
 echo " Running Processes  : `ps ax | wc -l | tr -d " "`"
 echo " "
