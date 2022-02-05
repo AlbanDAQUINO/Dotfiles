@@ -7,7 +7,7 @@
     # helper = keychain
 
 [github]
-    user = alban.daquino
+	user = albandaquino
     # token = 
 
 [init]
@@ -24,3 +24,5 @@
 
 [pull]
     rebase = false
+[gitlab]
+	user = alban.daquino
