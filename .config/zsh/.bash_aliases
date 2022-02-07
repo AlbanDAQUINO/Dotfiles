@@ -118,7 +118,7 @@ if [[ -f /usr/bin/exa ]]; then
 fi
 ## Tree
 if [[ -f /usr/bin/tree ]]; then
-  alias tree='/usr/bin/tree -C -L'
+  alias tree='/usr/bin/tree -a -I .git -I .terraform -C -L'
 fi
 
 # Git

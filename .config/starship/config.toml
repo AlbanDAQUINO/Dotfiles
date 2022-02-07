@@ -103,9 +103,10 @@ disabled = false
 
 # Shows the battery status 
 [battery]
-full_symbol = "🔋 "
-charging_symbol = "🔌 "
-discharging_symbol = " ⚡ "
+# full_symbol = "🔋 "
+full_symbol = ""
+charging_symbol = "🔌"
+discharging_symbol = "⚡"
 disabled = false
 # "bold red" style when capacity is between 0% and 20%
 [[battery.display]]
