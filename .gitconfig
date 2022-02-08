@@ -24,5 +24,6 @@
 
 [pull]
     rebase = false
+
 [gitlab]
 	user = alban.daquino

@@ -6,7 +6,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v1.1.0
+# d88P     888 888 888  888    v1.1.1
 #
 # Alh's SSH Unlock script.
 
@@ -30,6 +30,7 @@ case $_SSH_KEY_UNLOCK in
             [[ ! -f ~/.ssh/id_rsa_alban_desktop-ori7896.pem ]] || /usr/bin/keychain -q --nogui ~/.ssh/id_rsa_alban_desktop-ori7896.pem      # Under..!
             [[ ! -f ~/.ssh/id_ed25519_albandaquino_gmail.pem ]] || /usr/bin/keychain -q --nogui ~/.ssh/id_ed25519_albandaquino_gmail.pem    # Ori..
             [[ ! -f ~/.ssh/id_ed25519_alban_devops.pem ]] || /usr/bin/keychain -q --nogui ~/.ssh/id_ed25519_alban_devops.pem                # Ori..!
+            [[ ! -f ~/.ssh/id_ed25519_groot.pem ]] || /usr/bin/keychain -q --nogui ~/.ssh/id_ed25519_groot.pem                              # Gro..!
             # Set the SSL_KEY_LOADED Variable to DONE
             _SSH_KEY_LOADED=DONE
             ;;
@@ -57,9 +58,7 @@ case $_SSH_KEY_UNLOCK in
             printf "\n├─ Unlocking SSH keys for 'CL-3GKR3F3'.\n"
             # Loading the SSH key(s) using KeyChain.
             [[ ! -f ~/.ssh/id_ed25519_alban_cdiscount.pem ]] || /usr/bin/keychain -q --nogui ~/.ssh/id_ed25519_alban_cdiscount.pem          # UnderMo..!
-            [[ ! -f ~/.ssh/id_ed25519_albandaquino_gmail.pem ]] || /usr/bin/keychain -q --nogui ~/.ssh/id_ed25519_albandaquino_gmail.pem    # Ori..
             [[ ! -f ~/.ssh/id_rsa_albandaquino_cdiscount.pem ]] || /usr/bin/keychain -q --nogui ~/.ssh/id_rsa_albandaquino_cdiscount.pem    # Ori..!
-            [[ ! -f ~/.ssh/id_ed25519_alban_devops.pem ]] || /usr/bin/keychain -q --nogui ~/.ssh/id_ed25519_alban_devops.pem                # Ori..!
             # Set the SSL_KEY_LOADED Variable to DONE
             _SSH_KEY_LOADED=DONE
             ;;
