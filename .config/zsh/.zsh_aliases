@@ -5,7 +5,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v6.6.0
+# d88P     888 888 888  888    v6.6.1
 #
 # Bash Aliases
 
@@ -118,7 +118,7 @@ if [[ -f /usr/bin/exa ]]; then
 fi
 ## Tree
 if [[ -f /usr/bin/tree ]]; then
-  alias tree='/usr/bin/tree -C -L'
+  alias tree='/usr/bin/tree -a -I .git -I .terraform -I terraform.tfstate -I terraform.tfstate.backup -I .terraform.lock.hcl -C -L'
 fi
 
 # Git
