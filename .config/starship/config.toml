@@ -197,6 +197,17 @@ disabled = false
 # Shows Ansible version
 # "ﴂ"
 
+# Package
+[package]
+symbol = "📦"
+format = "Tag [$symbol$version]($style) "
+
+# Shows PHP version
+[php]
+symbol = "PHP"
+format = "using[$symbol $version]($style)"
+disabled = true
+
 # Shows Helm version
 [helm]
 format = "using [ $version](bold purple) "
