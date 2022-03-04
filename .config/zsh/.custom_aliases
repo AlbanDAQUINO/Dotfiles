@@ -5,7 +5,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v6.6.1
+# d88P     888 888 888  888    v6.6.2
 #
 # Alh's Mess of Aliases
 
@@ -19,7 +19,7 @@ fi
 
 # Shell - Synaptic
 if [[ -f /usr/sbin/synaptic ]]; then
-  alias synaptk='/usr/bin/sudo /usr/sbin/synaptic &'
+  alias synaptk='/usr/bin/sudo echo "Starting Synaptic..." && /usr/bin/sudo /usr/sbin/synaptic &'
 fi
 
 # Shell - GPG
