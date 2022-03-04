@@ -5,7 +5,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v1.0.22
+# d88P     888 888 888  888    v1.0.24
 #
 # ~/.config/starship/config.toml
 
@@ -15,7 +15,7 @@ add_newline = true
 # Change the default prompt format
 format = """\
 [╭╴](238)$env_var$hostname$username$directory\
-$all[╰─](238)$shell$status$character"""
+$all[╰─](238)$shell$status$jobs$character"""
 # move the rest of the prompt to the right
 right_format = """$cmd_duration$time $battery"""
 command_timeout = 3_000
@@ -125,6 +125,11 @@ style = "bold yellow"
 threshold = 100
 style = "bold 034"
 
+# Shows the number of background jobs and processes
+[jobs]
+symbol = "&"
+format="[$symbol$number]($style) "
+
 [memory_usage]
 symbol = ""
 disabled = true
@@ -200,12 +205,13 @@ disabled = false
 # Package
 [package]
 symbol = "📦"
-format = "Tag [$symbol$version]($style) "
+format = "[$symbol$version]($style) "
+disabled = false
 
 # Shows PHP version
 [php]
 symbol = "PHP"
-format = "using[$symbol $version]($style)"
+format = "using [$symbol $version]($style)"
 disabled = true
 
 # Shows Helm version
