@@ -5,7 +5,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v6.6.0
+# d88P     888 888 888  888    v6.6.1
 #
 # Alh's Mess of Aliases
 
@@ -15,6 +15,11 @@ if [[ -d ~/.banners/ ]]; then
 fi
 if [[ -d /etc/update-motd.d/ ]]; then
   alias banner='clear && run-parts /etc/update-motd.d'
+fi
+
+# Shell - Synaptic
+if [[ -f /usr/sbin/synaptic ]]; then
+  alias synaptk='/usr/bin/sudo /usr/sbin/synaptic &'
 fi
 
 # Shell - GPG

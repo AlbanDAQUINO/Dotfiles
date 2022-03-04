@@ -5,7 +5,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v6.6.1
+# d88P     888 888 888  888    v6.6.2
 #
 # Bash Aliases
 
@@ -168,9 +168,9 @@ alias ping='echo "--- Pinging 3 times ---" && sudo /bin/ping -a -c 3'
 alias ssht='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 
 # Resources - Doas
-if [[ -f /usr/bin/doas && -f /etc/doas.conf ]]; then
-  alias sudo="doas"
-fi
+# if [[ -f /usr/bin/doas && -f /etc/doas.conf ]]; then
+#   alias sudo="doas"
+# fi
 
 # Resources - Hardware informations
 if [[ -f /usr/bin/inxi ]]; then
