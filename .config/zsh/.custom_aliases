@@ -5,7 +5,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v6.6.2
+# d88P     888 888 888  888    v6.6.3
 #
 # Alh's Mess of Aliases
 
@@ -30,6 +30,18 @@ if [[ -f /usr/bin/gpg ]]; then
 fi
 
 # Shell - Adding Some Color
+## ScreenFetch
+if [[ -f /usr/bin/screenfetch ]]; then
+  alias sf='screenfetch'
+fi
+## NeoFetch
+if [[ -f /usr/bin/neofetch ]]; then
+  alias neof='/usr/bin/neofetch'
+fi
+## BatCat
+if [[ -f /usr/bin/batcat ]]; then
+  alias bcat='batcat'
+fi
 ## Colorscript
 if [[ -f /usr/bin/colorscript ]]; then
   alias cls='clear && colorscript -e crunchbang-mini'

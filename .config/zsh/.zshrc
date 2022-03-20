@@ -5,7 +5,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v2.1.23
+# d88P     888 888 888  888    v2.1.24
 #
 # This is just my zshrc file...
 
@@ -90,7 +90,7 @@ function colormap() {
 }
 
 # Loading Custom Aliases ...
-[[ ! -f ~/.config/zsh/.zsh_aliases ]] || source ~/.config/zsh/.zsh_aliases
+[[ ! -f ~/.config/zsh/.bash_aliases ]] || source ~/.config/zsh/.bash_aliases
 [[ ! -f ~/.config/zsh/.custom_aliases ]] || source ~/.config/zsh/.custom_aliases
 
 # Zsh - Prompt initialisation

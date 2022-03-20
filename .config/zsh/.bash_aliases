@@ -5,7 +5,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v6.6.2
+# d88P     888 888 888  888    v6.6.3
 #
 # Bash Aliases
 
@@ -22,8 +22,22 @@ if [[ -f /usr/bin/apt ]]; then
   alias aptinstalled='aptshow'
   alias aptshowinstalled='sudo apt list --installed'
   alias aptremove='sudo apt remove --purge'
-  alias aptcleanremove='sudo apt autoremove --purge'
+  alias aptclean='sudo apt autoremove --purge'
   alias aptinfos='sudo apt --version'
+fi
+
+# Nala
+if [[ -f /usr/bin/nala ]]; then
+  alias na_update='sudo nala update'
+  alias na_upgrade='sudo nala upgrade'
+  alias na_install='sudo nala install'
+  alias na_search='nala search'
+  alias na_show='nala show'
+  # alias na_installed='nashow'
+  # alias na_showinstalled='sudo nala list --installed'
+  alias na_remove='sudo nala remove'
+  alias na_clean='sudo nala purge'
+  alias na_infos='nala show nala'
 fi
 
 # APTitude
@@ -91,18 +105,6 @@ fi
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
-## ScreenFetch
-if [[ -f /usr/bin/screenfetch ]]; then
-  alias sf='screenfetch'
-fi
-## NeoFetch
-if [[ -f /usr/bin/neofetch ]]; then
-  alias neof='/usr/bin/neofetch'
-fi
-## BatCat
-if [[ -f /usr/bin/batcat ]]; then
-  alias bcat='batcat'
-fi
 ## HighLight
 if [[ -f /usr/bin/highlight ]]; then
   alias cat='highlight -O ansi --force'
