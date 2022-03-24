@@ -26,20 +26,6 @@ if [[ -f /usr/bin/apt ]]; then
   alias aptinfos='sudo apt --version'
 fi
 
-# Nala
-if [[ -f /usr/bin/nala ]]; then
-  alias na_update='sudo nala update'
-  alias na_upgrade='sudo nala upgrade'
-  alias na_install='sudo nala install'
-  alias na_search='nala search'
-  alias na_show='nala show'
-  # alias na_installed='nashow'
-  # alias na_showinstalled='sudo nala list --installed'
-  alias na_remove='sudo nala remove'
-  alias na_clean='sudo nala purge'
-  alias na_infos='nala show nala'
-fi
-
 # APTitude
 if [[ -f /usr/bin/aptitude ]]; then
   alias aptdupdate='sudo aptitude update'
@@ -51,6 +37,20 @@ if [[ -f /usr/bin/aptitude ]]; then
   # alias aptshowinstalled='sudo aptitude list --installed'
   alias aptdremove='sudo aptitude purge'
   alias aptdinfos='sudo aptitude --version'
+fi
+
+# Nala
+if [[ -f /usr/bin/nala ]]; then
+  alias nlaupdate='sudo nala update'
+  alias nlaupgrade='sudo nala upgrade'
+  alias nlainstall='sudo nala install'
+  alias nlasearch='nala search'
+  alias nlashow='nala show'
+  # alias nlainstalled='nashow'
+  # alias nlashowinstalled='sudo nala list --installed'
+  alias nlaremove='sudo nala remove'
+  alias nlaclean='sudo nala purge'
+  alias nlainfos='nala show nala'
 fi
 
 # PACMAN
