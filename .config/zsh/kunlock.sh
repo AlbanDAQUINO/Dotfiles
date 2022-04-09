@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 #        d8888 888 888      
 #       d88888 888 888      
 #      d88P888 888 888      
@@ -15,15 +15,23 @@ set +o allexport
 set +x
 
 # Prompt the user
-# read -n 1 -p "Do you want to unlock your SSH keys [y/n] " _SSH_KEY_UNLOCK
-read -q -t 3 _SSH_KEY_UNLOCK\?"Do you want to unlock your SSH keys [y/n] "
+case $SHELL in
+    /usr/bin/bash)
+        read -r -N 1 -p "Do you want to unlock your SSH keys [y/n] " -t 3 SSH_KEY_UNLOCK
+        ;;
+    /usr/bin/zsh)
+        read -r -q -t 3 SSH_KEY_UNLOCK\?"Do you want to unlock your SSH keys [y/n] "
+        ;;
+    *)
+        ;;
+esac
 
 # 
-case $_SSH_KEY_UNLOCK in
+case $SSH_KEY_UNLOCK in
     y)
         # 1: ├─ 2: └─  3: │
        case $NAME in
-        DESKTOP-ORI7896)
+        DESKTOP-ORI7896|Code)
             # Display Console Message
             printf "\n├─ Unlocking SSH keys for 'Desktop-ORI7896'.\n"
             # Loading the SSH key(s) using KeyChain.
@@ -75,20 +83,15 @@ case $_SSH_KEY_UNLOCK in
             ;;
         *)
             # Display Console Message
-            printf "\n├─ Unregistered terminal, skipping unlock (Error: '$NAME').\n"
+            printf '\n├─ Unregistered terminal, skipping unlock (Error: "%s").\n' "$NAME"
             # Set the SSL_KEY_LOADED Variable to ERROR
             SSH_KEY_LOADED="ERROR.UNREGISTERED"
             ;;
         esac
         ;;
-    n)
-        # Display Console Message
-        printf "\n├─ User input: Forced skip.\n"
-        ;;
     *)
         # Display Console Message
-        # printf "\n├─ Timeout...\n"
-        printf "\n"
+        printf "\n├─ Nope! Skipping...\n"
         ;;
 esac
 

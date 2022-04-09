@@ -98,7 +98,7 @@ disabled = false
 [time]
 format = '🕙 [\[$time\]]($style)'
 time_format = "%T"
-utc_time_offset = "1"
+utc_time_offset = "2"
 disabled = false
 
 # Shows the battery status 
