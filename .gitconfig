@@ -4,7 +4,7 @@
     signingkey = 4592F85FBE175E45
 
 [credential]
-    # helper = keychain
+    helper = keychain
 
 [github]
 	user = albandaquino
@@ -23,7 +23,7 @@
     helper = cache --timeout=3600
 
 [pull]
-    rebase = false
+    rebase = true
 
 [gitlab]
 	user = alban.daquino

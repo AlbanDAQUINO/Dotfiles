@@ -5,7 +5,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v2.1.24
+# d88P     888 888 888  888    v2.2.0
 #
 # This is just my zshrc file...
 
@@ -90,27 +90,34 @@ function colormap() {
 }
 
 # Loading Custom Aliases ...
-[[ ! -f ~/.config/zsh/.bash_aliases ]] || source ~/.config/zsh/.bash_aliases
-[[ ! -f ~/.config/zsh/.custom_aliases ]] || source ~/.config/zsh/.custom_aliases
+[ -f ~/.config/zsh/.bash_aliases ] && source ~/.config/zsh/.bash_aliases
+[ -f ~/.config/zsh/.custom_aliases ] && source ~/.config/zsh/.custom_aliases
 
 # Zsh - Prompt initialisation
 eval "$(starship init zsh)"
+
+# Clear
+clear
 
 # Displaying MotD
 run-parts /etc/update-motd.d/
 
 # SSH / Keychain - Offering to unlock the keys
 if [ -f $ZDOTDIR/kunlock.sh ]; then
-  ~/.config/zsh/kunlock.sh
+  # Offering to unlock SSH keys (Type / Number depends on the machine)
+  . $ZDOTDIR/kunlock.sh
   # For my WSLs (Debian, Ubuntu, ...)
-  if [ -f $HOME/.keychain/DESKTOP-ORI7896-sh ]; then source $HOME/.keychain/DESKTOP-ORI7896-sh; fi
+  [ -f ~/.keychain/DESKTOP-ORI7896-sh ] && source ~/.keychain/DESKTOP-ORI7896-sh
   # For my Manjaro
-  if [ -f $HOME/.keychain/desktop-hp6740-sh ]; then source $HOME/.keychain/desktop-hp6740-sh; fi
+  [ -f ~/.keychain/desktop-hp6740-sh ] && source ~/.keychain/desktop-hp6740-sh
+  # For my Zorin OS virtual machine
+  [ -f ~/.keychain/zorinos-vmw-sh ] && source ~/.keychain/zorinos-vmw-sh
   # For my Work Computer
-  if [ -f $HOME/.keychain/CL-3GKR3F3-sh ]; then source $HOME/.keychain/CL-3GKR3F3-sh; fi
+  [ -f ~/.keychain/CL-3GKR3F3-sh ] && source ~/.keychain/CL-3GKR3F3-sh
+
   # Display a console message
   if [ $SSH_AGENT_PID != "" ]; then
-    echo "└─ Found SSH_Agent (PiD: $SSH_AGENT_PID) " 
+    echo "└─ SSH_Agent (PiD: $SSH_AGENT_PID) " 
   else
     echo "└─ SSH_Agent not found! " 
   fi
