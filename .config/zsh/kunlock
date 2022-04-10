@@ -6,7 +6,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v1.2.0
+# d88P     888 888 888  888    v1.2.2
 #
 # Alh's SSH Unlock script.
 
@@ -14,13 +14,17 @@
 set +o allexport
 set +x
 
+# Variable reset
+SSH_KEY_UNLOCK="?"
+SSH_KEY_LOADED="NOPE"
+
 # Prompt the user
 case $SHELL in
     /usr/bin/bash)
-        read -r -N 1 -p "Do you want to unlock your SSH keys [y/n] " -t 3 SSH_KEY_UNLOCK
+        read -r -N 1 -p "Do you want to unlock your SSH keys [n/y] " -t 3 SSH_KEY_UNLOCK
         ;;
     /usr/bin/zsh)
-        read -r -q -t 3 SSH_KEY_UNLOCK\?"Do you want to unlock your SSH keys [y/n] "
+        read -r -q -t 3 SSH_KEY_UNLOCK\?"Do you want to unlock your SSH keys [n/y] "
         ;;
     *)
         ;;
@@ -28,7 +32,7 @@ esac
 
 # 
 case $SSH_KEY_UNLOCK in
-    y)
+    y|o)
         # 1: ├─ 2: └─  3: │
        case $NAME in
         DESKTOP-ORI7896|Code)
@@ -59,7 +63,7 @@ case $SSH_KEY_UNLOCK in
             printf "│  └─ SSH key: 'id_ed25519_alban_devops'\n"
             [ -f ~/.ssh/id_ed25519_alban_devops ] && /usr/bin/keychain --nogui -q ~/.ssh/id_ed25519_alban_devops                    # Ori..!
             # Set the SSL_KEY_LOADED Variable to DONE
-            _SSH_KEY_LOADED=DONE
+            SSH_KEY_LOADED="DONE"
             ;;
         desktop-hp6740)
             # 
@@ -68,7 +72,7 @@ case $SSH_KEY_UNLOCK in
             printf "│  └─ SSH key: 'id_ed25519_alban_desktop-hp6740'\n"
             [ -f ~/.ssh/id_ed25519_alban_desktop-hp6740 ] && /usr/bin/keychain --nogui -q ~/.ssh/id_ed25519_alban_desktop-hp6740            # UnderKiMo..!
             # Set the SSL_KEY_LOADED Variable to DONE
-            _SSH_KEY_LOADED=DONE
+            SSH_KEY_LOADED="DONE"
             ;;
         CL-3GKR3F3)
             # Display Console Message
@@ -79,7 +83,7 @@ case $SSH_KEY_UNLOCK in
             printf "│  └─ SSH key: 'id_rsa_albandaquino_cdiscount'\n"
             [ -f ~/.ssh/id_rsa_albandaquino_cdiscount ] && /usr/bin/keychain --nogui -q ~/.ssh/id_rsa_albandaquino_cdiscount        # Ori..!
             # Set the SSL_KEY_LOADED Variable to DONE
-            _SSH_KEY_LOADED=DONE
+            SSH_KEY_LOADED="DONE"
             ;;
         *)
             # Display Console Message
