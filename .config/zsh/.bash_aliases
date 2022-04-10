@@ -5,7 +5,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v6.6.3
+# d88P     888 888 888  888    v6.6.4
 #
 # Bash Aliases
 
@@ -13,7 +13,7 @@
 unalias -a
 
 # APT
-if [[ -f /usr/bin/apt ]]; then
+if [ -f /usr/bin/apt ]; then
   alias aptupdate='sudo apt update'
   alias aptupgrade='sudo apt upgrade'
   alias aptinstall='sudo apt install'
@@ -27,7 +27,7 @@ if [[ -f /usr/bin/apt ]]; then
 fi
 
 # APTitude
-if [[ -f /usr/bin/aptitude ]]; then
+if [ -f /usr/bin/aptitude ]; then
   alias aptdupdate='sudo aptitude update'
   alias aptdupgrade='sudo aptitude upgrade'
   alias aptdinstall='sudo aptitude install'
@@ -40,7 +40,7 @@ if [[ -f /usr/bin/aptitude ]]; then
 fi
 
 # Nala
-if [[ -f /usr/bin/nala ]]; then
+if [ -f /usr/bin/nala ]; then
   alias nlaupdate='sudo nala update'
   alias nlaupgrade='sudo nala upgrade'
   alias nlainstall='sudo nala install'
@@ -54,7 +54,7 @@ if [[ -f /usr/bin/nala ]]; then
 fi
 
 # PACMAN
-if [[ -f /usr/bin/pacman ]]; then
+if [ -f /usr/bin/pacman ]; then
   alias pacupdate='sudo pacman -Sy'
   alias pacupgrade='sudo pacman -Syyu'
   alias pacinstall='sudo pacman -S'
@@ -68,7 +68,7 @@ if [[ -f /usr/bin/pacman ]]; then
 fi
 
 # YAY
-if [[ -f /usr/bin/yay ]]; then
+if [ -f /usr/bin/yay ]; then
   alias yayupdate='yay -Sy'
   alias yayupgrade='yay -Syyu'
   alias yayinstall='yay -S'
@@ -96,7 +96,7 @@ alias ll='ls'
 alias cp='cp -i'
 alias df='df -h'
 alias mkdir='mkdir -pv'
-if [[ -f /usr/bin/wget ]]; then
+if [ -f /usr/bin/wget ]; then
   alias wget='wget -c'
 fi
 
@@ -106,11 +106,11 @@ alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 ## HighLight
-if [[ -f /usr/bin/highlight ]]; then
+if [ -f /usr/bin/highlight ]; then
   alias cat='highlight -O ansi --force'
 fi
 ## Exa
-if [[ -f /usr/bin/exa ]]; then
+if [ -f /usr/bin/exa ]; then
 #  alias ll='exa -al --tree --level=1'
   alias ll='exa -al --tree --level=1 --group-directories-first --sort=name'
   alias lli='exa -al --tree --level=1 --group-directories-first --sort=name --icons'
@@ -119,12 +119,12 @@ if [[ -f /usr/bin/exa ]]; then
   alias l.='exa -a --group-directories-first --sort=name | egrep "^\."'
 fi
 ## Tree
-if [[ -f /usr/bin/tree ]]; then
+if [ -f /usr/bin/tree ]; then
   alias tree='/usr/bin/tree -a -I .git -I .terraform -I terraform.tfstate -I terraform.tfstate.backup -I .terraform.lock.hcl -C -L'
 fi
 
 # Git
-if [[ -f /usr/bin/git ]]; then
+if [ -f /usr/bin/git ]; then
   alias ggraph='git log --oneline --decorate --graph --all'
   alias gaddup='git add -u'
   alias gaddall='git add .'
@@ -142,7 +142,7 @@ if [[ -f /usr/bin/git ]]; then
 fi
 
 # Terraform
-if [[ -f /usr/bin/terraform ]]; then
+if [ -f /usr/bin/terraform ]; then
   alias trplan='terraform plan'
   alias trformat='terraform fmt'
   alias trplanf='terraform plan -out'
@@ -170,18 +170,18 @@ alias ping='echo "--- Pinging 3 times ---" && sudo /bin/ping -a -c 3'
 alias ssht='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 
 # Resources - Doas
-# if [[ -f /usr/bin/doas && -f /etc/doas.conf ]]; then
+# if [ -f /usr/bin/doas && -f /etc/doas.conf ]; then
 #   alias sudo="doas"
 # fi
 
 # Resources - Hardware informations
-if [[ -f /usr/bin/inxi ]]; then
+if [ -f /usr/bin/inxi ]; then
   alias hwinfos='inxi -CGxxxz --display'
   alias sysinfos='inxi -v1G --display'
 fi
 
 # Resources - Service
-if [[ -f /etc/wsl.conf ]]; then
+if [ -f /etc/wsl.conf ]; then
   alias srvstatus='sudo service --status-all'
   alias srvrunning='srvstatus | grep -e " + "'
   alias srvstopped='srvstatus | grep -e " - "'
@@ -192,7 +192,7 @@ if [[ -f /etc/wsl.conf ]]; then
 fi
 
 # Resources - Systemd
-if [[ -f /bin/systemctl && ! -f /etc/wsl.conf ]]; then
+if [ -f /bin/systemctl && ! -f /etc/wsl.conf ]; then
   alias sctlstatus='sudo systemctl list-units --type=service | egrep " active"'
   alias sctlrunning='sudo systemctl list-units --type=service | egrep " running"'
   alias sctlstopped='sudo systemctl list-units --type=service | egrep " exited"'

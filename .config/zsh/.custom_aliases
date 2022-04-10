@@ -5,25 +5,25 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v6.6.3
+# d88P     888 888 888  888    v6.6.4
 #
 # Alh's Mess of Aliases
 
 # Shell - Banner
-if [[ -d ~/.banners/ ]]; then
+if [ -d ~/.banners/ ]; then
   alias banner='clear && run-parts ~/.config/banners'
 fi
-if [[ -d /etc/update-motd.d/ ]]; then
+if [ -d /etc/update-motd.d/ ]; then
   alias banner='clear && run-parts /etc/update-motd.d'
 fi
 
 # Shell - Synaptic
-if [[ -f /usr/sbin/synaptic ]]; then
+if [ -f /usr/sbin/synaptic ]; then
   alias synaptk='/usr/bin/sudo echo "Starting Synaptic..." && /usr/bin/sudo /usr/sbin/synaptic &'
 fi
 
 # Shell - GPG
-if [[ -f /usr/bin/gpg ]]; then
+if [ -f /usr/bin/gpg ]; then
   alias gpgtest='echo "test" | gpg --clearsign'
   alias gpgdecrypt='gpg --decrypt-files'
   alias gpgencrypt='gpg --default-recipient-self --armor --encrypt-files'
@@ -31,25 +31,25 @@ fi
 
 # Shell - Adding Some Color
 ## ScreenFetch
-if [[ -f /usr/bin/screenfetch ]]; then
+if [ -f /usr/bin/screenfetch ]; then
   alias sf='screenfetch'
 fi
 ## NeoFetch
-if [[ -f /usr/bin/neofetch ]]; then
+if [ -f /usr/bin/neofetch ]; then
   alias neof='/usr/bin/neofetch'
 fi
 ## BatCat
-if [[ -f /usr/bin/batcat ]]; then
+if [ -f /usr/bin/batcat ]; then
   alias bcat='batcat'
 fi
 ## Colorscript
-if [[ -f /usr/bin/colorscript ]]; then
+if [ -f /usr/bin/colorscript ]; then
   alias cls='clear && colorscript -e crunchbang-mini'
   alias randomcolors='colorscript -r'
 fi
 
 # Shell - Yadm
-if [[ -f /usr/bin/yadm ]]; then
+if [ -f /usr/bin/yadm ]; then
   alias ystatus='yadm status'
   alias yfetch='yadm fetch'
   alias ycommit='yadm commit -m'
@@ -59,7 +59,7 @@ if [[ -f /usr/bin/yadm ]]; then
 fi
 
 # Terraform
-if [[ -f /usr/bin/terraform ]]; then
+if [ -f /usr/bin/terraform ]; then
   # Hmmm ...
   alias tryolo='cls && echo "Terraform YOLO ! ---" && terraform init && terraform fmt && terraform validate && terraform plan -out "yolo.tfplan" && terraform apply "yolo.tfplan"'
   alias trboom='terraform destroy --auto-approve'
@@ -67,7 +67,7 @@ fi
 
 # Misc.
 ## Youtube Download
-if [[ -f /usr/bin/youtube-dl ]]; then
+if [ -f /usr/bin/youtube-dl ]; then
   alias ytaudio-aac='youtube-dl --extract-audio --audio-format aac'
   alias ytaudio-best='youtube-dl --extract-audio --audio-format best'
   alias ytaudio-flac='youtube-dl --extract-audio --audio-format flac'
@@ -80,6 +80,6 @@ if [[ -f /usr/bin/youtube-dl ]]; then
 fi
 
 ## Shell Config Reload
-if [[ -d $ZDOTDIR ]]; then
+if [ -d $ZDOTDIR ]; then
   alias zrl='source $ZDOTDIR/.zshrc'
 fi

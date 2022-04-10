@@ -103,9 +103,9 @@ clear
 run-parts /etc/update-motd.d/
 
 # SSH / Keychain - Offering to unlock the keys
-if [ -f $ZDOTDIR/kunlock.sh ]; then
+if [ -f $ZDOTDIR/kunlock ]; then
   # Offering to unlock SSH keys (Type / Number depends on the machine)
-  . $ZDOTDIR/kunlock.sh
+  . $ZDOTDIR/kunlock
   # For my WSLs (Debian, Ubuntu, ...)
   [ -f ~/.keychain/DESKTOP-ORI7896-sh ] && source ~/.keychain/DESKTOP-ORI7896-sh
   # For my Manjaro
