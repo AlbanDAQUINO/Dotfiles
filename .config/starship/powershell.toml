@@ -69,14 +69,14 @@ disabled = false
 [status]
 # Alternatives = "✗"
 symbol = " "
-success_symbol = "✔️"
+success_symbol = ""
 not_executable_symbol = "🚫"
 not_found_symbol ="🔍"
 sigint_symbol = "🧱"
 signal_symbol = "⚡"
 style = "bold 160"
 format = "[$symbol$status]($style) "
-recognize_signal_code = true
+recognize_signal_code = false
 disabled = false
 
 # Change the default prompt indicator

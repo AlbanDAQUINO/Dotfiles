@@ -7,7 +7,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v6.6.5
+# d88P     888 888 888  888    v6.6.6
 #
 # Bash Aliases
 
@@ -17,12 +17,11 @@ unalias -a
 # APT
 if [ -f /usr/bin/apt ]; then
   alias aptupdate='sudo apt update'
-  alias aptupgrade='sudo apt upgrade'
+  alias aptupgrade='sudo apt update && sudo apt upgrade'
   alias aptinstall='sudo apt install'
   alias aptsearch='apt search'
   alias aptshow='sudo apt show'
-  alias aptinstalled='aptshow'
-  alias aptshowinstalled='sudo apt list --installed'
+  alias aptinstalled='sudo apt list --installed'
   alias aptremove='sudo apt remove --purge'
   alias aptclean='sudo apt autoremove --purge'
   alias aptinfos='sudo apt --version'
@@ -35,7 +34,6 @@ if [ -f /usr/bin/aptitude ]; then
   alias aptdinstall='sudo aptitude install'
   alias aptdsearch='aptitude search'
   alias aptdshow='sudo aptitude show'
-  alias aptdinstalled='aptshow'
   # alias aptshowinstalled='sudo aptitude list --installed'
   alias aptdremove='sudo aptitude purge'
   alias aptdinfos='sudo aptitude --version'
@@ -102,6 +100,13 @@ if [ -f /usr/bin/wget ]; then
   alias wget='wget -c'
 fi
 
+# Shell - GPG
+if [ -f /usr/bin/gpg ]; then
+  alias gpgtest='echo "test" | gpg --clearsign'
+  alias gpgdecrypt='gpg --decrypt-files'
+  alias gpgencrypt='gpg --default-recipient-self --armor --encrypt-files'
+fi
+
 # Shell - Adding Some Color
 ## Grep
 alias grep='grep --color=auto'
@@ -114,6 +119,7 @@ fi
 ## Exa
 if [ -f /usr/bin/exa ]; then
 #  alias ll='exa -al --tree --level=1'
+  alias ls='exa --icons --group-directories-first'
   alias ll='exa -al --tree --level=1 --group-directories-first --sort=name'
   alias lli='exa -al --tree --level=1 --group-directories-first --sort=name --icons'
   alias la='exa -ahl --group-directories-first --sort=name'

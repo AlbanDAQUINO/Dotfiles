@@ -10,7 +10,7 @@
 # This is just my zshrc file...
 
 # Exports
-export EDITOR="nvim"
+export EDITOR="nano"
 ## export TERM="xterm-256color"
 export GPG_TTY=$TTY
 

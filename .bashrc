@@ -1,3 +1,4 @@
+#!/bin/bash
 # ~/.bashrc: executed by bash(1) for non-login shells.
 
 # If not running interactively, don't do anything
@@ -56,23 +57,23 @@ esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    test -r ~$HOME/.dircolors && eval "$(dircolors -b $HOME/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
 fi
 
 # set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
+if [ -d "$HOME/.local/bin" ]; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
 # if PowerLine is present, load it.
-if [ -f ~/.bash-powerline.sh ] ; then
-    . ~/.bash-powerline.sh
+if [ -f $HOME/.bash-powerline.sh ]; then
+    . $HOME/.bash-powerline.sh
 fi
 
 # Alias definitions.
-if [ -f ~/.aliases ]; then
-    . ~/.aliases
+if [ -f $HOME/.bash_aliases ]; then
+    . $HOME/.bash_aliases
 fi
 
 # enable programmable completion features
@@ -83,37 +84,3 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
-# Loading the SSH key(s) using KeyChain.
-[ -f ~/.ssh/id_rsa_alban_desktop-ori7896 ] && /usr/bin/keychain -q --nogui ~/.ssh/id_rsa_alban_desktop-ori7896
-[ -f ~/.ssh/id_ed25519_albandaquino_gmail ] && /usr/bin/keychain -q ~/.ssh/id_ed25519_albandaquino_gmail
-[ -f ~/.ssh/id_ed25519_alban_devops ] && /usr/bin/keychain -q ~/.ssh/id_ed25519_alban_devops
-[ -f ~/.ssh/id_ed25519_groot ] && /usr/bin/keychain -q ~/.ssh/id_ed25519_groot
-# For WSL (Debian, Ubuntu, ...)
-[ -f ~/.keychain/DESKTOP-ORI7896-sh ] && source ~/.keychain/DESKTOP-ORI7896-sh
-
-### ARCHIVE EXTRACTION
-# usage: ex <file>
-ex ()
-{
-  if [ -f $1 ] ; then
-    case $1 in
-      *.gz)        gunzip $1    ;;
-      *.tar)       tar xf $1    ;;
-      *.tar.bz2)   tar xjf $1   ;;
-      *.tar.gz)    tar xzf $1   ;;
-      *.tar.xz)    tar xf $1    ;;
-      *.tbz2)      tar xjf $1   ;;
-      *.tgz)       tar xzf $1   ;;
-      *.zip)       unzip $1     ;;
-      *.Z)         uncompress $1;;
-      *)           echo "'$1' cannot be extracted via ex()." ;;
-    esac
-  else
-    echo "'$1' is not a valid file."
-  fi
-}
-
-# Shell Greetings
-colorscript -e crunchbang-mini
-lsb_release -ds | figlet -t -f digital

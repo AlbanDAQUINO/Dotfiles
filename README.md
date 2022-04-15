@@ -1,19 +1,13 @@
 # ZSH / Starship Prompt Installation
 
-Created: January 20, 2022 2:44 PM  
-Last Edited Time: January 20, 2022 7:17 PM  
-Req. Escalation: Yes  
-Status: In Progress 🙌  
-Tags: Beautifying, Linux, PowerShell, Shell, Starship 🚀, WSL, ZSH  
-Type: Technical Guide  
 
 # Preface
 
-Here’s how to install and beautify `zsh`.
+Here’s how to install and beautify `zsh`.  
 
-This is for Debian based systems. Pretty straightforward to adapt for other distros (or Powershell, example included).
+This is for Debian based systems. Pretty straightforward to adapt for other distros (or Powershell, example included).  
 
-You will need a Nerd font in order to be able to get the full benefits (includes icons).
+You will need a Nerd font in order to be able to get the full benefits (includes icons).  
 
 > *Link: [https://www.nerdfonts.com/](https://www.nerdfonts.com/)*
 > 

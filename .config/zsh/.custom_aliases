@@ -8,7 +8,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v6.6.5
+# d88P     888 888 888  888    v6.6.6
 #
 # Alh's Mess of Aliases
 
@@ -23,13 +23,6 @@ fi
 # Shell - Synaptic
 if [ -f /usr/sbin/synaptic ]; then
   alias synaptk='/usr/bin/sudo echo "Starting Synaptic..." && /usr/bin/sudo /usr/sbin/synaptic &'
-fi
-
-# Shell - GPG
-if [ -f /usr/bin/gpg ]; then
-  alias gpgtest='echo "test" | gpg --clearsign'
-  alias gpgdecrypt='gpg --decrypt-files'
-  alias gpgencrypt='gpg --default-recipient-self --armor --encrypt-files'
 fi
 
 # Shell - Adding Some Color
