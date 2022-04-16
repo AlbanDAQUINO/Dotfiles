@@ -5,7 +5,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v1.0.21
+# d88P     888 888 888  888    v1.0.26
 #
 # ~/.config/starship/config.toml
 
@@ -14,26 +14,35 @@ add_newline = true
 
 # Change the default prompt format
 format = """\
-[╭╴](238)$env_var$hostname$username$sudo$directory\
-$all[╰─](238)$shell$status$jobs$character"""
+[╭╴](238)$env_var$hostname$localip$username$sudo$directory\
+$all[╰─](238)$shell$cmd_duration$status$jobs$character"""
 # move the rest of the prompt to the right
-right_format = """$cmd_duration$time $battery"""
+right_format = """$time$battery"""
 command_timeout = 3_000
 
 # Shows an icon based on the os or distribution
 [env_var.STARSHIP_DISTRO]
-# - Debian: 160 / Devuan: 093 / Manjaro: 042 / Ubuntu: 208 / Windows: 033
-style = "033"
 format = '[$env_value]($style) '
 variable = "STARSHIP_DISTRO"
+# style = "160"   # Debian
+# style = "093"   # Devuan
+# style = "042"   # Manjaro
+# style = "208"   # Ubuntu
+style = "033"   # Windows
 disabled = false
 
 # Shows hostname
 [hostname]
+style = "bold 240"
 ssh_only = false
 trim_at = "."
 format = "[$hostname]($style) "
-style = "bold 240"
+disabled = false
+
+# Shows Local iP
+[localip]
+format = "[$localipv4](bold 242) [](bold 005) "
+ssh_only = true
 disabled = false
 
 # Shows the username
@@ -58,7 +67,6 @@ disabled = false
 # Shows the SHELL indicator
 [shell]
 style = "dimmed white"
-# Alternate:  
 zsh_indicator = "[](white) ZSH"
 bash_indicator = "[](white) BASH"
 powershell_indicator = "[](white) PS"
@@ -81,31 +89,33 @@ disabled = false
 
 # Change the default prompt indicator
 [character]
-# Windows Poweshell: 
-success_symbol = "[](bold 033)[_](bold white)"
 # Linux:
 # success_symbol = "[](bold 034)[_](bold white)"
+# Windows Poweshell: 
+success_symbol = "[](bold 033)[_](bold white)"
 error_symbol = "[](bold 160)[_](bold white)"
 
-# Shows Command dureation if > 10s
+# Shows Command duration
 [cmd_duration]
-# Show command execution time over 5 secs (in ms)
-min_time = 5_000
-format = "Took [$duration]($style)"
+format = "Took [$duration]($style) "
+show_milliseconds = false
+min_time = 3_000
+style = "bold yellow"
 disabled = false
 
 # Shows the time
 [time]
-format = '🕙 [\[$time\]]($style)'
+format = "[$time]($style) "
 time_format = "%T"
-utc_time_offset = "1"
+utc_time_offset = "2"
+style = "bold 075"
 disabled = false
 
 # Shows the battery status 
 [battery]
-full_symbol = "🔋 "
-charging_symbol = "🔌 "
-discharging_symbol = " ⚡ "
+full_symbol = "•"
+charging_symbol = "⇡"
+discharging_symbol = "⇣"
 disabled = false
 # "bold red" style when capacity is between 0% and 20%
 [[battery.display]]
@@ -132,6 +142,14 @@ format="[$symbol$number]($style) "
 [memory_usage]
 symbol = ""
 disabled = true
+
+# Shows if Sudo credentials are cached
+[sudo]
+allow_windows = false
+symbol = ""
+style = "bold 160"
+format = "[$symbol]($style) "
+disabled = false
 
 # Shows the Git branch
 [git_branch]
@@ -186,12 +204,24 @@ disabled = false
 # Shows Docker context
 [docker_context]
 format = "using [ $context](bold blue) "
-# detect_files = ["docker-compose.yml", "docker-compose.yaml", "Dockerfile"]
-# only_with_files = true
+detect_files = ["docker-compose.yml", "docker-compose.yaml", "Dockerfile"]
+only_with_files = true
 disabled = false
 
 # Shows Ansible version
 # "ﴂ"
+
+# Package
+[package]
+symbol = "📦"
+format = "[$symbol$version]($style) "
+disabled = false
+
+# Shows PHP version
+[php]
+symbol = "PHP"
+format = "using [$symbol $version]($style)"
+disabled = true
 
 # Shows Helm version
 [helm]

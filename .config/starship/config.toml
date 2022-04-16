@@ -15,9 +15,9 @@ add_newline = true
 # Change the default prompt format
 format = """\
 [╭╴](238)$env_var$hostname$localip$username$sudo$directory\
-$all[╰─](238)$shell$status$jobs$character"""
+$all[╰─](238)$shell$cmd_duration$status$jobs$character"""
 # move the rest of the prompt to the right
-right_format = """$cmd_duration$time$battery"""
+right_format = """$time$battery"""
 command_timeout = 3_000
 
 # Shows an icon based on the os or distribution
@@ -98,7 +98,7 @@ error_symbol = "[](bold 160)[_](bold white)"
 # Shows Command duration
 [cmd_duration]
 format = "Took [$duration]($style) "
-show_milliseconds = true
+show_milliseconds = false
 min_time = 3_000
 style = "bold yellow"
 disabled = false
