@@ -5,13 +5,13 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v2.2.0
+# d88P     888 888 888  888    v2.2.1
 #
-# This is just my zshrc file...
+# This is my .zshrc file ...
 
 # Exports
 export EDITOR="nano"
-## export TERM="xterm-256color"
+export TERM="xterm-256color"
 export GPG_TTY=$TTY
 
 ## History
@@ -29,8 +29,8 @@ fi
 
 # Zsh
 ## Which plugins would you like to load?
-source $ZDOTDIR/plugins/zsh-autosuggestion.zsh
-source $ZDOTDIR/plugins/simple-completion.zsh
+[ -f "$ZDOTDIR/plugins/zsh-autosuggestion.zsh" ] && source "$ZDOTDIR/plugins/zsh-autosuggestion.zsh"
+[ -f "$ZDOTDIR/plugins/simple-completion.zsh" ] && source "$ZDOTDIR/plugins/simple-completion.zsh"
 
 # Starship prompt
 ## Set a name based on the distro
@@ -103,9 +103,9 @@ clear
 run-parts /etc/update-motd.d/
 
 # SSH / Keychain - Offering to unlock the keys
-if [ -f $ZDOTDIR/kunlock ]; then
+if [ -f "$ZDOTDIR/kunlock" ]; then
   # Offering to unlock SSH keys (Type / Number depends on the machine)
-  . $ZDOTDIR/kunlock
+  . "$ZDOTDIR/kunlock"
   # For my WSLs (Debian, Ubuntu, ...)
   [ -f ~/.keychain/DESKTOP-ORI7896-sh ] && source ~/.keychain/DESKTOP-ORI7896-sh
   # For my Manjaro

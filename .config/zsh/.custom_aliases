@@ -8,9 +8,13 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v6.6.6
+# d88P     888 888 888  888    v6.6.7
 #
 # Alh's Mess of Aliases
+
+# Shell - Aliases / Starship Prompt
+[ -f ~/.config/zsh/.bash_aliases ] && alias srca='source ~/.config/zsh/.bash_aliases && source ~/.config/zsh/.custom_aliases'
+[ -f ~/.bash_prompt ] && alias srcp='source ~/.bash_prompt'
 
 # Shell - Banner
 if [ -d ~/.banners/ ]; then

@@ -5,7 +5,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v1.0.26
+# d88P     888 888 888  888    v1.0.27
 #
 # ~/.config/starship/config.toml
 
@@ -15,7 +15,7 @@ add_newline = true
 # Change the default prompt format
 format = """\
 [╭╴](238)$env_var$hostname$localip$username$sudo$directory\
-$all[╰─](238)$shell$cmd_duration$status$jobs$character"""
+$all[╰─](238)$shell$container$cmd_duration$status$jobs$character"""
 # move the rest of the prompt to the right
 right_format = """$time$battery"""
 command_timeout = 3_000
@@ -55,18 +55,22 @@ disabled = false
 
 # Shows the current directory
 [directory]
-truncation_length = 20
+truncation_length = 3
 truncate_to_repo = true
 truncation_symbol = " …/"
 home_symbol = " ~"
 read_only_style = "bold 160"
 read_only = " "
+repo_root_style = "bold 002"
+use_os_path_sep = true
+style = "bold 039"
+repo_root_format = "[$before_root_path]($style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) "
 format = "[$read_only]($read_only_style)[$path](039) "
 disabled = false
 
 # Shows the SHELL indicator
 [shell]
-style = "dimmed white"
+style = "white dimmed"
 zsh_indicator = "[](white) ZSH"
 bash_indicator = "[](white) BASH"
 powershell_indicator = "[](white) PS"
@@ -157,7 +161,7 @@ disabled = false
 symbol = " "
 format = "on [$symbol](034) [$branch](bold 076) "
 truncation_length = 15
-truncation_symbol = "…/"
+truncation_symbol = "…"
 style = "bold 034"
 disabled = false
 
@@ -201,11 +205,18 @@ disabled = false
 format = "using [﵂ vagrant $version]($style) "
 disabled = false
 
+# Shows Container Environment
+[container]
+format = "[$symbol \\[$name\\]]($style) "
+symbol = "⬢"
+style = "bold 245 dimmed"
+disabled = false
+
 # Shows Docker context
 [docker_context]
 format = "using [ $context](bold blue) "
 detect_files = ["docker-compose.yml", "docker-compose.yaml", "Dockerfile"]
-only_with_files = true
+only_with_files = false
 disabled = false
 
 # Shows Ansible version
@@ -250,7 +261,7 @@ eu-west-3 = "EU, Paris"
 us-west-1 = "US, Virginia"
 
 [kubernetes]
-format = 'on [☸ $context \($namespace\)](dimmed green) '
+format = 'on [☸ $context \($namespace\)](green dimmed) '
 disabled = true
 [kubernetes.context_aliases]
 "dev.local.cluster.k8s" = "dev"

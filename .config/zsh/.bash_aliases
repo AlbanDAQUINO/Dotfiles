@@ -7,7 +7,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v6.6.6
+# d88P     888 888 888  888    v6.6.7
 #
 # Bash Aliases
 
@@ -96,6 +96,7 @@ alias ll='ls'
 alias cp='cp -i'
 alias df='df -h'
 alias mkdir='mkdir -pv'
+alias rm='rm -iv'
 if [ -f /usr/bin/wget ]; then
   alias wget='wget -c'
 fi
@@ -118,7 +119,6 @@ if [ -f /usr/bin/highlight ]; then
 fi
 ## Exa
 if [ -f /usr/bin/exa ]; then
-#  alias ll='exa -al --tree --level=1'
   alias ls='exa --icons --group-directories-first'
   alias ll='exa -al --tree --level=1 --group-directories-first --sort=name'
   alias lli='exa -al --tree --level=1 --group-directories-first --sort=name --icons'
@@ -182,6 +182,9 @@ alias ssht='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 #   alias sudo="doas"
 # fi
 
+# Resources - Sudo
+[ -f /usr/bin/sudo ] && alias sudo='echo "Only if asked nicely..." && /usr/bin/sudo'
+
 # Resources - Hardware informations
 if [ -f /usr/bin/inxi ]; then
   alias hwinfos='inxi -CGxxxz --display'
@@ -200,7 +203,7 @@ if [ -f /etc/wsl.conf ]; then
 fi
 
 # Resources - Systemd
-if [ -f /bin/systemctl && ! -f /etc/wsl.conf ]; then
+if [ -f /bin/systemctl ]; then
   alias sctlstatus='sudo systemctl list-units --type=service | egrep " active"'
   alias sctlrunning='sudo systemctl list-units --type=service | egrep " running"'
   alias sctlstopped='sudo systemctl list-units --type=service | egrep " exited"'
