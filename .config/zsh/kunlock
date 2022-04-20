@@ -6,7 +6,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v1.2.2
+# d88P     888 888 888  888    v1.2.3
 #
 # Alh's SSH Unlock script.
 
@@ -20,10 +20,10 @@ SSH_KEY_LOADED="NOPE"
 
 # Prompt the user
 case $SHELL in
-    /usr/bin/bash)
+    /usr/bin/bash|/bin/bash)
         read -r -N 1 -p "Do you want to unlock your SSH keys [n/y] " -t 3 SSH_KEY_UNLOCK
         ;;
-    /usr/bin/zsh)
+    /usr/bin/zsh|/bin/zsh)
         read -r -q -t 3 SSH_KEY_UNLOCK\?"Do you want to unlock your SSH keys [n/y] "
         ;;
     *)
@@ -37,16 +37,24 @@ case $SSH_KEY_UNLOCK in
        case $NAME in
         DESKTOP-ORI7896|Code)
             # Display Console Message
-            printf "\n├─ Unlocking SSH keys for 'Desktop-ORI7896'.\n"
+            printf "\n├─ Unlocking SSH keys for 'Desktop-ORI7896'\n"
             # Loading the SSH key(s) using KeyChain.
-            printf "│  ├─ SSH key: 'id_rsa_alban_desktop-ori7896'\n"
-            [ -f ~/.ssh/id_rsa_alban_desktop-ori7896 ] && /usr/bin/keychain --nogui -q ~/.ssh/id_rsa_alban_desktop-ori7896          # Under..!
-            printf "│  ├─ SSH key: 'id_ed25519_albandaquino_gmail'\n"
-            [ -f ~/.ssh/id_ed25519_albandaquino_gmail ] && /usr/bin/keychain --nogui -q ~/.ssh/id_ed25519_albandaquino_gmail        # Ori..
-            printf "│  ├─ SSH key: 'id_ed25519_alban_devops'\n"
-            [ -f ~/.ssh/id_ed25519_alban_devops ] && /usr/bin/keychain --nogui -q ~/.ssh/id_ed25519_alban_devops                    # Ori..!
-            printf "│  └─ SSH key: 'id_ed25519_groot'\n"
-            [ -f ~/.ssh/id_ed25519_groot ] && /usr/bin/keychain --nogui -q ~/.ssh/id_ed25519_groot                                  # Gro..!
+            if [ -f ~/.ssh/id_rsa_alban_desktop-ori7896 ]; then                     # Under..!
+                printf "│  ├─ SSH key: 'id_rsa_alban_desktop-ori7896'\n"
+                keychain --nogui -q ~/.ssh/id_rsa_alban_desktop-ori7896
+            fi
+            if [ -f ~/.ssh/id_ed25519_albandaquino_gmail ]; then                    # Ori..
+                printf "│  ├─ SSH key: 'id_ed25519_albandaquino_gmail'\n"
+                keychain --nogui -q ~/.ssh/id_ed25519_albandaquino_gmail
+            fi
+            if [ -f ~/.ssh/id_ed25519_alban_devops ]; then                          # Ori..!
+                printf "│  ├─ SSH key: 'id_ed25519_alban_devops'\n"
+                usr/bin/keychain --nogui -q ~/.ssh/id_ed25519_alban_devops
+            fi
+            if [ -f ~/.ssh/id_ed25519_groot ]; then                                 # Gro..!
+                printf "│  └─ SSH key: 'id_ed25519_groot'\n"
+                keychain --nogui -q ~/.ssh/id_ed25519_groot
+            fi
             # Set the SSL_KEY_LOADED Variable to DONE
             SSH_KEY_LOADED="DONE"
             ;;
@@ -76,13 +84,24 @@ case $SSH_KEY_UNLOCK in
             ;;
         CL-3GKR3F3)
             # Display Console Message
-            printf "\n├─ Unlocking SSH keys for 'CL-3GKR3F3'.\n"
+            printf "\n├─ Unlocking SSH keys for 'CL-3GKR3F3'\n"
             # Loading the SSH key(s) using KeyChain.
-            printf "│  ├─ SSH key: 'id_ed25519_alban_cdiscount'\n"
-            [ -f ~/.ssh/id_ed25519_alban_cdiscount ] && /usr/bin/keychain --nogui -q ~/.ssh/id_ed25519_alban_cdiscount              # UnderMo..!
-            printf "│  └─ SSH key: 'id_rsa_albandaquino_cdiscount'\n"
-            [ -f ~/.ssh/id_rsa_albandaquino_cdiscount ] && /usr/bin/keychain --nogui -q ~/.ssh/id_rsa_albandaquino_cdiscount        # Ori..!
-            # Set the SSL_KEY_LOADED Variable to DONE
+            if [ -f ~/.ssh/id_ed25519_alban_cdiscount ]; then                       # UnderMo..!
+                printf "│  ├─ SSH key: 'id_ed25519_alban_cdiscount'\n"
+                keychain --nogui -q ~/.ssh/id_ed25519_alban_cdiscount
+            fi
+            if [ -f ~/.ssh/id_rsa_albandaquino_cdiscount ]; then                    # Ori..!
+                printf "│  ├─ SSH key: 'id_rsa_albandaquino_cdiscount'\n"
+                keychain --nogui -q ~/.ssh/id_rsa_albandaquino_cdiscount
+            fi
+            if [ -f ~/.ssh/id_rsa_albandaquino_tfs ]; then                          # Ori..!
+                printf "│  ├─ SSH key: 'id_rsa_albandaquino_tfs'\n"
+                keychain --nogui -q ~/.ssh/id_rsa_albandaquino_tfs
+            fi
+            if [ -f ~/.ssh/id_rsa_control_repository ]; then                        # ..
+                printf "│  └─ SSH key: 'id_rsa_control_repository'\n"
+                keychain --nogui -q ~/.ssh/id_rsa_control_repository
+            fi
             SSH_KEY_LOADED="DONE"
             ;;
         *)

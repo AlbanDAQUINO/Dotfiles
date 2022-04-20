@@ -5,7 +5,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v2.2.1
+# d88P     888 888 888  888    v2.2.3
 #
 # This is my .zshrc file ...
 
@@ -15,7 +15,7 @@ export TERM="xterm-256color"
 export GPG_TTY=$TTY
 
 ## History
-HISTFILE=$ZDOTDIR/.zsh_history
+HISTFILE=$ZDOTDIR/.zhistory
 HISTSIZE=1000
 SAVEHIST=1000
 

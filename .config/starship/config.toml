@@ -5,7 +5,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v1.0.27
+# d88P     888 888 888  888    v1.0.28
 #
 # ~/.config/starship/config.toml
 
@@ -160,8 +160,8 @@ disabled = false
 # Alternatives = " "
 symbol = " "
 format = "on [$symbol](034) [$branch](bold 076) "
-truncation_length = 15
-truncation_symbol = "…"
+truncation_length = 25
+truncation_symbol = "…"
 style = "bold 034"
 disabled = false
 
