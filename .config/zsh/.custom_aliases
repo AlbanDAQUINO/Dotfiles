@@ -8,13 +8,13 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v6.6.7
+# d88P     888 888 888  888    v6.6.8
 #
 # Alh's Mess of Aliases
 
 # Shell - Aliases / Starship Prompt
-[ -f ~/.config/zsh/.bash_aliases ] && alias srca='source ~/.config/zsh/.bash_aliases && source ~/.config/zsh/.custom_aliases'
-[ -f ~/.bash_prompt ] && alias srcp='source ~/.bash_prompt'
+[ -f ~/.config/zsh/.bash_aliases ] && alias srcalias='echo "Aliases -----" && echo "+ 1. Bash/Common" && source ~/.config/zsh/.bash_aliases && echo "+ 2. Custom" && source ~/.config/zsh/.custom_aliases'
+[ -f ~/.bash_prompt ] && alias srcprompt='source ~/.bash_prompt'
 
 # Shell - Banner
 if [ -d ~/.banners/ ]; then
@@ -26,7 +26,7 @@ fi
 
 # Shell - Synaptic
 if [ -f /usr/sbin/synaptic ]; then
-  alias synaptk='/usr/bin/sudo echo "Starting Synaptic..." && /usr/bin/sudo /usr/sbin/synaptic &'
+  alias synaptk='sudo echo "Starting Synaptic (please be patient, synaptic will update the repos)" && /usr/bin/sudo /usr/sbin/synaptic &'
 fi
 
 # Shell - Adding Some Color

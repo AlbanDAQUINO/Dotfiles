@@ -7,7 +7,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v6.6.7
+# d88P     888 888 888  888    v6.6.8
 #
 # Bash Aliases
 
@@ -93,7 +93,7 @@ alias ls='ls -AGlhv --color=auto'
 alias ll='ls'
 
 # Shell -  Flags
-alias cp='cp -i'
+alias cp='cp -iv'
 alias df='df -h'
 alias mkdir='mkdir -pv'
 alias rm='rm -iv'
@@ -119,11 +119,12 @@ if [ -f /usr/bin/highlight ]; then
 fi
 ## Exa
 if [ -f /usr/bin/exa ]; then
-  alias ls='exa --icons --group-directories-first'
-  alias ll='exa -al --tree --level=1 --group-directories-first --sort=name'
+  alias ls='exa --icons --group-directories-first --sort=name'
+  alias ll='exa -l --tree --level=1 --group-directories-first --sort=name'
+  alias lla='exa -al --tree --level=1 --group-directories-first --sort=name'
   alias lli='exa -al --tree --level=1 --group-directories-first --sort=name --icons'
-  alias la='exa -ahl --group-directories-first --sort=name'
-  alias lc='exa --icons -a --group-directories-first'
+  alias la='exa -alh --group-directories-first --sort=name'
+  alias lc='exa --icons -a --group-directories-first --sort=name'
   alias l.='exa -a --group-directories-first --sort=name | egrep "^\."'
 fi
 ## Tree

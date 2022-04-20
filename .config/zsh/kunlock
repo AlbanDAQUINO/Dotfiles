@@ -6,7 +6,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v1.2.3
+# d88P     888 888 888  888    v1.2.4
 #
 # Alh's SSH Unlock script.
 
@@ -49,36 +49,12 @@ case $SSH_KEY_UNLOCK in
             fi
             if [ -f ~/.ssh/id_ed25519_alban_devops ]; then                          # Ori..!
                 printf "│  ├─ SSH key: 'id_ed25519_alban_devops'\n"
-                usr/bin/keychain --nogui -q ~/.ssh/id_ed25519_alban_devops
+                keychain --nogui -q ~/.ssh/id_ed25519_alban_devops
             fi
             if [ -f ~/.ssh/id_ed25519_groot ]; then                                 # Gro..!
                 printf "│  └─ SSH key: 'id_ed25519_groot'\n"
                 keychain --nogui -q ~/.ssh/id_ed25519_groot
             fi
-            # Set the SSL_KEY_LOADED Variable to DONE
-            SSH_KEY_LOADED="DONE"
-            ;;
-        zorinos-vmw)
-            # Display Console Message
-            printf "\n├─ Unlocking SSH keys for 'ZorinOS-vMW'.\n"
-            # Loading the SSH key(s) using KeyChain.
-            printf "│  ├─ SSH key: 'id_rsa_alban_desktop-ori7896'\n"
-            [ -f ~/.ssh/id_rsa_alban_desktop-ori7896 ] && /usr/bin/keychain --nogui -q ~/.ssh/id_rsa_alban_desktop-ori7896          # Under..!
-            printf "│  ├─ SSH key: 'id_ed25519_alban_desktop-hp6740'\n"
-            [ -f ~/.ssh/id_ed25519_alban_desktop-hp6740 ] && /usr/bin/keychain --nogui -q ~/.ssh/id_ed25519_alban_desktop-hp6740    # UnderKiMo..!
-            printf "│  ├─ SSH key: 'id_ed25519_albandaquino_gmail'\n"
-            [ -f ~/.ssh/id_ed25519_albandaquino_gmail ] && /usr/bin/keychain --nogui -q ~/.ssh/id_ed25519_albandaquino_gmail        # Ori..
-            printf "│  └─ SSH key: 'id_ed25519_alban_devops'\n"
-            [ -f ~/.ssh/id_ed25519_alban_devops ] && /usr/bin/keychain --nogui -q ~/.ssh/id_ed25519_alban_devops                    # Ori..!
-            # Set the SSL_KEY_LOADED Variable to DONE
-            SSH_KEY_LOADED="DONE"
-            ;;
-        desktop-hp6740)
-            # 
-            printf "\n├─ Unlocking SSH keys for 'Desktop-HP6740'.\n"
-            # Loading the SSH key(s) using KeyChain.
-            printf "│  └─ SSH key: 'id_ed25519_alban_desktop-hp6740'\n"
-            [ -f ~/.ssh/id_ed25519_alban_desktop-hp6740 ] && /usr/bin/keychain --nogui -q ~/.ssh/id_ed25519_alban_desktop-hp6740            # UnderKiMo..!
             # Set the SSL_KEY_LOADED Variable to DONE
             SSH_KEY_LOADED="DONE"
             ;;
@@ -104,9 +80,43 @@ case $SSH_KEY_UNLOCK in
             fi
             SSH_KEY_LOADED="DONE"
             ;;
+        desktop-hp6740)
+            # 
+            printf "\n├─ Unlocking SSH keys for 'Desktop-HP6740'\n"
+            # Loading the SSH key(s) using KeyChain.
+            if [ -f ~/.ssh/id_ed25519_alban_desktop-hp6740 ]; then                  # UnderKiMo..!
+                printf "│  └─ SSH key: 'id_ed25519_alban_desktop-hp6740'\n"
+                keychain --nogui -q ~/.ssh/id_ed25519_alban_desktop-hp6740
+            fi
+            # Set the SSL_KEY_LOADED Variable to DONE
+            SSH_KEY_LOADED="DONE"
+            ;;
+        zorinos-vmw)
+            # Display Console Message
+            printf "\n├─ Unlocking SSH keys for 'ZorinOS-vMW'\n"
+            # Loading the SSH key(s) using KeyChain.
+            if [ -f ~/.ssh/id_rsa_alban_desktop-ori7896 ]; then                     # Under..!
+                printf "│  ├─ SSH key: 'id_rsa_alban_desktop-ori7896'\n"
+                keychain --nogui -q ~/.ssh/id_rsa_alban_desktop-ori7896
+            fi
+            if [ -f ~/.ssh/id_ed25519_alban_desktop-hp6740 ]; then                  # UnderKiMo..!
+                printf "│  ├─ SSH key: 'id_ed25519_alban_desktop-hp6740'\n"
+                keychain --nogui -q ~/.ssh/id_ed25519_alban_desktop-hp6740
+            fi
+            if [ -f ~/.ssh/id_ed25519_albandaquino_gmail ]; then                    # Ori..
+                printf "│  ├─ SSH key: 'id_ed25519_albandaquino_gmail'\n"
+                keychain --nogui -q ~/.ssh/id_ed25519_albandaquino_gmail
+            fi
+            if [ -f ~/.ssh/id_ed25519_alban_devops ]; then                          # Ori..!
+                printf "│  └─ SSH key: 'id_ed25519_alban_devops'\n"
+                keychain --nogui -q ~/.ssh/id_ed25519_alban_devops
+            fi
+            # Set the SSL_KEY_LOADED Variable to DONE
+            SSH_KEY_LOADED="DONE"
+            ;;
         *)
             # Display Console Message
-            printf '\n├─ Unregistered terminal, skipping unlock (Error: "%s").\n' "$NAME"
+            printf '\n└─ Unregistered terminal, skipping unlock (Error: "%s").\n' "$?"
             # Set the SSL_KEY_LOADED Variable to ERROR
             SSH_KEY_LOADED="ERROR.UNREGISTERED"
             ;;
