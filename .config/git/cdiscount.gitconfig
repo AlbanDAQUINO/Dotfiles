@@ -1,0 +1,21 @@
+[user]
+  name          = "Alban d'Aquino"
+  email         = "alban.daquino@gmail.com"
+  # signingkey    = "4592F85FBE175E45"
+  signingkey    = "2712095303924BAA"
+[init]
+  defaultBranch = main
+[commit]
+  gpgsign       = true
+[pull]
+  rebase        = true
+[gpg]
+  program       = /usr/bin/gpg
+[credential "https://github.com"]
+  username      = albandaquino
+[credential "https://gitlab.com"]
+  username      = alban.daquino
+[credential "http://tfs.cdbdx.biz:8080"]
+  username      = alban.daquino
+[credential]
+  helper        = cache --timeout=3600
