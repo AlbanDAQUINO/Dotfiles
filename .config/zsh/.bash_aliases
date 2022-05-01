@@ -7,7 +7,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v6.6.9
+# d88P     888 888 888  888    v6.6.10
 #
 # Bash Aliases
 
@@ -111,10 +111,10 @@ fi
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
-## HighLight
+## BatCat
 if [ -f /usr/bin/batcat ]; then
-  # alias cat='highlight -O ansi --force'
-  alias cat='batcat'
+  alias cat='batcat --style=plain --paging=never'
+  alias bcat='batcat'
 fi
 ## Exa
 if [ -f /usr/bin/exa ]; then
