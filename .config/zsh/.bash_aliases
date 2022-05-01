@@ -7,7 +7,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v6.6.8
+# d88P     888 888 888  888    v6.6.9
 #
 # Bash Aliases
 
@@ -34,7 +34,6 @@ if [ -f /usr/bin/aptitude ]; then
   alias aptdinstall='sudo aptitude install'
   alias aptdsearch='aptitude search'
   alias aptdshow='sudo aptitude show'
-  # alias aptshowinstalled='sudo aptitude list --installed'
   alias aptdremove='sudo aptitude purge'
   alias aptdinfos='sudo aptitude --version'
 fi
@@ -46,8 +45,7 @@ if [ -f /usr/bin/nala ]; then
   alias nlainstall='sudo nala install'
   alias nlasearch='nala search'
   alias nlashow='nala show'
-  # alias nlainstalled='nashow'
-  # alias nlashowinstalled='sudo nala list --installed'
+  alias nlainstalled='nsudo nala list --installed'
   alias nlaremove='sudo nala remove'
   alias nlaclean='sudo nala purge'
   alias nlainfos='nala show nala'
@@ -114,8 +112,9 @@ alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 ## HighLight
-if [ -f /usr/bin/highlight ]; then
-  alias cat='highlight -O ansi --force'
+if [ -f /usr/bin/batcat ]; then
+  # alias cat='highlight -O ansi --force'
+  alias cat='batcat'
 fi
 ## Exa
 if [ -f /usr/bin/exa ]; then
