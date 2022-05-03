@@ -5,17 +5,17 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v2.1.22
+# d88P     888 888 888  888    v2.2.3
 #
-# This is just my zshrc file...
+# This is my .zshrc file ...
 
 # Exports
-export EDITOR="nvim"
-## export TERM="xterm-256color"
+export EDITOR="nano"
+export TERM="xterm-256color"
 export GPG_TTY=$TTY
 
 ## History
-HISTFILE=$ZDOTDIR/.zsh_history
+HISTFILE=$ZDOTDIR/.zhistory
 HISTSIZE=1000
 SAVEHIST=1000
 
@@ -29,42 +29,42 @@ fi
 
 # Zsh
 ## Which plugins would you like to load?
-source $ZDOTDIR/plugins/zsh-autosuggestion.zsh
-source $ZDOTDIR/plugins/simple-completion.zsh
+[ -f "$ZDOTDIR/plugins/zsh-autosuggestion.zsh" ] && source "$ZDOTDIR/plugins/zsh-autosuggestion.zsh"
+[ -f "$ZDOTDIR/plugins/simple-completion.zsh" ] && source "$ZDOTDIR/plugins/simple-completion.zsh"
 
-## Function extract for common file formats ###
-### Set a name based on the distro
+# Starship prompt
+## Set a name based on the distro
 _distro=$(awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }')
-### Set an icon based on the distro
+## Set an icon based on the distro
 case $_distro in
-    *kali*)                  ICON="ﴣ";;
-    *arch*)                  ICON="";;
-    *debian*)                ICON="";;
-    *raspbian*)              ICON="";;
-    *ubuntu*)                ICON="";;
-    *elementary*)            ICON="";;
-    *fedora*)                ICON="";;
-    *coreos*)                ICON="";;
-    *gentoo*)                ICON="";;
-    *mageia*)                ICON="";;
-    *centos*)                ICON="";;
-    *opensuse*|*tumbleweed*) ICON="";;
-    *sabayon*)               ICON="";;
-    *slackware*)             ICON="";;
-    *linuxmint*)             ICON="";;
     *alpine*)                ICON="";;
     *aosc*)                  ICON="";;
-    *nixos*)                 ICON="";;
+    *arch*)                  ICON="";;
+    *centos*)                ICON="";;
+    *coreos*)                ICON="";;
+    *debian*)                ICON="";;
     *devuan*)                ICON="";;
+    *elementary*)            ICON="";;
+    *fedora*)                ICON="";;
+    *gentoo*)                ICON="";;
+    *kali*)                  ICON="ﴣ";;
+    *linuxmint*)             ICON="";;
+    *mageia*)                ICON="";;
     *manjaro*)               ICON="";;
+    *nixos*)                 ICON="";;
+    *opensuse*|*tumbleweed*) ICON="";;
+    *raspbian*)              ICON="";;
     *rhel*)                  ICON="";;
-    *windows*)               ICON="";;
+    *sabayon*)               ICON="";;
+    *slackware*)             ICON="";;
+    *ubuntu*)                ICON="";;
+    *windows*)               ICON="";;
     *)                       ICON="";;
 esac
-### Export the distro icon
+## Export the distro icon
 export STARSHIP_DISTRO="$ICON"
 
-## Archive Extraction / usage: ex <file>
+# Archive Extraction / usage: ex <file>
 function ex () {
   if [ -f $1 ] ; then
     case $1 in
@@ -84,33 +84,40 @@ function ex () {
   fi
 }
 
-## Colormap / Usage: colormap
+# Colormap / Usage: colormap
 function colormap() {
   for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
 }
 
-## Loading Custom Aliases ...
-[[ ! -f ~/.bash_aliases ]] || source ~/.bash_aliases
-[[ ! -f $ZDOTDIR/.zshrc ]] || alias rlzsh='source $ZDOTDIR/.zshrc'
+# Loading Custom Aliases ...
+[ -f ~/.config/zsh/.bash_aliases ] && source ~/.config/zsh/.bash_aliases
+[ -f ~/.config/zsh/.custom_aliases ] && source ~/.config/zsh/.custom_aliases
 
-## Zsh - Prompt
+# Zsh - Prompt initialisation
 eval "$(starship init zsh)"
+
+# Clear
+clear
 
 # Displaying MotD
 run-parts /etc/update-motd.d/
 
 # SSH / Keychain - Offering to unlock the keys
-if [ -f $ZDOTDIR/kunlock.sh ]; then
-  ~/.config/zsh/kunlock.sh
+if [ -f "$ZDOTDIR/kunlock" ]; then
+  # Offering to unlock SSH keys (Type / Number depends on the machine)
+  . "$ZDOTDIR/kunlock"
   # For my WSLs (Debian, Ubuntu, ...)
-  if [ -f $HOME/.keychain/DESKTOP-ORI7896-sh ]; then source $HOME/.keychain/DESKTOP-ORI7896-sh; fi
-  # For my WSLs (Debian, Ubuntu, ...)
-  if [ -f $HOME/.keychain/desktop-hp6740-sh ]; then source $HOME/.keychain/desktop-hp6740-sh; fi
-  # For my C-Discount Work Computer
-  if [ -f $HOME/.keychain/CL-3GKR3F3-sh ]; then source $HOME/.keychain/CL-3GKR3F3-sh; fi
+  [ -f ~/.keychain/DESKTOP-ORI7896-sh ] && source ~/.keychain/DESKTOP-ORI7896-sh
+  # For my Manjaro
+  [ -f ~/.keychain/desktop-hp6740-sh ] && source ~/.keychain/desktop-hp6740-sh
+  # For my Zorin OS virtual machine
+  [ -f ~/.keychain/zorinos-vmw-sh ] && source ~/.keychain/zorinos-vmw-sh
+  # For my Work Computer
+  [ -f ~/.keychain/CL-3GKR3F3-sh ] && source ~/.keychain/CL-3GKR3F3-sh
+
   # Display a console message
   if [ $SSH_AGENT_PID != "" ]; then
-    echo "└─ Found SSH_Agent (PiD: $SSH_AGENT_PID) " 
+    echo "└─ SSH_Agent (PiD: $SSH_AGENT_PID) " 
   else
     echo "└─ SSH_Agent not found! " 
   fi

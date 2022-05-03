@@ -1,26 +1,7 @@
-[user]
-    email = "alban.daquino@gmail.com"
-    name = "Alban d'Aquino"
-    signingkey = 4592F85FBE175E45
+# Default case
+[include]
+  path = ~/.config/git/personal.gitconfig
 
-[credential]
-    # helper = keychain
-
-[github]
-    user = alban.daquino
-    # token = 
-
-[init]
-    defaultBranch = main
-
-[commit]
-    gpgsign = true
-
-[gpg]
-    program = /usr/bin/gpg
-
-[credential]
-    helper = cache --timeout=3600
-
-[pull]
-    rebase = false
+# CDiscount
+[includeIf "gitdir:**/CDiscount/**/.git"]
+  path = ~/.config/git/cdiscount.gitconfig

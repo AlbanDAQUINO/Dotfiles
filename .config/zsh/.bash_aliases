@@ -1,3 +1,5 @@
+#!/bin/bash
+# 
 #        d8888 888 888      
 #       d88888 888 888      
 #      d88P888 888 888      
@@ -5,42 +7,52 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v6.5.2-49
+# d88P     888 888 888  888    v6.6.10
 #
-# Alh's Mess of Aliases
+# Bash Aliases
 
 # Removing all previous set of aliases
 unalias -a
 
 # APT
-if [[ -f /usr/bin/apt ]]; then
+if [ -f /usr/bin/apt ]; then
   alias aptupdate='sudo apt update'
-  alias aptupgrade='sudo apt upgrade'
+  alias aptupgrade='sudo apt update && sudo apt upgrade'
   alias aptinstall='sudo apt install'
   alias aptsearch='apt search'
   alias aptshow='sudo apt show'
-  alias aptinstalled='aptshow'
-  alias aptshowinstalled='sudo apt list --installed'
+  alias aptinstalled='sudo apt list --installed'
   alias aptremove='sudo apt remove --purge'
-  alias aptcleanremove='sudo apt autoremove --purge'
+  alias aptclean='sudo apt autoremove --purge'
   alias aptinfos='sudo apt --version'
 fi
 
 # APTitude
-if [[ -f /usr/bin/aptitude ]]; then
+if [ -f /usr/bin/aptitude ]; then
   alias aptdupdate='sudo aptitude update'
   alias aptdupgrade='sudo aptitude upgrade'
   alias aptdinstall='sudo aptitude install'
   alias aptdsearch='aptitude search'
   alias aptdshow='sudo aptitude show'
-  alias aptdinstalled='aptshow'
-  # alias aptshowinstalled='sudo aptitude list --installed'
   alias aptdremove='sudo aptitude purge'
   alias aptdinfos='sudo aptitude --version'
 fi
 
+# Nala
+if [ -f /usr/bin/nala ]; then
+  alias nlaupdate='sudo nala update'
+  alias nlaupgrade='sudo nala upgrade'
+  alias nlainstall='sudo nala install'
+  alias nlasearch='nala search'
+  alias nlashow='nala show'
+  alias nlainstalled='nsudo nala list --installed'
+  alias nlaremove='sudo nala remove'
+  alias nlaclean='sudo nala purge'
+  alias nlainfos='nala show nala'
+fi
+
 # PACMAN
-if [[ -f /usr/bin/pacman ]]; then
+if [ -f /usr/bin/pacman ]; then
   alias pacupdate='sudo pacman -Sy'
   alias pacupgrade='sudo pacman -Syyu'
   alias pacinstall='sudo pacman -S'
@@ -54,7 +66,7 @@ if [[ -f /usr/bin/pacman ]]; then
 fi
 
 # YAY
-if [[ -f /usr/bin/yay ]]; then
+if [ -f /usr/bin/yay ]; then
   alias yayupdate='yay -Sy'
   alias yayupgrade='yay -Syyu'
   alias yayinstall='yay -S'
@@ -79,22 +91,17 @@ alias ls='ls -AGlhv --color=auto'
 alias ll='ls'
 
 # Shell -  Flags
-alias cp='cp -i'
+alias cp='cp -iv'
 alias df='df -h'
-if [[ -f /usr/bin/wget ]]; then
+alias mkdir='mkdir -pv'
+alias rm='rm -iv'
+if [ -f /usr/bin/wget ]; then
   alias wget='wget -c'
 fi
 
-# Shell - Banner
-if [[ -d ~/.banners/ ]]; then
-  alias banner='clear && run-parts ~/.banners'
-fi
-if [[ -d /etc/update-motd.d/ ]]; then
-  alias banner='clear && run-parts /etc/update-motd.d'
-fi
-
 # Shell - GPG
-if [[ -f /usr/bin/gpg/ ]]; then
+if [ -f /usr/bin/gpg ]; then
+  alias gpgtest='echo "test" | gpg --clearsign'
   alias gpgdecrypt='gpg --decrypt-files'
   alias gpgencrypt='gpg --default-recipient-self --armor --encrypt-files'
 fi
@@ -104,53 +111,28 @@ fi
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
-## ScreenFetch
-if [[ -f /usr/bin/screenfetch ]]; then
-  alias sf='screenfetch'
-fi
-## NeoFetch
-if [[ -f /usr/bin/neofetch ]]; then
-  alias neof='/usr/bin/neofetch'
-fi
 ## BatCat
-if [[ -f /usr/bin/batcat ]]; then
+if [ -f /usr/bin/batcat ]; then
+  alias cat='batcat --style=plain --paging=never'
   alias bcat='batcat'
 fi
-## HighLight
-if [[ -f /usr/bin/highlight ]]; then
-  alias cat='highlight -O ansi --force'
-fi
 ## Exa
-if [[ -f /usr/bin/exa ]]; then
-#  alias ll='exa -al --tree --level=1'
-  alias ll='exa -al --tree --level=1 --group-directories-first --sort=name'
+if [ -f /usr/bin/exa ]; then
+  alias ls='exa --icons --group-directories-first --sort=name'
+  alias ll='exa -l --tree --level=1 --group-directories-first --sort=name'
+  alias lla='exa -al --tree --level=1 --group-directories-first --sort=name'
   alias lli='exa -al --tree --level=1 --group-directories-first --sort=name --icons'
-  alias la='exa -ahl --group-directories-first --sort=name'
-  alias lc='exa --icons -a --group-directories-first'
+  alias la='exa -alh --group-directories-first --sort=name'
+  alias lc='exa --icons -a --group-directories-first --sort=name'
   alias l.='exa -a --group-directories-first --sort=name | egrep "^\."'
 fi
 ## Tree
-if [[ -f /usr/bin/tree ]]; then
-  alias tree='/usr/bin/tree -C -L'
-fi
-## Colorscript
-if [[ -f /usr/bin/colorscript ]]; then
-  alias cls='clear && colorscript -e crunchbang-mini'
-  alias randomcolors='colorscript -r'
-fi
-
-# Shell - Yadm
-if [[ -f /usr/bin/yadm ]]; then
-  alias ystatus='yadm status'
-  alias yfetch='yadm fetch'
-  alias ycommit='yadm commit -m'
-  alias ypush='yadm push'
-  alias ypull='yadm pull'
-  alias yadd='yadm add'
+if [ -f /usr/bin/tree ]; then
+  alias tree='/usr/bin/tree -a -I .git -I .terraform -I terraform.tfstate -I terraform.tfstate.backup -I .terraform.lock.hcl -C -L'
 fi
 
 # Git
-if [[ -f /usr/bin/git ]]; then
+if [ -f /usr/bin/git ]; then
   alias ggraph='git log --oneline --decorate --graph --all'
   alias gaddup='git add -u'
   alias gaddall='git add .'
@@ -161,13 +143,14 @@ if [[ -f /usr/bin/git ]]; then
   alias gfetch='git fetch'
   alias gpull='git pull origin'
   alias gpush='git push'
+  alias gpushb='git push --set-upstream origin'
   alias gstatus='git status'
   alias gtag='git tag'
   alias gnewtag='git tag -a'
 fi
 
 # Terraform
-if [[ -f /usr/bin/terraform ]]; then
+if [ -f /usr/bin/terraform ]; then
   alias trplan='terraform plan'
   alias trformat='terraform fmt'
   alias trplanf='terraform plan -out'
@@ -176,9 +159,6 @@ if [[ -f /usr/bin/terraform ]]; then
   alias trshow='terraform state show'
   alias trko='terraform destroy'
   alias terrafull='echo "Terraform Full (Format, Validate, Plan) ---" && terraform init && terraform fmt && terraform validate && terraform plan -out'
-  # Hmmm ...
-  alias tryolo='cls && echo "Terraform YOLO ! ---" && terraform init && terraform fmt && terraform validate && terraform plan -out "yolo.tfplan" && terraform apply "yolo.tfplan"'
-  alias trboom='terraform destroy --auto-approve'
 fi
 
 # Resources - CPU
@@ -198,17 +178,21 @@ alias ping='echo "--- Pinging 3 times ---" && sudo /bin/ping -a -c 3'
 alias ssht='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 
 # Resources - Doas
-if [[ -f /usr/bin/doas && -f /etc/doas.conf ]]; then
-  alias sudo="doas"
-fi
+# if [ -f /usr/bin/doas && -f /etc/doas.conf ]; then
+#   alias sudo="doas"
+# fi
+
+# Resources - Sudo
+[ -f /usr/bin/sudo ] && alias sudo='echo "Only if asked nicely..." && /usr/bin/sudo'
 
 # Resources - Hardware informations
-if [[ -f /usr/bin/inxi ]]; then
+if [ -f /usr/bin/inxi ]; then
   alias hwinfos='inxi -CGxxxz --display'
+  alias sysinfos='inxi -v1G --display'
 fi
 
 # Resources - Service
-if [[ -f /etc/wsl.conf ]]; then
+if [ -f /etc/wsl.conf ]; then
   alias srvstatus='sudo service --status-all'
   alias srvrunning='srvstatus | grep -e " + "'
   alias srvstopped='srvstatus | grep -e " - "'
@@ -219,7 +203,7 @@ if [[ -f /etc/wsl.conf ]]; then
 fi
 
 # Resources - Systemd
-if [[ -f /bin/systemctl && ! -f /etc/wsl.conf ]]; then
+if [ -f /bin/systemctl ]; then
   alias sctlstatus='sudo systemctl list-units --type=service | egrep " active"'
   alias sctlrunning='sudo systemctl list-units --type=service | egrep " running"'
   alias sctlstopped='sudo systemctl list-units --type=service | egrep " exited"'
@@ -231,20 +215,3 @@ if [[ -f /bin/systemctl && ! -f /etc/wsl.conf ]]; then
 fi
 
 # Misc.
-## Youtube Download
-if [[ -f /usr/bin/youtube-dl ]]; then
-  alias ytaudio-aac='youtube-dl --extract-audio --audio-format aac'
-  alias ytaudio-best='youtube-dl --extract-audio --audio-format best'
-  alias ytaudio-flac='youtube-dl --extract-audio --audio-format flac'
-  alias ytaudio-m4a='youtube-dl --extract-audio --audio-format m4a'
-  alias ytaudio-mp3='youtube-dl --extract-audio --audio-format mp3'
-  alias ytaudio-opus='youtube-dl --extract-audio --audio-format opus'
-  alias ytaudio-vorbis='youtube-dl --extract-audio --audio-format vorbis'
-  alias ytaudio-wav='youtube-dl --extract-audio --audio-format wav'
-  alias ytvideo-best='youtube-dl -f bestvideo+bestaudio'
-fi
-
-## Shell Config Reload
-if [[ -d $ZDOTDIR ]]; then
-  alias zrl='source $ZDOTDIR/.zshrc'
-fi

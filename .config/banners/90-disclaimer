@@ -1,0 +1,8 @@
+#!/bin/sh
+
+echo " "
+echo "\e[1;33mDisclaimer\e[00m: ALL access on that system are monitored. And as such, un-authorized"
+echo "attempts to gain access will be procecuted by the full extent of the law."
+echo "                                                                          - Alh"
+echo " "
+
