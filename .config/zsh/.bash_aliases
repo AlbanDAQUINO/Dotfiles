@@ -7,7 +7,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v6.6.10
+# d88P     888 888 888  888    v6.7.0-0
 #
 # Bash Aliases
 
@@ -40,15 +40,14 @@ fi
 
 # Nala
 if [ -f /usr/bin/nala ]; then
-  alias nlaupdate='sudo nala update'
-  alias nlaupgrade='sudo nala upgrade'
-  alias nlainstall='sudo nala install'
-  alias nlasearch='nala search'
-  alias nlashow='nala show'
-  alias nlainstalled='nsudo nala list --installed'
-  alias nlaremove='sudo nala remove'
-  alias nlaclean='sudo nala purge'
-  alias nlainfos='nala show nala'
+  alias nala_update='sudo nala upgrade'
+  alias nala_install='sudo nala install'
+  alias nala_search='nala_update && nala search'
+  alias nala_show='nala_update && nala show'
+  alias nala_installed='sudo nala list --installed'
+  alias nala_remove='sudo nala purge'
+  alias nala_clean='sudo nala autoremove'
+  alias nala_infos='nala show nala'
 fi
 
 # PACMAN
@@ -92,11 +91,11 @@ alias ll='ls'
 
 # Shell -  Flags
 alias cp='cp -iv'
-alias df='df -h'
-alias mkdir='mkdir -pv'
 alias rm='rm -iv'
+alias mkdir='mkdir -pv'
+alias df='df -h'
 if [ -f /usr/bin/wget ]; then
-  alias wget='wget -c'
+  alias wget='wget -cv'
 fi
 
 # Shell - GPG
@@ -107,15 +106,15 @@ if [ -f /usr/bin/gpg ]; then
 fi
 
 # Shell - Adding Some Color
-## Grep
-alias grep='grep --color=auto'
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
 ## BatCat
 if [ -f /usr/bin/batcat ]; then
   alias cat='batcat --style=plain --paging=never'
   alias bcat='batcat'
 fi
+## Grep
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
 ## Exa
 if [ -f /usr/bin/exa ]; then
   alias ls='exa --icons --group-directories-first --sort=name'
