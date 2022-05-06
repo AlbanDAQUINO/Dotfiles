@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # 
 #        d8888 888 888      
 #       d88888 888 888      
@@ -7,7 +7,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v6.7.0-0
+# d88P     888 888 888  888    v6.7.1
 #
 # Bash Aliases
 
@@ -41,6 +41,7 @@ fi
 # Nala
 if [ -f /usr/bin/nala ]; then
   alias nala_update='sudo nala upgrade'
+  alias nala_upgrade='sudo nala upgrade'
   alias nala_install='sudo nala install'
   alias nala_search='nala_update && nala search'
   alias nala_show='nala_update && nala show'
