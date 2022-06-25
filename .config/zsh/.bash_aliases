@@ -7,7 +7,7 @@
 #    d88P  888 888 888 "88b 
 #   d88P   888 888 888  888 
 #  d8888888888 888 888  888 
-# d88P     888 888 888  888    v6.7.1
+# d88P     888 888 888  888    v6.7.3
 #
 # Bash Aliases
 
@@ -16,26 +16,26 @@ unalias -a
 
 # APT
 if [ -f /usr/bin/apt ]; then
-  alias aptupdate='sudo apt update'
-  alias aptupgrade='sudo apt update && sudo apt upgrade'
-  alias aptinstall='sudo apt install'
-  alias aptsearch='apt search'
-  alias aptshow='sudo apt show'
-  alias aptinstalled='sudo apt list --installed'
-  alias aptremove='sudo apt remove --purge'
-  alias aptclean='sudo apt autoremove --purge'
-  alias aptinfos='sudo apt --version'
+  alias apt_update='sudo apt update'
+  alias apt_upgrade='sudo apt update && sudo apt upgrade'
+  alias apt_install='sudo apt install'
+  alias apt_search='apt search'
+  alias apt_show='sudo apt show'
+  alias apt_installed='sudo apt list --installed'
+  alias apt_remove='sudo apt remove --purge'
+  alias apt_clean='sudo apt autoremove --purge'
+  alias apt_infos='sudo apt --version'
 fi
 
 # APTitude
 if [ -f /usr/bin/aptitude ]; then
-  alias aptdupdate='sudo aptitude update'
-  alias aptdupgrade='sudo aptitude upgrade'
-  alias aptdinstall='sudo aptitude install'
-  alias aptdsearch='aptitude search'
-  alias aptdshow='sudo aptitude show'
-  alias aptdremove='sudo aptitude purge'
-  alias aptdinfos='sudo aptitude --version'
+  alias aptd_update='sudo aptitude update'
+  alias aptd_upgrade='sudo aptitude upgrade'
+  alias aptd_install='sudo aptitude install'
+  alias aptd_search='aptitude search'
+  alias aptd_show='sudo aptitude show'
+  alias aptd_remove='sudo aptitude purge'
+  alias aptd_infos='sudo aptitude --version'
 fi
 
 # Nala
@@ -53,30 +53,30 @@ fi
 
 # PACMAN
 if [ -f /usr/bin/pacman ]; then
-  alias pacupdate='sudo pacman -Sy'
-  alias pacupgrade='sudo pacman -Syyu'
-  alias pacinstall='sudo pacman -S'
-  alias pacsearch='sudo pacman -Ss'
-  alias pacshow='sudo pacman -Si'
-  alias pacinstalled='sudo pacman -Qs'
-  alias pacshowinstalled='sudo pacman -Qi'
-  alias pacremove='sudo pacman -Rs'
-  alias paccleanremove='sudo pacman -Rsn'
-  alias pacinfos='sudo pacman --version'
+  alias pac_update='sudo pacman -Sy'
+  alias pac_upgrade='sudo pacman -Syyu'
+  alias pac_install='sudo pacman -S'
+  alias pac_search='sudo pacman -Ss'
+  alias pac_show='sudo pacman -Si'
+  alias pac_installed='sudo pacman -Qs'
+  alias pac_showinstalled='sudo pacman -Qi'
+  alias pac_remove='sudo pacman -Rs'
+  alias pac_cleanremove='sudo pacman -Rsn'
+  alias pac_infos='sudo pacman --version'
 fi
 
 # YAY
 if [ -f /usr/bin/yay ]; then
-  alias yayupdate='yay -Sy'
-  alias yayupgrade='yay -Syyu'
-  alias yayinstall='yay -S'
-  alias yaysearch='yay -Ss'
-  alias yayshow='yay -Si'
-  alias yayinstalled='yay -Qs'
-  alias yayshowinstalled='yay -Qi'
-  alias yayremove='yay -Rs'
-  alias yaycleanremove='yay -Rsn'
-  alias yayinfos='yay -Ps'
+  alias yay_update='yay -Sy'
+  alias yay_upgrade='yay -Syyu'
+  alias yay_install='yay -S'
+  alias yay_search='yay -Ss'
+  alias yay_show='yay -Si'
+  alias yay_installed='yay -Qs'
+  alias yay_showinstalled='yay -Qi'
+  alias yay_remove='yay -Rs'
+  alias yay_cleanremove='yay -Rsn'
+  alias yay_infos='yay -Ps'
 fi
 
 # Shell - Common
@@ -128,7 +128,8 @@ if [ -f /usr/bin/exa ]; then
 fi
 ## Tree
 if [ -f /usr/bin/tree ]; then
-  alias tree='/usr/bin/tree -a -I .git -I .terraform -I terraform.tfstate -I terraform.tfstate.backup -I .terraform.lock.hcl -C -L'
+  alias tree='/usr/bin/tree -I .git -I .terraform -I terraform.tfstate -I terraform.tfstate.backup -I .terraform.lock.hcl -C -L'
+  alias treeall='/usr/bin/tree -a -I .git -I .terraform -I terraform.tfstate -I terraform.tfstate.backup -I .terraform.lock.hcl -C -L'
 fi
 
 # Git
@@ -165,13 +166,6 @@ fi
 alias ps='ps -afux'
 alias zombies='/bin/ps -A -ostat,pid,ppid | grep -e "[zZ]"'
 
-## Top process(es) eating memory
-alias psmem='/bin/ps -afux | sort -nr -k 4'
-alias psmem10='/bin/ps -afux | sort -nr -k 4 | head -10'
-## Top process(es) eating cpu
-alias pscpu='/bin/ps -afux | sort -nr -k 3'
-alias pscpu10='/bin/ps -afux | sort -nr -k 3 | head -10'
-
 # Resources - Network
 alias openport='sudo ss -tupln'
 alias ping='echo "--- Pinging 3 times ---" && sudo /bin/ping -a -c 3'
@@ -182,9 +176,6 @@ alias ssht='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 #   alias sudo="doas"
 # fi
 
-# Resources - Sudo
-[ -f /usr/bin/sudo ] && alias sudo='echo "Only if asked nicely..." && /usr/bin/sudo'
-
 # Resources - Hardware informations
 if [ -f /usr/bin/inxi ]; then
   alias hwinfos='inxi -CGxxxz --display'
@@ -193,7 +184,7 @@ fi
 
 # Resources - Service
 if [ -f /etc/wsl.conf ]; then
-  alias srvstatus='sudo service --status-all'
+  alias srvsall='sudo service --status-all'
   alias srvrunning='srvstatus | grep -e " + "'
   alias srvstopped='srvstatus | grep -e " - "'
   # alias srvreload=''
@@ -204,13 +195,15 @@ fi
 
 # Resources - Systemd
 if [ -f /bin/systemctl ]; then
-  alias sctlstatus='sudo systemctl list-units --type=service | egrep " active"'
+  # Lists
+  alias sctlall='sudo systemctl list-units --type=service | egrep " active"'
   alias sctlrunning='sudo systemctl list-units --type=service | egrep " running"'
   alias sctlstopped='sudo systemctl list-units --type=service | egrep " exited"'
-  alias sctlshow='sudo systemctl status'
-  alias sctlreload='sudo systemctl reload'
+  # Commands
+  alias sctlstatus='sudo systemctl status --no-pager'
   alias sctlstart='sudo systemctl start'
   alias sctlstop='sudo systemctl stop'
+  alias sctlreload='sudo systemctl reload'
   alias sctlrestart='sudo systemctl restart'
 fi
 

@@ -116,7 +116,7 @@ case $SSH_KEY_UNLOCK in
             ;;
         *)
             # Display Console Message
-            printf '\n└─ Unregistered terminal, skipping unlock (Error: "%s").\n' "$?"
+            printf '\n└─ Unregistered terminal, skipping unlock.\n' "$?"
             # Set the SSL_KEY_LOADED Variable to ERROR
             SSH_KEY_LOADED="ERROR.UNREGISTERED"
             ;;
